@@ -48,42 +48,68 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
           <NavbarCollapse id="main-nav" className={styles.collapseDesktop}>
             <Nav
               className={classNames(
-                "align-items-md-center gap-md-4 flex-md-row flex-column my-3 my-md-0",
+                "flex-column flex-md-row mb-0",
+                "gap-0 gap-md-4",
+                "align-items-stretch align-items-md-center",
+                "w-100 my-md-0",
                 styles.navDesktop,
+                styles.mobileNav,
               )}
             >
               <Nav.Link
                 href={`#${SECTION_IDS.songs}`}
-                className="text-body-secondary py-1"
+                className={classNames(
+                  "text-body-secondary py-md-1",
+                  styles.mobileNavLink,
+                )}
               >
                 {copy.navSongs}
               </Nav.Link>
               <Nav.Link
                 href={`#${SECTION_IDS.howItWorks}`}
-                className="text-body-secondary py-1"
+                className={classNames(
+                  "text-body-secondary py-md-1",
+                  styles.mobileNavLink,
+                )}
               >
                 {copy.navHowItWorks}
               </Nav.Link>
               <Nav.Link
                 href={`#${SECTION_IDS.lyrics}`}
-                className="text-body-secondary py-1"
+                className={classNames(
+                  "text-body-secondary py-md-1",
+                  styles.mobileNavLink,
+                )}
               >
                 {copy.navLyrics}
               </Nav.Link>
             </Nav>
             <div
               className={classNames(
-                "d-flex align-items-center gap-3 my-3 my-md-0",
+                "d-flex flex-column flex-md-row",
+                "align-items-stretch align-items-md-center",
+                "gap-md-3 my-md-0",
                 styles.actionsDesktop,
+                styles.mobileActions,
               )}
             >
-              <ThemeSwitcher
-                ariaLabel={copy.themeAriaLabel}
-                labelLight={copy.themeLight}
-                labelDark={copy.themeDark}
-              />
-              <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
-              <Button variant="warning" size="sm" className="text-dark border-0">
+              <div className={styles.mobileToolbarWrap}>
+                <ThemeSwitcher
+                  ariaLabel={copy.themeAriaLabel}
+                  labelLight={copy.themeLight}
+                  labelDark={copy.themeDark}
+                />
+                <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
+              </div>
+              <Button
+                variant="warning"
+                size="sm"
+                className={classNames(
+                  "text-dark border-0",
+                  "w-100 w-md-auto",
+                  "py-2 py-md-1",
+                )}
+              >
                 {copy.navStart}
               </Button>
             </div>
