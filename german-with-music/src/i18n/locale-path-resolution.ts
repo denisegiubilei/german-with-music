@@ -5,23 +5,17 @@ import {
   type Locale,
 } from "./settings";
 
-/**
- * Next.js middleware matcher paths. Keep prefix rules in sync with
- * {@link shouldSkipLocaleMiddleware}. Paths whose last segment looks like a static file
- * (`*.ext`) still match here; middleware returns early via {@link shouldSkipLocaleMiddleware}.
- *
- * @see https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
- */
-export const localeMiddlewareMatcher = [
-  "/((?!api(?:/|$)|_next(?:/|$)|favicon.ico|robots.txt|sitemap.xml|images(?:/|$)).*)",
-];
-
 export type LocalePathResolution =
   | { kind: "skip" }
   | { kind: "pass-through"; localeSegment: string }
   | { kind: "rewrite"; internalPath: string; activeLocale: Locale }
   | { kind: "redirect-default-prefix"; unprefixedPath: string };
 
+/**
+ * Paths the locale middleware should not touch. Prefix rules must stay in sync with the
+ * literal `matcher` array in `src/middleware.ts` (Next requires static matchers there).
+ * Paths whose last segment looks like `*.ext` still match the matcher and return early here.
+ */
 export function shouldSkipLocaleMiddleware(pathname: string): boolean {
   if (pathname.startsWith("/_next")) return true;
   if (pathname.startsWith("/api")) return true;

@@ -1,7 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import {
-  localeMiddlewareMatcher,
   resolveLocalePath,
   shouldSkipLocaleMiddleware,
 } from "@/i18n/locale-path-resolution";
@@ -53,6 +52,14 @@ export function middleware(request: NextRequest) {
   }
 }
 
+/**
+ * Must be static string literals (Next parses `config` at compile time).
+ * Keep prefix rules in sync with {@link shouldSkipLocaleMiddleware} in
+ * `@/i18n/locale-path-resolution`; extension-like paths still hit middleware
+ * and return early there.
+ */
 export const config = {
-  matcher: localeMiddlewareMatcher,
+  matcher: [
+    "/((?!api(?:/|$)|_next(?:/|$)|favicon.ico|robots.txt|sitemap.xml|images(?:/|$)).*)",
+  ],
 };
