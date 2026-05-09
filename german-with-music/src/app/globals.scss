@@ -1,5 +1,5 @@
-// Bootstrap configuration: follow prefers-color-scheme (see _bootstrap-theme for tokens)
-$color-mode-type: media-query;
+// Bootstrap color mode: `data-bs-theme` on `<html>` (see ThemeSwitcher + theme boot script)
+$color-mode-type: data;
 
 @import "bootstrap/scss/functions";
 @import "../styles/bootstrap-theme";
@@ -53,8 +53,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo-invert-dark {
-    filter: invert(1);
-  }
+[data-bs-theme="dark"] .logo-invert-dark {
+  filter: invert(1);
 }

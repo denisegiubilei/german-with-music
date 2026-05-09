@@ -28,6 +28,9 @@
   },
   "nav": {
     "language": "Language",
+    "themeAriaLabel": "Color theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
     "songs": "Songs",
     "howItWorks": "How it works",
     "lyrics": "Lyrics",

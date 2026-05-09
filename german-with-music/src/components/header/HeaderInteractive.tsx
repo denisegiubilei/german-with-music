@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import type { HeaderCopy } from "@/components/header/header-copy";
 import { LanguageSwitcher } from "@/components/language-switcher/LanguageSwitcher";
+import { ThemeSwitcher } from "@/components/theme-switcher/ThemeSwitcher";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 import { SECTION_IDS } from "@/lib/section-ids";
 import styles from "./Header.module.scss";
@@ -60,6 +61,11 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
                 </Nav.Link>
               </Nav>
               <div className="d-flex align-items-center gap-3 ms-md-auto">
+                <ThemeSwitcher
+                  ariaLabel={copy.themeAriaLabel}
+                  labelLight={copy.themeLight}
+                  labelDark={copy.themeDark}
+                />
                 <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
                 <Button variant="warning" size="sm" className="text-dark border-0">
                   {copy.navStart}

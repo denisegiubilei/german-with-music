@@ -12,6 +12,9 @@ export async function Header() {
     navLyrics: t("nav.lyrics"),
     navStart: t("nav.start"),
     languageAriaLabel: t("nav.language"),
+    themeAriaLabel: t("nav.themeAriaLabel"),
+    themeLight: t("nav.themeLight"),
+    themeDark: t("nav.themeDark"),
   };
 
   return <HeaderInteractive copy={copy} />;

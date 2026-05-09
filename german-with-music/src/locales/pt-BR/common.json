@@ -28,6 +28,9 @@
   },
   "nav": {
     "language": "Idioma",
+    "themeAriaLabel": "Tema de cores",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
     "songs": "Músicas",
     "howItWorks": "Como funciona",
     "lyrics": "Letras",

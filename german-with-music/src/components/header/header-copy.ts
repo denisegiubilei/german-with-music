@@ -6,4 +6,7 @@ export type HeaderCopy = {
   navLyrics: string;
   navStart: string;
   languageAriaLabel: string;
+  themeAriaLabel: string;
+  themeLight: string;
+  themeDark: string;
 };
