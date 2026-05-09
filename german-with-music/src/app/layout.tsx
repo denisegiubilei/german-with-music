@@ -4,6 +4,7 @@ import Script from "next/script";
 import { initServerI18next } from "next-i18next/server";
 import i18nConfig from "../../i18n.config";
 import { getRequestLocale } from "@/i18n/request-locale";
+import { StoreProvider } from "@/components/providers/StoreProvider";
 import { THEME_BOOT_INLINE_SCRIPT } from "@/lib/theme-preference";
 import "./globals.scss";
 
@@ -38,7 +39,7 @@ export default async function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: THEME_BOOT_INLINE_SCRIPT }}
         />
-        {children}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );

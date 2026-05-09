@@ -1,24 +1,50 @@
-import { Play } from "lucide-react";
-import type { Song } from "@/types/song";
+import styles from "./SongCard.module.scss";
 
-export function SongCard({ title, artist, imageUrl }: Song) {
+export interface SongCardProps {
+  title: string;
+  artist: string | null;
+  /** Full `https://www.youtube.com/embed/…` URL, or null if the source URL could not be parsed. */
+  embedUrl: string | null;
+  watchUrl?: string;
+}
+
+export function SongCard({ title, artist, embedUrl, watchUrl }: SongCardProps) {
+  const displayArtist = artist?.trim() ? artist : "—";
+
   return (
     <article className="song-card">
-      <div className="song-card__media mb-2">
-        <img src={imageUrl} alt={title} className="song-card__img" />
-        <div className="song-card__overlay" aria-hidden>
-          <div className="song-card__play bg-german-gold">
-            <Play
-              className="text-dark ms-1"
-              size={16}
-              fill="currentColor"
-              aria-hidden
-            />
+      <div className={`song-card__media mb-2 ${styles.media}`}>
+        {embedUrl ? (
+          <iframe
+            className={styles.iframe}
+            src={embedUrl}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        ) : (
+          <div className={`text-body-secondary ${styles.fallback}`}>
+            {watchUrl ? (
+              <a
+                className={styles.fallbackLink}
+                href={watchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {title}
+              </a>
+            ) : (
+              <span>{title}</span>
+            )}
           </div>
-        </div>
+        )}
       </div>
       <h3 className="fw-medium small text-truncate mb-0">{title}</h3>
-      <p className="text-body-secondary text-truncate small mb-0">{artist}</p>
+      <p className="text-body-secondary text-truncate small mb-0">
+        {displayArtist}
+      </p>
     </article>
   );
 }
