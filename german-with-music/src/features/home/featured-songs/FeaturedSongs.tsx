@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -17,11 +18,14 @@ export function FeaturedSongs() {
     <section id={SECTION_IDS.songs} className="py-5 bg-body-secondary">
       <Container className="px-3 px-md-4">
         <div className="text-center mb-5">
-          <h2 className={`h1 fw-bold mb-3 ${styles.title}`}>
+          <h2 className={classNames("h1 fw-bold mb-3", styles.title)}>
             {t("featuredSongs.title")}
           </h2>
           <p
-            className={`text-body-secondary mx-auto mb-0 ${styles.subtitle}`}
+            className={classNames(
+              "text-body-secondary mx-auto mb-0",
+              styles.subtitle,
+            )}
           >
             {t("featuredSongs.subtitle")}
           </p>

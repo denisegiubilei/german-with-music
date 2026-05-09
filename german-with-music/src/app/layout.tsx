@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Geist_Mono, Inter } from "next/font/google";
 import Script from "next/script";
 import { initServerI18next } from "next-i18next/server";
@@ -28,7 +29,7 @@ export default async function RootLayout({
   return (
     <html
       lang={htmlLang}
-      className={`${inter.variable} ${geistMono.variable} h-100`}
+      className={classNames(inter.variable, geistMono.variable, "h-100")}
       suppressHydrationWarning
     >
       <body className="min-vh-100 d-flex flex-column">

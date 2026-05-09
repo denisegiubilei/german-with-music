@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,7 +21,10 @@ export function LyricsDisplay({ lyrics }: LyricsDisplayProps) {
           <Row className="g-3">
             <Col xs={12} md={6}>
               <div
-                className={`small text-uppercase text-primary fw-medium mb-1 ${styles.label}`}
+                className={classNames(
+                  "small text-uppercase text-primary fw-medium mb-1",
+                  styles.label,
+                )}
               >
                 {t("lyrics.columns.german")}
               </div>
@@ -28,7 +32,10 @@ export function LyricsDisplay({ lyrics }: LyricsDisplayProps) {
             </Col>
             <Col xs={12} md={6}>
               <div
-                className={`small text-uppercase text-body-secondary fw-medium mb-1 ${styles.label}`}
+                className={classNames(
+                  "small text-uppercase text-body-secondary fw-medium mb-1",
+                  styles.label,
+                )}
               >
                 {t("lyrics.columns.english")}
               </div>

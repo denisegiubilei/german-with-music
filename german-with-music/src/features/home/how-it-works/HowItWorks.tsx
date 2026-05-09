@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -15,7 +16,7 @@ export function HowItWorks() {
     <section id={SECTION_IDS.howItWorks} className="py-5">
       <Container className="px-3 px-md-4">
         <div className="text-center mb-5">
-          <h2 className={`h1 fw-bold mb-3 ${styles.title}`}>
+          <h2 className={classNames("h1 fw-bold mb-3", styles.title)}>
             {t("howItWorks.title")}
           </h2>
           <p className="text-body-secondary mb-0">
@@ -31,7 +32,10 @@ export function HowItWorks() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div
-                  className={`d-flex align-items-center justify-content-center rounded-circle bg-body-secondary mx-auto mb-3 ${styles.iconWrap}`}
+                  className={classNames(
+                    "d-flex align-items-center justify-content-center rounded-circle bg-body-secondary mx-auto mb-3",
+                    styles.iconWrap,
+                  )}
                 >
                   <step.icon
                     className="text-german-gold flex-shrink-0"

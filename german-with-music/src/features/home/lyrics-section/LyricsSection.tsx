@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import Card from "react-bootstrap/Card";
 import CardBody from "react-bootstrap/CardBody";
@@ -18,14 +19,17 @@ export function LyricsSection() {
   return (
     <section id={SECTION_IDS.lyrics} className="py-5 bg-body-secondary">
       <Container className="px-3 px-md-4">
-        <div className={`mx-auto ${styles.container}`}>
+        <div className={classNames("mx-auto", styles.container)}>
           <div className="text-center mb-4">
             <p
-              className={`small fw-medium text-german-red text-uppercase mb-2 ${styles.kicker}`}
+              className={classNames(
+                "small fw-medium text-german-red text-uppercase mb-2",
+                styles.kicker,
+              )}
             >
               {t("lyrics.example.kicker")}
             </p>
-            <h2 className={`h1 fw-bold mb-1 ${styles.title}`}>
+            <h2 className={classNames("h1 fw-bold mb-1", styles.title)}>
               {t("lyrics.example.title")}
             </h2>
             <p className="small text-body-secondary mb-0">

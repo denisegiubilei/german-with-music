@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { Music } from "lucide-react";
 import {
   Navbar,
@@ -20,15 +21,21 @@ import styles from "./Header.module.scss";
 export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
   return (
     <header
-      className={`border-bottom bg-body position-fixed top-0 start-0 end-0 ${styles.header}`}
+      className={classNames(
+        "border-bottom bg-body position-fixed top-0 start-0 end-0",
+        styles.header,
+      )}
     >
       <div className="german-flag-bar" />
-      <Navbar expand="md" className={`py-0 ${styles.navbar}`}>
-        <Container fluid className="px-3 px-md-4">
+      <Navbar expand="md" className={classNames("py-0", styles.navbar)}>
+        <Container fluid className={classNames("px-3 px-md-4", styles.navbarInner)}>
           <NavbarBrand
             as={LocalizedLinkClient}
             href="/"
-            className="d-flex align-items-center gap-2 fw-semibold me-auto mb-0"
+            className={classNames(
+              "d-flex align-items-center gap-2 fw-semibold mb-0",
+              styles.brandDesktop,
+            )}
           >
             <Music
               className="text-german-gold flex-shrink-0"
@@ -38,39 +45,47 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
             <span className="tracking-tight">{copy.brand}</span>
           </NavbarBrand>
           <NavbarToggle aria-controls="main-nav" className="border-0" />
-          <NavbarCollapse id="main-nav" className="justify-content-end">
-            <div className="d-flex flex-column flex-md-row align-items-center gap-3 gap-md-4 my-3 my-md-0">
-              <Nav className="align-items-md-center gap-md-4 flex-md-row flex-column">
-                <Nav.Link
-                  href={`#${SECTION_IDS.songs}`}
-                  className="text-body-secondary py-1"
-                >
-                  {copy.navSongs}
-                </Nav.Link>
-                <Nav.Link
-                  href={`#${SECTION_IDS.howItWorks}`}
-                  className="text-body-secondary py-1"
-                >
-                  {copy.navHowItWorks}
-                </Nav.Link>
-                <Nav.Link
-                  href={`#${SECTION_IDS.lyrics}`}
-                  className="text-body-secondary py-1"
-                >
-                  {copy.navLyrics}
-                </Nav.Link>
-              </Nav>
-              <div className="d-flex align-items-center gap-3 ms-md-auto">
-                <ThemeSwitcher
-                  ariaLabel={copy.themeAriaLabel}
-                  labelLight={copy.themeLight}
-                  labelDark={copy.themeDark}
-                />
-                <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
-                <Button variant="warning" size="sm" className="text-dark border-0">
-                  {copy.navStart}
-                </Button>
-              </div>
+          <NavbarCollapse id="main-nav" className={styles.collapseDesktop}>
+            <Nav
+              className={classNames(
+                "align-items-md-center gap-md-4 flex-md-row flex-column my-3 my-md-0",
+                styles.navDesktop,
+              )}
+            >
+              <Nav.Link
+                href={`#${SECTION_IDS.songs}`}
+                className="text-body-secondary py-1"
+              >
+                {copy.navSongs}
+              </Nav.Link>
+              <Nav.Link
+                href={`#${SECTION_IDS.howItWorks}`}
+                className="text-body-secondary py-1"
+              >
+                {copy.navHowItWorks}
+              </Nav.Link>
+              <Nav.Link
+                href={`#${SECTION_IDS.lyrics}`}
+                className="text-body-secondary py-1"
+              >
+                {copy.navLyrics}
+              </Nav.Link>
+            </Nav>
+            <div
+              className={classNames(
+                "d-flex align-items-center gap-3 my-3 my-md-0",
+                styles.actionsDesktop,
+              )}
+            >
+              <ThemeSwitcher
+                ariaLabel={copy.themeAriaLabel}
+                labelLight={copy.themeLight}
+                labelDark={copy.themeDark}
+              />
+              <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
+              <Button variant="warning" size="sm" className="text-dark border-0">
+                {copy.navStart}
+              </Button>
             </div>
           </NavbarCollapse>
         </Container>

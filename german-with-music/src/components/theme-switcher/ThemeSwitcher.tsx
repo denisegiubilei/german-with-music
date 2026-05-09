@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { forwardRef, useCallback, useEffect, useSyncExternalStore } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Moon, Sun } from "lucide-react";
@@ -23,7 +24,7 @@ const ThemeToggle = forwardRef<HTMLButtonElement, ToggleProps>(
         ref={ref}
         type="button"
         {...rest}
-        className={`${styles.toggle} ${className}`.trim()}
+        className={classNames(styles.toggle, className)}
       >
         {children}
       </button>

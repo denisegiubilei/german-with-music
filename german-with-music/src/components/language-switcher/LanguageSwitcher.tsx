@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { forwardRef, useCallback } from "react";
 import { Globe } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
@@ -18,7 +19,7 @@ const LanguageToggle = forwardRef<HTMLButtonElement, ToggleProps>(
         ref={ref}
         type="button"
         {...rest}
-        className={`${styles.toggle} ${className}`.trim()}
+        className={classNames(styles.toggle, className)}
       >
         {children}
       </button>
