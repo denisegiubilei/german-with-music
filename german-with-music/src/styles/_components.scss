@@ -1,5 +1,15 @@
 // App layout accents — use Bootstrap root CSS variables so colors track theme.
 
+// Fixed site header: keep in sync with `.german-flag-bar` height below and `.navbar` `min-height`
+// in `Header.module.scss` (3.5rem). Used so `#anchor` scroll positions clear the fixed bar.
+:root {
+  --fixed-header-anchor-offset: calc(3.5rem);
+}
+
+html {
+  scroll-padding-top: var(--fixed-header-anchor-offset);
+}
+
 .german-flag-bar {
   height: 4px;
   background: linear-gradient(
