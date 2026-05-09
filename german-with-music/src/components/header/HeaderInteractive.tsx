@@ -27,8 +27,11 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
       )}
     >
       <div className="german-flag-bar" />
-      <Navbar expand="md" className={classNames("py-0", styles.navbar)}>
-        <Container fluid className={classNames("px-3 px-md-4", styles.navbarInner)}>
+      <Navbar expand="md" className={classNames(styles.navbar)}>
+        <Container
+          fluid
+          className={classNames("px-3 px-md-4", styles.navbarInner)}
+        >
           <NavbarBrand
             as={LocalizedLinkClient}
             href="/"
