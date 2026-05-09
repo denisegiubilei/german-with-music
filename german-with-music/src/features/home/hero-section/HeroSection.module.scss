@@ -1,0 +1,33 @@
+.section {
+  min-height: 80vh;
+  padding-top: 5.5rem;
+}
+
+.inner {
+  max-width: 36rem;
+}
+
+.tagline {
+  animation-delay: 0.1s;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  animation-delay: 0.2s;
+}
+
+.actions {
+  animation-delay: 0.3s;
+}
+
+.stats {
+  animation-delay: 0.4s;
+}
+
+.statLabel {
+  letter-spacing: 0.08em;
+}
+
+.divider {
+  height: 2rem;
+}

@@ -1,0 +1,14 @@
+// App layout accents — use Bootstrap root CSS variables so colors track theme.
+
+.german-flag-bar {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--#{$prefix}primary) 0,
+    var(--#{$prefix}primary) 33.33%,
+    var(--#{$prefix}german-red) 33.33%,
+    var(--#{$prefix}german-red) 66.66%,
+    var(--#{$prefix}german-gold) 66.66%,
+    var(--#{$prefix}german-gold) 100%
+  );
+}
