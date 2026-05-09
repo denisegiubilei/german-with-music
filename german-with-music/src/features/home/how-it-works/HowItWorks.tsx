@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,21 +9,23 @@ import { SECTION_IDS } from "@/lib/section-ids";
 import styles from "./HowItWorks.module.scss";
 
 export function HowItWorks() {
+  const { t } = useTranslation();
+
   return (
     <section id={SECTION_IDS.howItWorks} className="py-5">
       <Container className="px-3 px-md-4">
         <div className="text-center mb-5">
           <h2 className={`h1 fw-bold mb-3 ${styles.title}`}>
-            Como Funciona
+            {t("howItWorks.title")}
           </h2>
           <p className="text-body-secondary mb-0">
-            Quatro passos simples para aprender alemão.
+            {t("howItWorks.subtitle")}
           </p>
         </div>
 
         <Row className="g-4">
           {HOW_IT_WORKS_STEPS.map((step, index) => (
-            <Col key={step.title} xs={6} lg={3}>
+            <Col key={step.id} xs={6} lg={3}>
               <div
                 className="text-center animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -37,9 +42,11 @@ export function HowItWorks() {
                 <div className="small fw-medium text-german-red mb-1">
                   {String(index + 1).padStart(2, "0")}
                 </div>
-                <h3 className="fw-semibold small mb-1">{step.title}</h3>
+                <h3 className="fw-semibold small mb-1">
+                  {t(`howItWorks.steps.${step.id}.title`)}
+                </h3>
                 <p className="small text-body-secondary mb-0">
-                  {step.description}
+                  {t(`howItWorks.steps.${step.id}.description`)}
                 </p>
               </div>
             </Col>

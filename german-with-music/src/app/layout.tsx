@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
+import { I18nProvider } from "@/i18n/I18nProvider";
+import en from "@/locales/en.json";
 import "./globals.scss";
 
 const inter = Inter({
@@ -12,37 +14,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteName = "German with Music";
+const { siteName, titleTagline, description, keywords, openGraphDescription, twitterDescription } =
+  en.seo;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const defaultTitle = `${siteName} — ${titleTagline}`;
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
-    default: `${siteName} — Learn German with song lyrics`,
+    default: defaultTitle,
     template: `%s | ${siteName}`,
   },
-  description:
-    "Learn German through music: curated German songs with original lyrics and Portuguese translations. Build vocabulary and listening skills in context—free to explore.",
-  keywords: [
-    "learn German",
-    "German songs",
-    "German lyrics",
-    "Portuguese translation",
-    "language learning",
-    "music and language",
-  ],
+  description,
+  keywords: [...keywords],
   openGraph: {
     type: "website",
     siteName,
-    title: `${siteName} — Learn German with song lyrics`,
-    description:
-      "German songs with lyrics and Portuguese side-by-side translations. Practice German vocabulary and listening with real music.",
+    title: defaultTitle,
+    description: openGraphDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} — Learn German with song lyrics`,
-    description:
-      "German songs with lyrics and Portuguese translations. Learn vocabulary in context.",
+    title: defaultTitle,
+    description: twitterDescription,
   },
   icons: {
     icon: "/favicon.ico",
@@ -56,7 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} h-100`}>
-      <body className="min-vh-100 d-flex flex-column">{children}</body>
+      <body className="min-vh-100 d-flex flex-column">
+        <I18nProvider>{children}</I18nProvider>
+      </body>
     </html>
   );
 }

@@ -1,7 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 
+export type HowItWorksStepId = "choose" | "read" | "compare" | "learn";
+
 export interface HowItWorksStep {
   icon: LucideIcon;
-  title: string;
-  description: string;
+  id: HowItWorksStepId;
 }

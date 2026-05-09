@@ -1,0 +1,120 @@
+{
+  "brand": "German with Music",
+  "seo": {
+    "siteName": "German with Music",
+    "titleTagline": "Learn German with song lyrics",
+    "description": "Learn German through music: curated German songs with original lyrics and English translations. Build vocabulary and listening skills in context—free to explore.",
+    "keywords": [
+      "learn German",
+      "German songs",
+      "German lyrics",
+      "English translation",
+      "language learning",
+      "music and language"
+    ],
+    "openGraphDescription": "German songs with lyrics and English side-by-side translations. Practice German vocabulary and listening with real music.",
+    "twitterDescription": "German songs with lyrics and English translations. Learn vocabulary in context."
+  },
+  "nav": {
+    "songs": "Songs",
+    "howItWorks": "How it works",
+    "lyrics": "Lyrics",
+    "start": "Get started"
+  },
+  "footer": {
+    "copyright": "© {{year}} {{brand}}",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy"
+  },
+  "hero": {
+    "eyebrow": "Learn German the fun way",
+    "title": "Discover German through <1>music</1>",
+    "lead": "German songs with original lyrics and English translations.",
+    "exploreSongs": "Explore songs",
+    "viewLyrics": "View lyrics",
+    "statSongsValue": "50+",
+    "statSongsLabel": "Songs",
+    "statTranslatedValue": "100%",
+    "statTranslatedLabel": "Translated",
+    "statFreeValue": "Free",
+    "statFreeLabel": "Always"
+  },
+  "featuredSongs": {
+    "title": "Featured songs",
+    "subtitle": "Explore our collection of German songs with lyrics and translations.",
+    "items": [
+      {
+        "title": "99 Luftballons",
+        "artist": "Nena",
+        "imageUrl": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80"
+      },
+      {
+        "title": "Du Hast",
+        "artist": "Rammstein",
+        "imageUrl": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=400&q=80"
+      },
+      {
+        "title": "Major Tom",
+        "artist": "Peter Schilling",
+        "imageUrl": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&q=80"
+      },
+      {
+        "title": "Atemlos",
+        "artist": "Helene Fischer",
+        "imageUrl": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&q=80"
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "Four simple steps to learn German.",
+    "steps": {
+      "choose": {
+        "title": "Choose a song",
+        "description": "Browse our library of German songs."
+      },
+      "read": {
+        "title": "Read the lyrics",
+        "description": "Follow the original lyrics while you listen."
+      },
+      "compare": {
+        "title": "Compare",
+        "description": "See the translation side by side with the original."
+      },
+      "learn": {
+        "title": "Learn",
+        "description": "Absorb vocabulary naturally."
+      }
+    }
+  },
+  "lyrics": {
+    "columns": {
+      "german": "German",
+      "english": "English"
+    },
+    "example": {
+      "kicker": "Example",
+      "title": "99 Luftballons",
+      "meta": "Nena • 1983",
+      "lines": [
+        {
+          "german": "Hast du etwas Zeit für mich?",
+          "english": "Do you have time for me?"
+        },
+        {
+          "german": "Dann singe ich ein Lied für dich",
+          "english": "Then I sing a song for you"
+        },
+        {
+          "german": "Von 99 Luftballons",
+          "english": "About 99 balloons"
+        },
+        {
+          "german": "Auf ihrem Weg zum Horizont",
+          "english": "On your way to the horizon"
+        }
+      ]
+    }
+  }
+}

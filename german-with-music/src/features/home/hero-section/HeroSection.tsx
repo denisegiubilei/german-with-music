@@ -1,9 +1,15 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import { Trans, useTranslation } from "react-i18next";
+import { SECTION_IDS } from "@/lib/section-ids";
 import styles from "./HeroSection.module.scss";
 
 export function HeroSection() {
+  const { t } = useTranslation();
+
   return (
     <section
       className={`d-flex align-items-center justify-content-center ${styles.section}`}
@@ -11,20 +17,24 @@ export function HeroSection() {
       <Container className="px-3 px-md-4">
         <div className={`mx-auto text-center ${styles.inner}`}>
           <p className="small fw-medium text-german-red mb-3 animate-fade-in">
-            Aprenda alemão de forma divertida
+            {t("hero.eyebrow")}
           </p>
 
           <h1
             className={`display-4 fw-bold mb-4 animate-fade-in ${styles.tagline}`}
           >
-            Descubra o alemão através da{" "}
-            <span className="text-german-gold">música</span>
+            <Trans
+              i18nKey="hero.title"
+              components={{
+                1: <span className="text-german-gold" />,
+              }}
+            />
           </h1>
 
           <p
             className={`lead text-body-secondary mb-4 animate-fade-in ${styles.lead}`}
           >
-            Músicas alemãs com letras originais e tradução em português.
+            {t("hero.lead")}
           </p>
 
           <div
@@ -34,12 +44,13 @@ export function HeroSection() {
               variant="dark"
               size="lg"
               className="d-inline-flex align-items-center justify-content-center"
+              href={`#${SECTION_IDS.songs}`}
             >
-              Explorar Músicas
+              {t("hero.exploreSongs")}
               <ArrowRight className="ms-2" size={16} aria-hidden />
             </Button>
-            <Button variant="outline-secondary" size="lg">
-              Ver Letras
+            <Button variant="outline-secondary" size="lg" href={`#${SECTION_IDS.lyrics}`}>
+              {t("hero.viewLyrics")}
             </Button>
           </div>
 
@@ -47,33 +58,37 @@ export function HeroSection() {
             className={`d-flex flex-wrap align-items-center justify-content-center gap-4 gap-md-5 animate-fade-in ${styles.stats}`}
           >
             <div className="text-center">
-              <div className="fs-3 fw-bold text-german-gold">50+</div>
+              <div className="fs-3 fw-bold text-german-gold">
+                {t("hero.statSongsValue")}
+              </div>
               <div
                 className={`small text-body-secondary text-uppercase ${styles.statLabel}`}
               >
-                Músicas
+                {t("hero.statSongsLabel")}
               </div>
             </div>
             <div
               className={`vr d-none d-sm-block opacity-25 ${styles.divider}`}
             />
             <div className="text-center">
-              <div className="fs-3 fw-bold text-german-red">100%</div>
+              <div className="fs-3 fw-bold text-german-red">
+                {t("hero.statTranslatedValue")}
+              </div>
               <div
                 className={`small text-body-secondary text-uppercase ${styles.statLabel}`}
               >
-                Traduzidas
+                {t("hero.statTranslatedLabel")}
               </div>
             </div>
             <div
               className={`vr d-none d-sm-block opacity-25 ${styles.divider}`}
             />
             <div className="text-center">
-              <div className="fs-3 fw-bold">Grátis</div>
+              <div className="fs-3 fw-bold">{t("hero.statFreeValue")}</div>
               <div
                 className={`small text-body-secondary text-uppercase ${styles.statLabel}`}
               >
-                Sempre
+                {t("hero.statFreeLabel")}
               </div>
             </div>
           </div>

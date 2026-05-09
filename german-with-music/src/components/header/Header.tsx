@@ -1,6 +1,7 @@
 "use client";
 
 import { Music } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import {
   Navbar,
   NavbarBrand,
@@ -14,6 +15,7 @@ import { SECTION_IDS } from "@/lib/section-ids";
 import styles from "./Header.module.scss";
 
 export function Header() {
+  const { t } = useTranslation();
   return (
     <header
       className={`border-bottom bg-body position-fixed top-0 start-0 end-0 ${styles.header}`}
@@ -30,7 +32,7 @@ export function Header() {
               size={20}
               aria-hidden
             />
-            <span className="tracking-tight">Alemão com Música</span>
+            <span className="tracking-tight">{t("brand")}</span>
           </NavbarBrand>
           <NavbarToggle aria-controls="main-nav" className="border-0" />
           <NavbarCollapse id="main-nav" className="justify-content-end">
@@ -39,19 +41,19 @@ export function Header() {
                 href={`#${SECTION_IDS.songs}`}
                 className="text-body-secondary py-1"
               >
-                Músicas
+                {t("nav.songs")}
               </Nav.Link>
               <Nav.Link
                 href={`#${SECTION_IDS.howItWorks}`}
                 className="text-body-secondary py-1"
               >
-                Como Funciona
+                {t("nav.howItWorks")}
               </Nav.Link>
               <Nav.Link
                 href={`#${SECTION_IDS.lyrics}`}
                 className="text-body-secondary py-1"
               >
-                Letras
+                {t("nav.lyrics")}
               </Nav.Link>
             </Nav>
             <Button
@@ -59,7 +61,7 @@ export function Header() {
               size="sm"
               className="ms-md-3 text-dark border-0"
             >
-              Começar
+              {t("nav.start")}
             </Button>
           </NavbarCollapse>
         </Container>

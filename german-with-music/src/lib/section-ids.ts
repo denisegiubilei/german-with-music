@@ -1,5 +1,5 @@
 export const SECTION_IDS = {
-  songs: "musicas",
-  howItWorks: "como-funciona",
-  lyrics: "letras",
+  songs: "featured-songs",
+  howItWorks: "how-it-works",
+  lyrics: "example-lyrics",
 } as const;
