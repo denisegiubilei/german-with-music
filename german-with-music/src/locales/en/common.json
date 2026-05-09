@@ -13,9 +13,21 @@
       "music and language"
     ],
     "openGraphDescription": "German songs with lyrics and English side-by-side translations. Practice German vocabulary and listening with real music.",
-    "twitterDescription": "German songs with lyrics and English translations. Learn vocabulary in context."
+    "twitterDescription": "German songs with lyrics and English translations. Learn vocabulary in context.",
+    "about": {
+      "description": "Learn about German with Music: how we help you learn German through song lyrics, translations, and curated listening practice.",
+      "openGraphDescription": "About German with Music — learn German with lyrics and translations.",
+      "twitterDescription": "About German with Music: lyrics, translations, and German listening practice.",
+      "keywords": [
+        "about German with Music",
+        "learn German",
+        "German lyrics",
+        "language learning"
+      ]
+    }
   },
   "nav": {
+    "language": "Language",
     "songs": "Songs",
     "howItWorks": "How it works",
     "lyrics": "Lyrics",

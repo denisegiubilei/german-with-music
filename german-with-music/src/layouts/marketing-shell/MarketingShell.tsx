@@ -5,7 +5,7 @@ export interface MarketingShellProps {
   children: React.ReactNode;
 }
 
-export function MarketingShell({ children }: MarketingShellProps) {
+export async function MarketingShell({ children }: MarketingShellProps) {
   return (
     <div className="min-vh-100 bg-body text-body">
       <Header />

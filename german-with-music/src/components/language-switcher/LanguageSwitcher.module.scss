@@ -1,0 +1,31 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--bs-secondary-color);
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out;
+
+  &:hover,
+  &[aria-expanded="true"] {
+    color: var(--bs-emphasis-color);
+    background-color: var(--bs-tertiary-bg);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-emphasis-color-rgb), 0.15);
+  }
+
+  // Hide Bootstrap's default dropdown caret.
+  &::after {
+    display: none !important;
+  }
+}

@@ -13,9 +13,21 @@
       "música e idioma"
     ],
     "openGraphDescription": "Músicas alemãs com letras e tradução em português lado a lado. Pratique vocabulário e listening com música de verdade.",
-    "twitterDescription": "Músicas alemãs com letras e tradução em português. Aprenda vocabulário em contexto."
+    "twitterDescription": "Músicas alemãs com letras e tradução em português. Aprenda vocabulário em contexto.",
+    "about": {
+      "description": "Saiba mais sobre o Alemão com Música: como ajudamos você a aprender alemão com letras, traduções e prática de listening curada.",
+      "openGraphDescription": "Sobre o Alemão com Música — aprenda alemão com letras e traduções.",
+      "twitterDescription": "Sobre o Alemão com Música: letras, traduções e prática de listening em alemão.",
+      "keywords": [
+        "sobre Alemão com Música",
+        "aprender alemão",
+        "letras em alemão",
+        "aprendizado de idiomas"
+      ]
+    }
   },
   "nav": {
+    "language": "Idioma",
     "songs": "Músicas",
     "howItWorks": "Como funciona",
     "lyrics": "Letras",

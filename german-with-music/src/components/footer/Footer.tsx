@@ -1,26 +1,24 @@
-"use client";
+import { LocalizedLink } from "@/components/localized-link/LocalizedLink";
+import { getTForRequest } from "@/i18n/server";
 
-import { useTranslation } from "react-i18next";
-import Container from "react-bootstrap/Container";
-
-export function Footer() {
-  const { t } = useTranslation();
+export async function Footer() {
+  const { t } = await getTForRequest();
   const year = new Date().getFullYear();
 
   return (
     <footer className="py-4 border-top">
-      <Container className="px-3 px-md-4">
+      <div className="container-fluid px-3 px-md-4">
         <div className="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 text-body-secondary small">
           <span>
             {t("footer.copyright", { year, brand: t("brand") })}
           </span>
           <div className="d-flex flex-wrap justify-content-center gap-4">
-            <a
-              href="#"
+            <LocalizedLink
+              href="/about"
               className="link-secondary link-underline-opacity-0 link-underline-opacity-100-hover"
             >
               {t("footer.about")}
-            </a>
+            </LocalizedLink>
             <a
               href="#"
               className="link-secondary link-underline-opacity-0 link-underline-opacity-100-hover"
@@ -35,7 +33,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-      </Container>
+      </div>
       <div className="german-flag-bar mt-4" />
     </footer>
   );
