@@ -9,7 +9,6 @@ export async function Header() {
     brand: t("brand"),
     navSongs: t("nav.songs"),
     navHowItWorks: t("nav.howItWorks"),
-    navLyrics: t("nav.lyrics"),
     navStart: t("nav.start"),
     languageAriaLabel: t("nav.language"),
     themeAriaLabel: t("nav.themeAriaLabel"),

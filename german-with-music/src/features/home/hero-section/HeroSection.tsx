@@ -62,8 +62,12 @@ export function HeroSection() {
               {t("hero.exploreSongs")}
               <ArrowRight className="ms-2" size={16} aria-hidden />
             </Button>
-            <Button variant="outline-secondary" size="lg" href={`#${SECTION_IDS.lyrics}`}>
-              {t("hero.viewLyrics")}
+            <Button
+              variant="outline-secondary"
+              size="lg"
+              href={`#${SECTION_IDS.howItWorks}`}
+            >
+              {t("nav.howItWorks")}
             </Button>
           </div>
 

@@ -3,7 +3,6 @@ import { FeaturedSongs } from "@/features/home/featured-songs/FeaturedSongs";
 import { getFeaturedYoutubeReleasesForHome } from "@/features/home/featured-songs/featured-youtube-releases.server";
 import { HeroSection } from "@/features/home/hero-section/HeroSection";
 import { HowItWorks } from "@/features/home/how-it-works/HowItWorks";
-import { LyricsSection } from "@/features/home/lyrics-section/LyricsSection";
 import { assertLocale } from "@/i18n/assert-locale";
 import { getT } from "@/i18n/server";
 import { MarketingShell } from "@/layouts/marketing-shell/MarketingShell";
@@ -58,7 +57,6 @@ export default async function HomePage({
       <HeroSection />
       <FeaturedSongs releasesPayload={releasesPayload} />
       <HowItWorks />
-      <LyricsSection />
     </MarketingShell>
   );
 }

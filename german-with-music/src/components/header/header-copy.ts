@@ -3,7 +3,6 @@ export type HeaderCopy = {
   brand: string;
   navSongs: string;
   navHowItWorks: string;
-  navLyrics: string;
   navStart: string;
   languageAriaLabel: string;
   themeAriaLabel: string;

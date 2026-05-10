@@ -42,7 +42,6 @@
     "themeDark": "Escuro",
     "songs": "Músicas",
     "howItWorks": "Como funciona",
-    "lyrics": "Letras",
     "start": "Começar"
   },
   "footer": {
@@ -56,7 +55,6 @@
     "title": "Descubra o alemão através da <1>música</1>",
     "lead": "Músicas alemãs com letras originais e tradução em português.",
     "exploreSongs": "Explorar músicas",
-    "viewLyrics": "Ver letras",
     "statSongsValue": "50+",
     "statSongsLabel": "Músicas",
     "statTranslatedValue": "100%",
@@ -104,41 +102,12 @@
       },
       "compare": {
         "title": "Compare",
-        "description": "Veja a tradução lado a lado com o original."
+        "description": "Compare a tradução e as palavras destacadas com o original."
       },
       "learn": {
         "title": "Aprenda",
         "description": "Absorva vocabulário de forma natural."
       }
-    }
-  },
-  "lyrics": {
-    "columns": {
-      "german": "Deutsch",
-      "english": "Português"
-    },
-    "example": {
-      "kicker": "Exemplo",
-      "title": "99 Luftballons",
-      "meta": "Nena • 1983",
-      "lines": [
-        {
-          "german": "Hast du etwas Zeit für mich?",
-          "english": "Do you have time for me?"
-        },
-        {
-          "german": "Dann singe ich ein Lied für dich",
-          "english": "Then I sing a song for you"
-        },
-        {
-          "german": "Von 99 Luftballons",
-          "english": "About 99 balloons"
-        },
-        {
-          "german": "Auf ihrem Weg zum Horizont",
-          "english": "On your way to the horizon"
-        }
-      ]
     }
   }
 }

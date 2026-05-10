@@ -77,15 +77,6 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
               >
                 {copy.navHowItWorks}
               </Nav.Link>
-              <Nav.Link
-                href={`#${SECTION_IDS.lyrics}`}
-                className={classNames(
-                  "text-body-secondary py-md-1",
-                  styles.mobileNavLink,
-                )}
-              >
-                {copy.navLyrics}
-              </Nav.Link>
             </Nav>
             <div
               className={classNames(
