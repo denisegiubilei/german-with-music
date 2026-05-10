@@ -1,7 +1,9 @@
 "use client";
 
 import classNames from "classnames";
+import { Music2 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 import styles from "./SongCard.module.scss";
@@ -30,44 +32,54 @@ export function SongCard({
   detailHref,
 }: SongCardProps) {
   const { t } = useTranslation();
+  const [failedThumbnailSrc, setFailedThumbnailSrc] = useState<string | null>(
+    null,
+  );
+
   const displayArtist = artist?.trim() ? artist : "—";
   const thumbAlt = `${title} — ${displayArtist}`;
-
-  const titleBlock = (
-    <>
-      <h3 className="fw-medium small text-truncate mb-0">{title}</h3>
-      <p className="text-body-secondary text-truncate small mb-0">
-        {displayArtist}
-      </p>
-    </>
-  );
+  const trimmedThumb = thumbnailSrc?.trim() ?? "";
+  const hasThumbnailUrl = trimmedThumb.length > 0;
+  const thumbnailFailed =
+    hasThumbnailUrl && failedThumbnailSrc === trimmedThumb;
+  const showImage = hasThumbnailUrl && !thumbnailFailed;
+  const showEmbed = Boolean(embedUrl) && !hasThumbnailUrl;
 
   return (
     <article
-      className={classNames("song-card", detailHref && styles.cardInteractive)}
+      className={classNames(styles.card, detailHref && styles.cardInteractive)}
     >
-      <div className={`song-card__media mb-2 ${styles.media}`}>
-        {thumbnailSrc ? (
+      <div className={styles.media}>
+        {showImage ? (
           <Image
-            src={thumbnailSrc}
+            src={trimmedThumb}
             alt={thumbAlt}
             fill
-            className={styles.thumbnail}
             sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+            className={styles.thumbnail}
             loading="lazy"
+            onError={() => setFailedThumbnailSrc(trimmedThumb)}
           />
-        ) : embedUrl ? (
+        ) : showEmbed ? (
           <iframe
             className={styles.iframe}
-            src={embedUrl}
+            src={embedUrl!}
             title={title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
           />
+        ) : hasThumbnailUrl && thumbnailFailed ? (
+          <div
+            className={styles.mediaFallback}
+            role="img"
+            aria-label={t("songCard.noThumbnailAria")}
+          >
+            <Music2 className={styles.mediaFallbackIcon} aria-hidden strokeWidth={1.5} />
+          </div>
         ) : (
-          <div className={`text-body-secondary ${styles.fallback}`}>
+          <div className={classNames("text-body-secondary", styles.fallback)}>
             {watchUrl && !detailHref ? (
               <a
                 className={styles.fallbackLink}
@@ -83,7 +95,14 @@ export function SongCard({
           </div>
         )}
       </div>
-      {titleBlock}
+
+      <div className={styles.textBlock}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={classNames(styles.artist, "text-body-secondary")}>
+          {displayArtist}
+        </p>
+      </div>
+
       {detailHref ? (
         <LocalizedLinkClient
           href={detailHref}
