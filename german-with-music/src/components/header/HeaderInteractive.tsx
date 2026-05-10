@@ -2,6 +2,7 @@
 
 import classNames from "classnames";
 import { Music } from "lucide-react";
+import { usePathname } from "next/navigation";
 import {
   Navbar,
   NavbarBrand,
@@ -15,10 +16,18 @@ import type { HeaderCopy } from "@/components/header/header-copy";
 import { LanguageSwitcher } from "@/components/language-switcher/LanguageSwitcher";
 import { ThemeSwitcher } from "@/components/theme-switcher/ThemeSwitcher";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
+import { pathWithoutLocale } from "@/lib/localized-path";
 import { SECTION_IDS } from "@/lib/section-ids";
 import styles from "./Header.module.scss";
 
 export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
+  const pathname = usePathname();
+  const isHome = pathWithoutLocale(pathname) === "/";
+  const sectionNavClass = classNames(
+    "text-body-secondary py-md-1",
+    styles.mobileNavLink,
+  );
+
   return (
     <header
       className={classNames(
@@ -59,15 +68,19 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
                 styles.mobileNav,
               )}
             >
-              <Nav.Link
-                href={`#${SECTION_IDS.songs}`}
-                className={classNames(
-                  "text-body-secondary py-md-1",
-                  styles.mobileNavLink,
-                )}
-              >
-                {copy.navSongs}
-              </Nav.Link>
+              {isHome ? (
+                <Nav.Link href={`#${SECTION_IDS.songs}`} className={sectionNavClass}>
+                  {copy.navSongs}
+                </Nav.Link>
+              ) : (
+                <Nav.Link
+                  as={LocalizedLinkClient}
+                  href={`/#${SECTION_IDS.songs}`}
+                  className={sectionNavClass}
+                >
+                  {copy.navSongs}
+                </Nav.Link>
+              )}
               <Nav.Link
                 as={LocalizedLinkClient}
                 href="/library"
@@ -78,15 +91,22 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
               >
                 {copy.navLibrary}
               </Nav.Link>
-              <Nav.Link
-                href={`#${SECTION_IDS.howItWorks}`}
-                className={classNames(
-                  "text-body-secondary py-md-1",
-                  styles.mobileNavLink,
-                )}
-              >
-                {copy.navHowItWorks}
-              </Nav.Link>
+              {isHome ? (
+                <Nav.Link
+                  href={`#${SECTION_IDS.howItWorks}`}
+                  className={sectionNavClass}
+                >
+                  {copy.navHowItWorks}
+                </Nav.Link>
+              ) : (
+                <Nav.Link
+                  as={LocalizedLinkClient}
+                  href={`/#${SECTION_IDS.howItWorks}`}
+                  className={sectionNavClass}
+                >
+                  {copy.navHowItWorks}
+                </Nav.Link>
+              )}
             </Nav>
             <div
               className={classNames(
