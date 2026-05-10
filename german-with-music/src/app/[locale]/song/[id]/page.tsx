@@ -6,7 +6,10 @@ import { getT } from "@/i18n/server";
 import { MarketingShell } from "@/layouts/marketing-shell/MarketingShell";
 import { alternatesForPath } from "@/lib/page-metadata";
 import { isLikelyYoutubeReleaseId } from "@/lib/youtube-release-id";
-import { fetchYoutubeReleaseById } from "@/integrations/lyric-palette/server";
+import {
+  fetchYoutubeReleaseById,
+  getYoutubeReleaseNeighborIds,
+} from "@/integrations/lyric-palette/server";
 
 export async function generateMetadata({
   params,
@@ -71,9 +74,16 @@ export default async function SongByIdPage({
     notFound();
   }
 
+  const neighbors = await getYoutubeReleaseNeighborIds(id);
+
   return (
     <MarketingShell>
-      <SongDetailView release={release} locale={locale} />
+      <SongDetailView
+        release={release}
+        locale={locale}
+        neighborPrevId={neighbors.prevId}
+        neighborNextId={neighbors.nextId}
+      />
     </MarketingShell>
   );
 }

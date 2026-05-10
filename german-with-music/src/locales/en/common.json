@@ -43,6 +43,11 @@
     "noThumbnailAria": "Thumbnail image unavailable"
   },
   "songPage": {
+    "prev": "Prev",
+    "next": "Next",
+    "prevAria": "Previous song in catalog",
+    "nextAria": "Next song in catalog",
+    "navToLibraryAria": "Open the song library",
     "glossaryHeading": "Glossary",
     "noGlossary": "No glossary for this song yet.",
     "backHome": "Back to home",

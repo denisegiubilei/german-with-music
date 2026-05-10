@@ -43,6 +43,11 @@
     "noThumbnailAria": "Imagem de capa indisponível"
   },
   "songPage": {
+    "prev": "Anterior",
+    "next": "Próxima",
+    "prevAria": "Música anterior no catálogo",
+    "nextAria": "Próxima música no catálogo",
+    "navToLibraryAria": "Abrir a biblioteca de músicas",
     "glossaryHeading": "Glossário",
     "noGlossary": "Ainda não há glossário para esta música.",
     "backHome": "Voltar ao início",

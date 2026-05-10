@@ -1,3 +1,29 @@
+.titleNav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, min(100%, 36rem)) minmax(0, 1fr);
+  column-gap: var(--bs-gutter-x, 1rem);
+  row-gap: 0.75rem;
+  align-items: center;
+}
+
+.titleNavSide {
+  display: flex;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.titleNavSideEnd {
+  justify-content: flex-end;
+}
+
+.titleBlock {
+  min-width: 0;
+}
+
+.navBtn {
+  flex-shrink: 0;
+}
+
 .embedWrap {
   position: relative;
   width: 100%;

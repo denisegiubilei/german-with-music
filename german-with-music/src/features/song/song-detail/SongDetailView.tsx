@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import type { YoutubeRelease } from "@/entities/youtube-release";
@@ -11,17 +12,37 @@ import styles from "./SongDetailView.module.scss";
 export async function SongDetailView({
   release,
   locale,
+  neighborPrevId,
+  neighborNextId,
 }: {
   release: YoutubeRelease;
   locale: Locale;
+  neighborPrevId: string | null;
+  neighborNextId: string | null;
 }) {
   const { t } = await getT(locale);
   const homeHref = localizedPath("/", locale);
+  const libraryHref = localizedPath("/library", locale);
+  const prevHref = neighborPrevId
+    ? localizedPath(`/song/${neighborPrevId}`, locale)
+    : libraryHref;
+  const nextHref = neighborNextId
+    ? localizedPath(`/song/${neighborNextId}`, locale)
+    : libraryHref;
+  const prevAria = neighborPrevId
+    ? t("songPage.prevAria")
+    : t("songPage.navToLibraryAria");
+  const nextAria = neighborNextId
+    ? t("songPage.nextAria")
+    : t("songPage.navToLibraryAria");
   const embedUrl = youtubeWatchUrlToEmbedUrl(release.url);
   const artist = release.artist?.trim() ? release.artist : "—";
   const glossary = release.glossary?.trim()
     ? release.glossary
     : null;
+
+  const navBtnClass =
+    "btn btn-outline-secondary d-inline-flex align-items-center gap-1";
 
   return (
     <div className="py-4 py-md-5">
@@ -34,8 +55,35 @@ export async function SongDetailView({
             {t("songPage.backHome")}
           </Link>
         </p>
-        <h1 className="h2 fw-bold mb-1">{release.title}</h1>
-        <p className="lead text-body-secondary mb-4 mb-md-5">{artist}</p>
+
+        <div className={classNames(styles.titleNav, "mb-4 mb-md-5")}>
+          <div className={styles.titleNavSide}>
+            <Link
+              href={prevHref}
+              className={classNames(navBtnClass, styles.navBtn)}
+              aria-label={prevAria}
+            >
+              <ChevronLeft size={18} strokeWidth={2} aria-hidden />
+              {t("songPage.prev")}
+            </Link>
+          </div>
+
+          <div className={classNames(styles.titleBlock, "text-center")}>
+            <h1 className="h2 fw-bold mb-1">{release.title}</h1>
+            <p className="lead text-body-secondary mb-0">{artist}</p>
+          </div>
+
+          <div className={classNames(styles.titleNavSide, styles.titleNavSideEnd)}>
+            <Link
+              href={nextHref}
+              className={classNames(navBtnClass, styles.navBtn)}
+              aria-label={nextAria}
+            >
+              {t("songPage.next")}
+              <ChevronRight size={18} strokeWidth={2} aria-hidden />
+            </Link>
+          </div>
+        </div>
 
         <div className={classNames("mb-5", styles.embedWrap)}>
           {embedUrl ? (

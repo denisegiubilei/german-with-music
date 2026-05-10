@@ -5,3 +5,4 @@ export {
   fetchYoutubeReleases,
   YOUTUBE_RELEASES_LIST_REVALIDATE_SECONDS,
 } from "./releases/youtube/fetch-releases";
+export { getYoutubeReleaseNeighborIds } from "./releases/youtube/youtube-release-neighbor-ids";

@@ -70,7 +70,9 @@ $colors: (
 
 // --- Theme colors ---
 $primary: hsl(0, 0%, 8%); // --primary
-$secondary: hsl(0, 0%, 96%); // --secondary
+// Theme "secondary" (btn-outline-secondary, link-secondary, badges). Must contrast
+// with body text surfaces; light gray panels use $body-secondary-bg instead.
+$secondary: $gray-600;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
