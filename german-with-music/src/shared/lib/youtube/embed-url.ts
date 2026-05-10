@@ -11,6 +11,9 @@ export function extractYoutubeVideoId(input: string): string | null {
       if (u.pathname.startsWith("/embed/")) {
         return u.pathname.slice("/embed/".length).split("/")[0] || null;
       }
+      if (u.pathname.startsWith("/shorts/")) {
+        return u.pathname.slice("/shorts/".length).split("/")[0] || null;
+      }
       if (u.pathname === "/watch") {
         return u.searchParams.get("v");
       }

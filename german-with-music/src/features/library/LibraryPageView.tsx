@@ -10,7 +10,10 @@ import type { YoutubeReleasesListResponse } from "@/entities/youtube-release";
 import { getT } from "@/i18n/server";
 import type { Locale } from "@/i18n/settings";
 import { localizedPath } from "@/lib/localized-path";
-import { youtubeWatchUrlToEmbedUrl } from "@/shared/lib/youtube";
+import {
+  youtubeWatchUrlToEmbedUrl,
+  youtubeWatchUrlToThumbnailUrl,
+} from "@/shared/lib/youtube";
 import type { LibrarySearchState } from "./library-search";
 import { serializeLibrarySearchParams } from "./library-search";
 
@@ -110,6 +113,7 @@ export async function LibraryPageView({
                 <SongCard
                   title={release.title}
                   artist={release.artist}
+                  thumbnailSrc={youtubeWatchUrlToThumbnailUrl(release.url)}
                   embedUrl={youtubeWatchUrlToEmbedUrl(release.url)}
                   watchUrl={release.url}
                   detailHref={`/song/${release.id}`}

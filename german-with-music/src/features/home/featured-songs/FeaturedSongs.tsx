@@ -9,7 +9,10 @@ import Row from "react-bootstrap/Row";
 import { SongCard } from "@/components/song-card/SongCard";
 import type { YoutubeReleasesListResponse } from "@/entities/youtube-release";
 import { SECTION_IDS } from "@/lib/section-ids";
-import { youtubeWatchUrlToEmbedUrl } from "@/shared/lib/youtube";
+import {
+  youtubeWatchUrlToEmbedUrl,
+  youtubeWatchUrlToThumbnailUrl,
+} from "@/shared/lib/youtube";
 import styles from "./FeaturedSongs.module.scss";
 
 export function FeaturedSongs({
@@ -57,6 +60,7 @@ export function FeaturedSongs({
                   <SongCard
                     title={release.title}
                     artist={release.artist}
+                    thumbnailSrc={youtubeWatchUrlToThumbnailUrl(release.url)}
                     embedUrl={youtubeWatchUrlToEmbedUrl(release.url)}
                     watchUrl={release.url}
                     detailHref={`/song/${release.id}`}

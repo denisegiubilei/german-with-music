@@ -1,9 +1,15 @@
+import Image from "next/image";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 import styles from "./SongCard.module.scss";
 
 export interface SongCardProps {
   title: string;
   artist: string | null;
+  /**
+   * When set (e.g. on the library page), shows this image instead of an embed iframe.
+   * Must be an allowed `next/image` remote URL (e.g. `img.youtube.com`).
+   */
+  thumbnailSrc?: string | null;
   /** Full `https://www.youtube.com/embed/…` URL, or null if the source URL could not be parsed. */
   embedUrl: string | null;
   watchUrl?: string;
@@ -14,11 +20,13 @@ export interface SongCardProps {
 export function SongCard({
   title,
   artist,
+  thumbnailSrc,
   embedUrl,
   watchUrl,
   detailHref,
 }: SongCardProps) {
   const displayArtist = artist?.trim() ? artist : "—";
+  const thumbAlt = `${title} — ${displayArtist}`;
 
   const titleBlock = (
     <>
@@ -32,7 +40,16 @@ export function SongCard({
   return (
     <article className="song-card">
       <div className={`song-card__media mb-2 ${styles.media}`}>
-        {embedUrl ? (
+        {thumbnailSrc ? (
+          <Image
+            src={thumbnailSrc}
+            alt={thumbAlt}
+            fill
+            className={styles.thumbnail}
+            sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+            loading="lazy"
+          />
+        ) : embedUrl ? (
           <iframe
             className={styles.iframe}
             src={embedUrl}
