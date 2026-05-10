@@ -1,9 +1,15 @@
 // App layout accents — use Bootstrap root CSS variables so colors track theme.
 
-// Fixed site header: keep in sync with `.german-flag-bar` height below and `.navbar` `min-height`
-// in `Header.module.scss` (3.5rem). Used so `#anchor` scroll positions clear the fixed bar.
+// Fixed site header: keep in sync with `.german-flag-bar` height and `.navbar` `min-height`
+// in `Header.module.scss` (3.5rem). Used for main offset and `#anchor` scroll margin.
 :root {
-  --fixed-header-anchor-offset: calc(3.5rem);
+  --fixed-header-height: calc(4px + 3.5rem);
+  --fixed-header-anchor-offset: var(--fixed-header-height);
+}
+
+// Offset page content below fixed header (see `MarketingShell`).
+.marketing-shell-main {
+  padding-top: var(--fixed-header-height);
 }
 
 html {
@@ -21,4 +27,87 @@ html {
     var(--#{$prefix}german-gold) 66.66%,
     var(--#{$prefix}german-gold) 100%
   );
+}
+
+// --- Solid buttons: clearer hover/active than default shade on near-black $primary ---
+.btn-primary {
+  $hover-bg: tint-color($primary, 14%);
+  $active-bg: tint-color($primary, 8%);
+  --#{$prefix}btn-hover-bg: #{$hover-bg};
+  --#{$prefix}btn-hover-border-color: #{$hover-bg};
+  --#{$prefix}btn-hover-color: #{color-contrast($hover-bg)};
+  --#{$prefix}btn-active-bg: #{$active-bg};
+  --#{$prefix}btn-active-border-color: #{$active-bg};
+  --#{$prefix}btn-active-color: #{color-contrast($active-bg)};
+
+  &:hover:not(:disabled):not(.disabled),
+  &.show:not(:disabled):not(.disabled) {
+    box-shadow: 0 2px 6px rgba($black, 0.12);
+  }
+
+  &:active:not(:disabled):not(.disabled) {
+    box-shadow: 0 1px 2px rgba($black, 0.1);
+  }
+}
+
+.btn-secondary {
+  $hover-bg: shade-color($secondary, 18%);
+  $active-bg: shade-color($secondary, 28%);
+  --#{$prefix}btn-hover-bg: #{$hover-bg};
+  --#{$prefix}btn-hover-border-color: #{$hover-bg};
+  --#{$prefix}btn-hover-color: #{color-contrast($hover-bg)};
+  --#{$prefix}btn-active-bg: #{$active-bg};
+  --#{$prefix}btn-active-border-color: #{$active-bg};
+  --#{$prefix}btn-active-color: #{color-contrast($active-bg)};
+
+  &:hover:not(:disabled):not(.disabled),
+  &.show:not(:disabled):not(.disabled) {
+    box-shadow: 0 2px 6px rgba($black, 0.08);
+  }
+
+  &:active:not(:disabled):not(.disabled) {
+    box-shadow: 0 1px 2px rgba($black, 0.06);
+  }
+}
+
+@include color-mode(dark) {
+  .btn-primary {
+    $hover-bg: tint-color($primary, 22%);
+    $active-bg: tint-color($primary, 12%);
+    --#{$prefix}btn-hover-bg: #{$hover-bg};
+    --#{$prefix}btn-hover-border-color: #{$hover-bg};
+    --#{$prefix}btn-hover-color: #{color-contrast($hover-bg)};
+    --#{$prefix}btn-active-bg: #{$active-bg};
+    --#{$prefix}btn-active-border-color: #{$active-bg};
+    --#{$prefix}btn-active-color: #{color-contrast($active-bg)};
+
+    &:hover:not(:disabled):not(.disabled),
+    &.show:not(:disabled):not(.disabled) {
+      box-shadow: 0 2px 8px rgba($black, 0.35);
+    }
+
+    &:active:not(:disabled):not(.disabled) {
+      box-shadow: 0 1px 3px rgba($black, 0.28);
+    }
+  }
+
+  .btn-secondary {
+    $hover-bg: tint-color($secondary, 26%);
+    $active-bg: tint-color($secondary, 14%);
+    --#{$prefix}btn-hover-bg: #{$hover-bg};
+    --#{$prefix}btn-hover-border-color: #{$hover-bg};
+    --#{$prefix}btn-hover-color: #{color-contrast($hover-bg)};
+    --#{$prefix}btn-active-bg: #{$active-bg};
+    --#{$prefix}btn-active-border-color: #{$active-bg};
+    --#{$prefix}btn-active-color: #{color-contrast($active-bg)};
+
+    &:hover:not(:disabled):not(.disabled),
+    &.show:not(:disabled):not(.disabled) {
+      box-shadow: 0 2px 8px rgba($black, 0.25);
+    }
+
+    &:active:not(:disabled):not(.disabled) {
+      box-shadow: 0 1px 3px rgba($black, 0.2);
+    }
+  }
 }

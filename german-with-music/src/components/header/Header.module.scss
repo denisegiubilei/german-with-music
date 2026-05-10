@@ -16,7 +16,8 @@
 :global(.navbar) > .navbarInner:global(.container-fluid) {
   @media (min-width: 768px) {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    // Outer columns may not shrink below content (avoids clipping brand / actions).
+    grid-template-columns: minmax(min-content, 1fr) auto minmax(min-content, 1fr);
     align-items: center;
     width: 100%;
     flex-wrap: unset;

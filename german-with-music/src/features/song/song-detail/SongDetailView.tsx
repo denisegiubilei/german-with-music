@@ -21,7 +21,6 @@ export async function SongDetailView({
   neighborNextId: string | null;
 }) {
   const { t } = await getT(locale);
-  const homeHref = localizedPath("/", locale);
   const libraryHref = localizedPath("/library", locale);
   const prevHref = neighborPrevId
     ? localizedPath(`/song/${neighborPrevId}`, locale)
@@ -42,20 +41,11 @@ export async function SongDetailView({
     : null;
 
   const navBtnClass =
-    "btn btn-outline-secondary d-inline-flex align-items-center gap-1";
+    "btn btn-primary d-inline-flex align-items-center gap-1";
 
   return (
     <div className="py-4 py-md-5">
       <Container className="px-3 px-md-4">
-        <p className="small text-body-secondary mb-2">
-          <Link
-            href={homeHref}
-            className="link-secondary link-underline-opacity-25"
-          >
-            {t("songPage.backHome")}
-          </Link>
-        </p>
-
         <div className={classNames(styles.titleNav, "mb-4 mb-md-5")}>
           <div className={styles.titleNavSide}>
             <Link

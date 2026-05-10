@@ -9,7 +9,7 @@ export async function MarketingShell({ children }: MarketingShellProps) {
   return (
     <div className="min-vh-100 bg-body text-body">
       <Header />
-      <main>{children}</main>
+      <main className="marketing-shell-main">{children}</main>
       <Footer />
     </div>
   );

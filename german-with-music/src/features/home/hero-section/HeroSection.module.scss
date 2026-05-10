@@ -1,6 +1,7 @@
 .section {
   min-height: 80vh;
-  padding-top: 5.5rem;
+  // Total offset from viewport top ≈ 5.5rem; shell main already clears fixed header.
+  padding-top: calc(5.5rem - var(--fixed-header-height));
 }
 
 .inner {
