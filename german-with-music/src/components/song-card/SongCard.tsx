@@ -1,3 +1,4 @@
+import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 import styles from "./SongCard.module.scss";
 
 export interface SongCardProps {
@@ -6,10 +7,27 @@ export interface SongCardProps {
   /** Full `https://www.youtube.com/embed/…` URL, or null if the source URL could not be parsed. */
   embedUrl: string | null;
   watchUrl?: string;
+  /** App path without locale prefix, e.g. `/song/uuid`. */
+  detailHref?: string;
 }
 
-export function SongCard({ title, artist, embedUrl, watchUrl }: SongCardProps) {
+export function SongCard({
+  title,
+  artist,
+  embedUrl,
+  watchUrl,
+  detailHref,
+}: SongCardProps) {
   const displayArtist = artist?.trim() ? artist : "—";
+
+  const titleBlock = (
+    <>
+      <h3 className="fw-medium small text-truncate mb-0">{title}</h3>
+      <p className="text-body-secondary text-truncate small mb-0">
+        {displayArtist}
+      </p>
+    </>
+  );
 
   return (
     <article className="song-card">
@@ -41,10 +59,16 @@ export function SongCard({ title, artist, embedUrl, watchUrl }: SongCardProps) {
           </div>
         )}
       </div>
-      <h3 className="fw-medium small text-truncate mb-0">{title}</h3>
-      <p className="text-body-secondary text-truncate small mb-0">
-        {displayArtist}
-      </p>
+      {detailHref ? (
+        <LocalizedLinkClient
+          href={detailHref}
+          className="d-block text-decoration-none text-reset"
+        >
+          {titleBlock}
+        </LocalizedLinkClient>
+      ) : (
+        titleBlock
+      )}
     </article>
   );
 }

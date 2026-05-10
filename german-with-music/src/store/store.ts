@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { lyricPaletteApi } from "@/shared/api/lyric-palette";
+import { lyricPaletteApi } from "@/integrations/lyric-palette";
 
 export function makeStore() {
   return configureStore({

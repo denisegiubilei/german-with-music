@@ -26,6 +26,15 @@
       ]
     }
   },
+  "songPage": {
+    "glossaryHeading": "Glossário",
+    "noGlossary": "Ainda não há glossário para esta música.",
+    "backHome": "Voltar ao início",
+    "watchOnYoutube": "Assistir no YouTube",
+    "embedUnavailable": "Não foi possível incorporar o vídeo.",
+    "notFoundTitle": "Música não encontrada",
+    "metaDescriptionFallback": "Música em alemão com letras e notas de aprendizado."
+  },
   "nav": {
     "language": "Idioma",
     "themeAriaLabel": "Tema de cores",

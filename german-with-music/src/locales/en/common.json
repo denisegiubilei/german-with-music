@@ -26,6 +26,15 @@
       ]
     }
   },
+  "songPage": {
+    "glossaryHeading": "Glossary",
+    "noGlossary": "No glossary for this song yet.",
+    "backHome": "Back to home",
+    "watchOnYoutube": "Watch on YouTube",
+    "embedUnavailable": "Video could not be embedded.",
+    "notFoundTitle": "Song not found",
+    "metaDescriptionFallback": "German song with lyrics and learning notes."
+  },
   "nav": {
     "language": "Language",
     "themeAriaLabel": "Color theme",

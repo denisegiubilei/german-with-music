@@ -23,6 +23,11 @@ export interface YoutubeReleasesListResponse {
   meta: YoutubeReleasesListMeta;
 }
 
+/** Success body for `GET /releases/youtube/:releaseId`. */
+export interface YoutubeReleaseDetailResponse {
+  data: YoutubeRelease;
+}
+
 export interface GetYoutubeReleasesQueryArgs {
   /** 1-based; omit for server default (`1`). */
   page?: number;

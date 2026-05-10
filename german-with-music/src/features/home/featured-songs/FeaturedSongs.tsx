@@ -6,24 +6,20 @@ import Alert from "react-bootstrap/Alert";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Spinner from "react-bootstrap/Spinner";
 import { SongCard } from "@/components/song-card/SongCard";
+import type { YoutubeReleasesListResponse } from "@/entities/youtube-release";
 import { SECTION_IDS } from "@/lib/section-ids";
-import { useGetYoutubeReleasesQuery } from "@/shared/api/lyric-palette";
 import { youtubeWatchUrlToEmbedUrl } from "@/shared/lib/youtube";
 import styles from "./FeaturedSongs.module.scss";
 
-const FEATURED_LIMIT = 4;
-
-export function FeaturedSongs() {
+export function FeaturedSongs({
+  releasesPayload,
+}: {
+  releasesPayload: YoutubeReleasesListResponse | null;
+}) {
   const { t } = useTranslation();
-  const { data, isLoading, isError, error } = useGetYoutubeReleasesQuery({
-    featured: true,
-    page: 1,
-    pageSize: FEATURED_LIMIT,
-  });
-
-  const items = data?.data ?? [];
+  const items = releasesPayload?.data ?? [];
+  const fetchFailed = releasesPayload === null;
 
   return (
     <section id={SECTION_IDS.songs} className="py-5 bg-body-secondary">
@@ -42,18 +38,9 @@ export function FeaturedSongs() {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="d-flex justify-content-center py-5">
-            <Spinner animation="border" role="status" aria-label={t("featuredSongs.loading")} />
-          </div>
-        ) : isError ? (
+        {fetchFailed ? (
           <Alert variant="danger" className="mb-0">
             {t("featuredSongs.error")}
-            {process.env.NODE_ENV === "development" && error && "message" in error ? (
-              <span className="d-block small mt-1">
-                {(error as { message?: string }).message}
-              </span>
-            ) : null}
           </Alert>
         ) : items.length === 0 ? (
           <p className="text-body-secondary text-center mb-0">
@@ -72,6 +59,7 @@ export function FeaturedSongs() {
                     artist={release.artist}
                     embedUrl={youtubeWatchUrlToEmbedUrl(release.url)}
                     watchUrl={release.url}
+                    detailHref={`/song/${release.id}`}
                   />
                 </div>
               </Col>

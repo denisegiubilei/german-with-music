@@ -1,4 +1,7 @@
-```markdown
+# Lyric Palette API
+
+Base URL: `http://localhost:3000/api`
+
 ## GET `/releases/youtube`
 
 List all releases tagged `youtube` across all projects, newest `datePublished` first, paginated. Each item is a flat projection that mixes project and version fields.
@@ -23,6 +26,7 @@ List all releases tagged `youtube` across all projects, newest `datePublished` f
 - `GET /releases/youtube?featured=true`
 
 **Response:** `200`
+
 ```json
 {
   "data": [
@@ -46,8 +50,29 @@ List all releases tagged `youtube` across all projects, newest `datePublished` f
 ```
 
 Notes:
+
 - `artist`, `lang`, and `glossary` may be `null` when not set on the underlying project/config/video description.
 - `featured` is a boolean (defaults to `false`); manage it via `PUT /releases/:releaseId` or `PUT /versions/:versionId/release`.
 - Only releases with `tag = "youtube"` are returned. Use `GET /projects/:projectId/releases` to see all releases for one project regardless of tag.
+
+## GET `/releases/youtube/:releaseId`
+
+Get a single youtube release by its UUID, using the same flat projection as the list above.
+
+**Response:** `200`
+
+```json
+{
+  "data": {
+    "id": "UUID",
+    "url": "https://youtube.com/watch?v=...",
+    "artist": "Artist name",
+    "title": "Example Song title",
+    "lang": "en",
+    "glossary": "glossary text",
+    "featured": false
+  }
+}
 ```
 
+`404 Youtube release not found` is returned if the release does not exist or is not tagged `youtube`.

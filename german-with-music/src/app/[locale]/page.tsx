@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FeaturedSongs } from "@/features/home/featured-songs/FeaturedSongs";
+import { getFeaturedYoutubeReleasesForHome } from "@/features/home/featured-songs/featured-youtube-releases.server";
 import { HeroSection } from "@/features/home/hero-section/HeroSection";
 import { HowItWorks } from "@/features/home/how-it-works/HowItWorks";
 import { LyricsSection } from "@/features/home/lyrics-section/LyricsSection";
@@ -50,10 +51,12 @@ export default async function HomePage({
 }) {
   assertLocale((await params).locale);
 
+  const releasesPayload = await getFeaturedYoutubeReleasesForHome();
+
   return (
     <MarketingShell>
       <HeroSection />
-      <FeaturedSongs />
+      <FeaturedSongs releasesPayload={releasesPayload} />
       <HowItWorks />
       <LyricsSection />
     </MarketingShell>
