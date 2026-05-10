@@ -69,6 +69,16 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
                 {copy.navSongs}
               </Nav.Link>
               <Nav.Link
+                as={LocalizedLinkClient}
+                href="/library"
+                className={classNames(
+                  "text-body-secondary py-md-1",
+                  styles.mobileNavLink,
+                )}
+              >
+                {copy.navLibrary}
+              </Nav.Link>
+              <Nav.Link
                 href={`#${SECTION_IDS.howItWorks}`}
                 className={classNames(
                   "text-body-secondary py-md-1",

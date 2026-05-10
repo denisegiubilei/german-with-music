@@ -14,6 +14,18 @@
     ],
     "openGraphDescription": "Músicas alemãs com letras e tradução em português lado a lado. Pratique vocabulário e listening com música de verdade.",
     "twitterDescription": "Músicas alemãs com letras e tradução em português. Aprenda vocabulário em contexto.",
+    "library": {
+      "description": "Navegue por todos os lançamentos do YouTube do Alemão com Música. Filtre por artista ou título da música e abra qualquer faixa para letras e traduções.",
+      "openGraphDescription": "Navegue pela biblioteca de músicas: filtre por artista ou título e aprenda alemão com letras e traduções.",
+      "twitterDescription": "Navegue pelas músicas em alemão na biblioteca — filtre por artista ou título.",
+      "keywords": [
+        "biblioteca de músicas alemãs",
+        "navegar músicas em alemão",
+        "aprender alemão",
+        "letras",
+        "traduções"
+      ]
+    },
     "about": {
       "description": "Saiba mais sobre o Alemão com Música: como ajudamos você a aprender alemão com letras, traduções e prática de listening curada.",
       "openGraphDescription": "Sobre o Alemão com Música — aprenda alemão com letras e traduções.",
@@ -41,6 +53,7 @@
     "themeLight": "Claro",
     "themeDark": "Escuro",
     "songs": "Músicas",
+    "library": "Biblioteca",
     "howItWorks": "Como funciona",
     "start": "Começar"
   },
@@ -61,6 +74,21 @@
     "statTranslatedLabel": "Traduzidas",
     "statFreeValue": "Grátis",
     "statFreeLabel": "Sempre"
+  },
+  "library": {
+    "title": "Biblioteca de músicas",
+    "lead": "Navegue pelos lançamentos do YouTube, filtre por artista ou título da música e abra uma faixa para letras completas e notas de aprendizado.",
+    "filterArtist": "Artista",
+    "filterTitle": "Título da música",
+    "applyFilters": "Aplicar filtros",
+    "clearFilters": "Limpar",
+    "empty": "Nenhuma música corresponde a estes filtros.",
+    "error": "Não foi possível carregar a biblioteca. Tente novamente mais tarde.",
+    "paginationSummary": "{{from}}–{{to}} de {{total}}",
+    "paginationNav": "Páginas da biblioteca",
+    "pagePrevAria": "Página anterior",
+    "pageNextAria": "Próxima página",
+    "pageStatus": "Página {{page}} de {{totalPages}}"
   },
   "featuredSongs": {
     "title": "Músicas em destaque",

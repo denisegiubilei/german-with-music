@@ -14,6 +14,18 @@
     ],
     "openGraphDescription": "German songs with lyrics and English side-by-side translations. Practice German vocabulary and listening with real music.",
     "twitterDescription": "German songs with lyrics and English translations. Learn vocabulary in context.",
+    "library": {
+      "description": "Browse all German-with-Music YouTube releases. Filter by artist or song title and open any track for lyrics and translations.",
+      "openGraphDescription": "Browse the song library: filter by artist or title and learn German with lyrics and translations.",
+      "twitterDescription": "Browse German songs in the library — filter by artist or title.",
+      "keywords": [
+        "German songs library",
+        "browse German music",
+        "learn German",
+        "lyrics",
+        "translations"
+      ]
+    },
     "about": {
       "description": "Learn about German with Music: how we help you learn German through song lyrics, translations, and curated listening practice.",
       "openGraphDescription": "About German with Music — learn German with lyrics and translations.",
@@ -41,6 +53,7 @@
     "themeLight": "Light",
     "themeDark": "Dark",
     "songs": "Songs",
+    "library": "Library",
     "howItWorks": "How it works",
     "start": "Get started"
   },
@@ -61,6 +74,21 @@
     "statTranslatedLabel": "Translated",
     "statFreeValue": "Free",
     "statFreeLabel": "Always"
+  },
+  "library": {
+    "title": "Song library",
+    "lead": "Browse YouTube releases, filter by artist or song title, and open a song for full lyrics and learning notes.",
+    "filterArtist": "Artist",
+    "filterTitle": "Song title",
+    "applyFilters": "Apply filters",
+    "clearFilters": "Clear",
+    "empty": "No songs match these filters.",
+    "error": "We could not load the library. Please try again later.",
+    "paginationSummary": "{{from}}–{{to}} of {{total}}",
+    "paginationNav": "Library pages",
+    "pagePrevAria": "Previous page",
+    "pageNextAria": "Next page",
+    "pageStatus": "Page {{page}} of {{totalPages}}"
   },
   "featuredSongs": {
     "title": "Featured songs",

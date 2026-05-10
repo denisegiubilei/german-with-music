@@ -8,6 +8,7 @@ export async function Header() {
   const copy = {
     brand: t("brand"),
     navSongs: t("nav.songs"),
+    navLibrary: t("nav.library"),
     navHowItWorks: t("nav.howItWorks"),
     navStart: t("nav.start"),
     languageAriaLabel: t("nav.language"),
