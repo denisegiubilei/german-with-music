@@ -38,6 +38,9 @@
       ]
     }
   },
+  "songCard": {
+    "openDetailsAria": "Abrir música: {{title}} — {{artist}}"
+  },
   "songPage": {
     "glossaryHeading": "Glossário",
     "noGlossary": "Ainda não há glossário para esta música.",
@@ -93,6 +96,7 @@
   "featuredSongs": {
     "title": "Músicas em destaque",
     "subtitle": "Explore nossa coleção de músicas alemãs com letras e traduções.",
+    "exploreLibrary": "Explorar biblioteca",
     "items": [
       {
         "title": "99 Luftballons",

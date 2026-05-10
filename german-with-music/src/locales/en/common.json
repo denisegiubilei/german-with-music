@@ -38,6 +38,9 @@
       ]
     }
   },
+  "songCard": {
+    "openDetailsAria": "Open song: {{title}} — {{artist}}"
+  },
   "songPage": {
     "glossaryHeading": "Glossary",
     "noGlossary": "No glossary for this song yet.",
@@ -93,6 +96,7 @@
   "featuredSongs": {
     "title": "Featured songs",
     "subtitle": "Explore our collection of German songs with lyrics and translations.",
+    "exploreLibrary": "Explore library",
     "items": [
       {
         "title": "99 Luftballons",

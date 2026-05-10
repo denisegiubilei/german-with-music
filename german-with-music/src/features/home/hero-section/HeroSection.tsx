@@ -2,14 +2,17 @@
 
 import classNames from "classnames";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { Trans, useTranslation } from "react-i18next";
+import { useLocalizedPath } from "@/i18n/locale-context";
 import { SECTION_IDS } from "@/lib/section-ids";
 import styles from "./HeroSection.module.scss";
 
 export function HeroSection() {
   const { t } = useTranslation();
+  const localizedPath = useLocalizedPath();
 
   return (
     <section
@@ -53,15 +56,16 @@ export function HeroSection() {
               styles.actions,
             )}
           >
-            <Button
-              variant="dark"
-              size="lg"
-              className="d-inline-flex align-items-center justify-content-center"
-              href={`#${SECTION_IDS.songs}`}
+            <Link
+              href={localizedPath("/library")}
+              className={classNames(
+                "btn btn-dark btn-lg",
+                "d-inline-flex align-items-center justify-content-center",
+              )}
             >
               {t("hero.exploreSongs")}
               <ArrowRight className="ms-2" size={16} aria-hidden />
-            </Button>
+            </Link>
             <Button
               variant="outline-secondary"
               size="lg"

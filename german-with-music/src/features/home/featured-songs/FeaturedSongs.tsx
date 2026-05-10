@@ -1,11 +1,14 @@
 "use client";
 
 import classNames from "classnames";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import Alert from "react-bootstrap/Alert";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import { useLocalizedPath } from "@/i18n/locale-context";
 import { SongCard } from "@/components/song-card/SongCard";
 import type { YoutubeReleasesListResponse } from "@/entities/youtube-release";
 import { SECTION_IDS } from "@/lib/section-ids";
@@ -21,6 +24,7 @@ export function FeaturedSongs({
   releasesPayload: YoutubeReleasesListResponse | null;
 }) {
   const { t } = useTranslation();
+  const localizedPath = useLocalizedPath();
   const items = releasesPayload?.data ?? [];
   const fetchFailed = releasesPayload === null;
 
@@ -39,6 +43,18 @@ export function FeaturedSongs({
           >
             {t("featuredSongs.subtitle")}
           </p>
+          <div className="mt-4 d-flex justify-content-center">
+            <Link
+              href={localizedPath("/library")}
+              className={classNames(
+                "btn btn-outline-dark",
+                "d-inline-flex align-items-center justify-content-center",
+              )}
+            >
+              {t("featuredSongs.exploreLibrary")}
+              <ArrowRight className="ms-2" size={16} aria-hidden />
+            </Link>
+          </div>
         </div>
 
         {fetchFailed ? (

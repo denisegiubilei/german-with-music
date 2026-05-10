@@ -1,4 +1,8 @@
+"use client";
+
+import classNames from "classnames";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 import styles from "./SongCard.module.scss";
 
@@ -25,6 +29,7 @@ export function SongCard({
   watchUrl,
   detailHref,
 }: SongCardProps) {
+  const { t } = useTranslation();
   const displayArtist = artist?.trim() ? artist : "—";
   const thumbAlt = `${title} — ${displayArtist}`;
 
@@ -38,7 +43,9 @@ export function SongCard({
   );
 
   return (
-    <article className="song-card">
+    <article
+      className={classNames("song-card", detailHref && styles.cardInteractive)}
+    >
       <div className={`song-card__media mb-2 ${styles.media}`}>
         {thumbnailSrc ? (
           <Image
@@ -61,7 +68,7 @@ export function SongCard({
           />
         ) : (
           <div className={`text-body-secondary ${styles.fallback}`}>
-            {watchUrl ? (
+            {watchUrl && !detailHref ? (
               <a
                 className={styles.fallbackLink}
                 href={watchUrl}
@@ -76,16 +83,17 @@ export function SongCard({
           </div>
         )}
       </div>
+      {titleBlock}
       {detailHref ? (
         <LocalizedLinkClient
           href={detailHref}
-          className="d-block text-decoration-none text-reset"
-        >
-          {titleBlock}
-        </LocalizedLinkClient>
-      ) : (
-        titleBlock
-      )}
+          className={styles.overlayLink}
+          aria-label={t("songCard.openDetailsAria", {
+            title,
+            artist: displayArtist,
+          })}
+        />
+      ) : null}
     </article>
   );
 }
