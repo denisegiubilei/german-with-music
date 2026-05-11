@@ -1,5 +1,4 @@
-// Prev | title | next on one row. Side tracks grow equally (`1fr`-like); title stays between chevrons and
-// wraps because the center flex item has `min-width: 0` (otherwise flex default min-width prevents shrinking).
+// Prev at the start of the row, next at the end; title grows in between and wraps (`min-width: 0`).
 .titleNav {
   display: flex;
   align-items: center;
@@ -7,22 +6,16 @@
 }
 
 .titleNavSide {
-  flex: 1 1 0%;
-  display: flex;
-}
-
-.titleNavSide:not(.titleNavSideEnd) {
-  justify-content: flex-end;
-}
-
-.titleNavSideEnd {
-  justify-content: flex-start;
+  flex: 0 0 auto;
 }
 
 .titleBlock {
-  flex: 0 1 auto;
+  flex: 1 1 0%;
   min-width: 0;
-  max-width: min(100%, 36rem);
+  margin-inline: auto;
+  @media (max-width: 767.98px) {
+    max-width: min(100%, 36rem);
+  }
 }
 
 // Song title uses Bootstrap `h2` sizing from `md` up; narrow viewports get a smaller type scale so long titles fit.

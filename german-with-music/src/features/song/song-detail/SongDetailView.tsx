@@ -69,7 +69,7 @@ export async function SongDetailView({
             </p>
           </div>
 
-          <div className={classNames(styles.titleNavSide, styles.titleNavSideEnd)}>
+          <div className={styles.titleNavSide}>
             <Link
               href={nextHref}
               className={classNames(navBtnClass, styles.navBtn)}
