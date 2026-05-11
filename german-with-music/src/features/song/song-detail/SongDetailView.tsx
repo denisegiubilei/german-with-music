@@ -56,13 +56,17 @@ export async function SongDetailView({
               aria-label={prevAria}
             >
               <ChevronLeft size={18} strokeWidth={2} aria-hidden />
-              {t("songPage.prev")}
+              <span className="d-none d-md-inline">{t("songPage.prev")}</span>
             </Link>
           </div>
 
           <div className={classNames(styles.titleBlock, "text-center")}>
-            <h1 className="h2 fw-bold mb-1">{release.title}</h1>
-            <p className="lead text-body-secondary mb-0">{artist}</p>
+            <h1 className={classNames("h2 fw-bold mb-1", styles.songTitle)}>
+              {release.title}
+            </h1>
+            <p className={classNames("lead text-body-secondary mb-0", styles.artistLine)}>
+              {artist}
+            </p>
           </div>
 
           <div className={classNames(styles.titleNavSide, styles.titleNavSideEnd)}>
@@ -71,7 +75,7 @@ export async function SongDetailView({
               className={classNames(navBtnClass, styles.navBtn)}
               aria-label={nextAria}
             >
-              {t("songPage.next")}
+              <span className="d-none d-md-inline">{t("songPage.next")}</span>
               <ChevronRight size={18} strokeWidth={2} aria-hidden />
             </Link>
           </div>

@@ -1,23 +1,47 @@
+// Prev | title | next on one row. Side tracks grow equally (`1fr`-like); title stays between chevrons and
+// wraps because the center flex item has `min-width: 0` (otherwise flex default min-width prevents shrinking).
 .titleNav {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, min(100%, 36rem)) minmax(0, 1fr);
-  column-gap: var(--bs-gutter-x, 1rem);
-  row-gap: 0.75rem;
+  display: flex;
   align-items: center;
+  gap: var(--bs-gutter-x, 1rem);
 }
 
 .titleNavSide {
+  flex: 1 1 0%;
   display: flex;
-  justify-content: flex-start;
-  min-width: 0;
 }
 
-.titleNavSideEnd {
+.titleNavSide:not(.titleNavSideEnd) {
   justify-content: flex-end;
 }
 
+.titleNavSideEnd {
+  justify-content: flex-start;
+}
+
 .titleBlock {
+  flex: 0 1 auto;
   min-width: 0;
+  max-width: min(100%, 36rem);
+}
+
+// Song title uses Bootstrap `h2` sizing from `md` up; narrow viewports get a smaller type scale so long titles fit.
+h1.songTitle {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  @media (max-width: 767.98px) {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+p.artistLine {
+  @media (max-width: 767.98px) {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
 }
 
 .navBtn {
