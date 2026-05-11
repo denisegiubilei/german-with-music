@@ -1,11 +1,20 @@
 .toggle {
+  $hit: 2.25rem;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  flex-shrink: 0;
+  align-self: center;
+  box-sizing: border-box;
+  width: $hit;
+  height: $hit;
+  min-width: $hit;
+  min-height: $hit;
+  aspect-ratio: 1;
   padding: 0;
   border: 0;
+  line-height: 1;
   border-radius: 50%;
   background-color: transparent;
   color: var(--bs-secondary-color);
@@ -15,6 +24,7 @@
 
   &:hover,
   &[aria-expanded="true"] {
+    border-radius: 50%;
     color: var(--bs-emphasis-color);
     background-color: var(--bs-tertiary-bg);
   }

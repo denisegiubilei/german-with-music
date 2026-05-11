@@ -118,11 +118,7 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
               )}
             >
               <div className={styles.mobileToolbarWrap}>
-                <ThemeSwitcher
-                  ariaLabel={copy.themeAriaLabel}
-                  labelLight={copy.themeLight}
-                  labelDark={copy.themeDark}
-                />
+                <ThemeSwitcher ariaLabel={copy.themeAriaLabel} />
                 <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
               </div>
               <Button

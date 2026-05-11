@@ -58,8 +58,6 @@
   "nav": {
     "language": "Language",
     "themeAriaLabel": "Color theme",
-    "themeLight": "Light",
-    "themeDark": "Dark",
     "songs": "Songs",
     "library": "Library",
     "howItWorks": "How it works",
