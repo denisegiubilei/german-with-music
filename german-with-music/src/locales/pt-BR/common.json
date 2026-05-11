@@ -3,7 +3,7 @@
   "seo": {
     "siteName": "Alemão com Música",
     "titleTagline": "Aprenda alemão com letras de música",
-    "description": "Aprenda alemão pela música: músicas alemãs selecionadas com letras originais e tradução em português. Amplie vocabulário e listening no contexto — grátis para explorar.",
+    "description": "Aprenda alemão pela música: músicas alemãs selecionadas com letras originais e tradução em inglês. Amplie vocabulário e listening no contexto — grátis para explorar.",
     "keywords": [
       "aprender alemão",
       "músicas alemãs",
@@ -12,8 +12,8 @@
       "aprendizado de idiomas",
       "música e idioma"
     ],
-    "openGraphDescription": "Músicas alemãs com letras e tradução em português lado a lado. Pratique vocabulário e listening com música de verdade.",
-    "twitterDescription": "Músicas alemãs com letras e tradução em português. Aprenda vocabulário em contexto.",
+    "openGraphDescription": "Músicas alemãs com letras e tradução em inglês lado a lado. Pratique vocabulário e listening com música de verdade.",
+    "twitterDescription": "Músicas alemãs com letras e tradução em inglês. Aprenda vocabulário em contexto.",
     "library": {
       "description": "Navegue por todos os lançamentos do YouTube do Alemão com Música. Filtre por artista ou título da música e abra qualquer faixa para letras e traduções.",
       "openGraphDescription": "Navegue pela biblioteca de músicas: filtre por artista ou título e aprenda alemão com letras e traduções.",
@@ -74,7 +74,7 @@
   "hero": {
     "eyebrow": "Aprenda alemão de forma divertida",
     "title": "Descubra o alemão através da <1>música</1>",
-    "lead": "Músicas alemãs com letras originais e tradução em português.",
+    "lead": "Músicas alemãs com letras originais e tradução em inglês.",
     "exploreSongs": "Explorar músicas",
     "statSongsValue": "50+",
     "statSongsLabel": "Músicas",

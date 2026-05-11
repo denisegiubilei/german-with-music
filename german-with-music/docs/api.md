@@ -2,7 +2,68 @@
 
 Base URL: `http://localhost:3000/api`
 
-These are the read-only, consumer-facing endpoints served by `controllers/public/song.controller.ts`. They expose the catalog of published youtube releases with a flat per-item shape that mixes project and version fields. Admin endpoints (CRUD for projects, versions, translations, video descriptions, generic release records, etc.) live in [`api.admin.md`](./api.admin.md).
+This document covers **unauthenticated** read-only catalog endpoints (`controllers/public/song.controller.ts`) and **authentication** endpoints (`controllers/auth.controller.ts`) used to register, sign in, and read the current session. They do not require an admin account.
+
+The published youtube catalog uses a flat per-item shape that mixes project and version fields. **Admin** endpoints (projects, versions, glossary, user management, etc.) require a JWT for a user with `level = 1` in the database; see [`api.admin.md`](./api.admin.md).
+
+## Authentication
+
+Passwords are stored as bcrypt hashes; responses never include a password field.
+
+### POST `/auth/register`
+
+Create a new user. `login` must be a unique email (stored lowercased). `password` is required (minimum 8 characters). `level` is optional `0` or `1` (default `0`). `name` is optional.
+
+**Response:** `201 Created`
+```json
+{
+  "data": {
+    "user": {
+      "id": "UUID",
+      "login": "user@example.com",
+      "level": 0,
+      "name": "Display name or null"
+    },
+    "token": "<JWT>"
+  }
+}
+```
+
+- `409` with `Login already in use` if `login` is taken.
+
+### POST `/auth/login`
+
+Sign in with `login` (email) and `password`.
+
+**Response:** `200 OK` — same `{ "data": { "user", "token" } }` shape as register.
+
+- `401` with `Invalid login or password` if credentials are wrong (including unknown email).
+
+### GET `/auth/me`
+
+Returns the current user row from the database (not stale JWT claims beyond identifying the session).
+
+**Headers**
+
+| Name | Value |
+|------|--------|
+| `Authorization` | `Bearer <JWT>` |
+
+**Response:** `200 OK`
+```json
+{
+  "data": {
+    "id": "UUID",
+    "login": "user@example.com",
+    "level": 0,
+    "name": "Display name or null"
+  }
+}
+```
+
+- `401` if the header is missing/invalid, the token is expired, or the user row no longer exists.
+
+Use the returned `token` as `Authorization: Bearer …` on admin routes when the account has **level `1`** (see [`api.admin.md`](./api.admin.md)).
 
 ## Visibility rules
 
@@ -28,9 +89,17 @@ For paginated endpoints the response also includes a `meta` object.
     "issues": { "formErrors": [], "fieldErrors": {} }
   }
   ```
+- `401` unauthorized (auth endpoints), e.g.:
+  ```json
+  { "status": "error", "message": "Invalid login or password" }
+  ```
 - `404` not found:
   ```json
   { "status": "error", "message": "Youtube release not found" }
+  ```
+- `409` conflict on register:
+  ```json
+  { "status": "error", "message": "Login already in use" }
   ```
 - `500` internal error:
   ```json
@@ -41,6 +110,12 @@ For paginated endpoints the response also includes a `meta` object.
   ```
 
 ## Endpoints
+
+## GET `/health`
+
+Liveness check for load balancers and deploy smoke tests. No authentication.
+
+**Response:** `200 OK` — `{ "status": "ok" }`
 
 ## GET `/releases/youtube`
 
@@ -75,6 +150,7 @@ List all published youtube releases across all projects, newest `datePublished` 
       "artist": "Artist name",
       "title": "Example Song title",
       "lang": "en",
+      "wordClassification": "default",
       "glossary": "glossary text",
       "featured": false,
       "public": true
@@ -91,6 +167,7 @@ List all published youtube releases across all projects, newest `datePublished` 
 
 Notes:
 - `artist`, `lang`, and `glossary` may be `null` when not set on the underlying project / config / video description.
+- `wordClassification` is a string from the version’s song config; it defaults to `"default"` and is always present.
 - `featured` is a boolean (defaults to `false`); manage it through the admin PUT endpoints.
 - `public` is always `true` here — non-public releases are filtered out. Toggle the flag from the admin endpoints; it ships back in the response so the consumer can see the gate is set.
 - Future-scheduled releases (`datePublished > now`) are excluded from both `data` and `total`.
@@ -109,6 +186,7 @@ Get a single published youtube release by its UUID, using the same flat projecti
     "artist": "Artist name",
     "title": "Example Song title",
     "lang": "en",
+    "wordClassification": "default",
     "glossary": "glossary text",
     "featured": false,
     "public": true
