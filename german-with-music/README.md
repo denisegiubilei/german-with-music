@@ -2,6 +2,10 @@
 
 Next.js (App Router) app for learning German through music.
 
+## Deployed environment
+
+- Production: [https://german-with-music-4908a3a1e50f.herokuapp.com/](https://german-with-music-4908a3a1e50f.herokuapp.com/)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) 20+ (LTS recommended)
