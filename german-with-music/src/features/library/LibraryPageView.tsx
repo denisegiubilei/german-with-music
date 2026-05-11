@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { SongCard } from "@/components/song-card/SongCard";
 import type { YoutubeReleasesListResponse } from "@/entities/youtube-release";
@@ -14,6 +12,7 @@ import {
   youtubeWatchUrlToEmbedUrl,
   youtubeWatchUrlToThumbnailUrl,
 } from "@/shared/lib/youtube";
+import { LibraryFiltersPanel } from "./LibraryFiltersPanel";
 import type { LibrarySearchState } from "./library-search";
 import { serializeLibrarySearchParams } from "./library-search";
 
@@ -49,49 +48,11 @@ export async function LibraryPageView({
       <h1 className="h2 mb-2">{t("library.title")}</h1>
       <p className="text-body-secondary mb-4">{t("library.lead")}</p>
 
-      <Form
-        method="get"
-        action={formAction}
-        className="border rounded-3 p-3 p-md-4 mb-4 bg-body-secondary"
-      >
-        <Row className="g-3 align-items-end">
-          <Col xs={12} md={4}>
-            <Form.Label htmlFor="library-filter-artist" className="small">
-              {t("library.filterArtist")}
-            </Form.Label>
-            <Form.Control
-              id="library-filter-artist"
-              name="artist"
-              type="search"
-              defaultValue={search.artist}
-              autoComplete="off"
-            />
-          </Col>
-          <Col xs={12} md={4}>
-            <Form.Label htmlFor="library-filter-title" className="small">
-              {t("library.filterTitle")}
-            </Form.Label>
-            <Form.Control
-              id="library-filter-title"
-              name="title"
-              type="search"
-              defaultValue={search.title}
-              autoComplete="off"
-            />
-          </Col>
-          <Col xs={12} md={4} className="d-flex flex-wrap gap-2">
-            <Button type="submit" variant="warning" className="text-dark">
-              {t("library.applyFilters")}
-            </Button>
-            <Link
-              href={formAction}
-              className="btn btn-outline-secondary"
-            >
-              {t("library.clearFilters")}
-            </Link>
-          </Col>
-        </Row>
-      </Form>
+      <LibraryFiltersPanel
+        formAction={formAction}
+        defaultArtist={search.artist}
+        defaultTitle={search.title}
+      />
 
       {!fetchFailed && total > 0 ? (
         <p className="text-body-secondary small mb-3">

@@ -84,6 +84,7 @@
   "library": {
     "title": "Song library",
     "lead": "Browse YouTube releases, filter by artist or song title, and open a song for full lyrics and learning notes.",
+    "toggleFilters": "Filters",
     "filterArtist": "Artist",
     "filterTitle": "Song title",
     "applyFilters": "Apply filters",
