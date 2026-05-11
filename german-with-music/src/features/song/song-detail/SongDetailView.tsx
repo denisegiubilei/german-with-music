@@ -2,6 +2,8 @@ import classNames from "classnames";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { YoutubeRelease } from "@/entities/youtube-release";
 import { getT } from "@/i18n/server";
 import type { Locale } from "@/i18n/settings";
@@ -103,9 +105,9 @@ export async function SongDetailView({
             {t("songPage.glossaryHeading")}
           </h2>
           {glossary ? (
-            <p className={classNames("text-body mb-0", styles.glossary)}>
-              {glossary}
-            </p>
+            <div className={classNames("text-body text-start mb-0", styles.glossary)}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{glossary}</ReactMarkdown>
+            </div>
           ) : (
             <p className="text-body-secondary mb-0">{t("songPage.noGlossary")}</p>
           )}
