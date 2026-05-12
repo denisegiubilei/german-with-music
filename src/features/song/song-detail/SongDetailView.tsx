@@ -7,8 +7,10 @@ import remarkGfm from "remark-gfm";
 import type { YoutubeRelease } from "@/entities/youtube-release";
 import { getT } from "@/i18n/server";
 import type { Locale } from "@/i18n/settings";
+import { fetchReleaseVerses } from "@/integrations/lyric-palette/server";
 import { localizedPath } from "@/lib/localized-path";
 import { youtubeWatchUrlToEmbedUrl } from "@/shared/lib/youtube";
+import { SongLearnTabs } from "./SongLearnTabs";
 import styles from "./SongDetailView.module.scss";
 
 export async function SongDetailView({
@@ -41,6 +43,13 @@ export async function SongDetailView({
   const glossary = release.glossary?.trim()
     ? release.glossary
     : null;
+
+  const versesPayload = await fetchReleaseVerses(release.id);
+  const verseLines =
+    versesPayload?.verses.map((v) => ({
+      original: v.original.text,
+      translation: v.translation.text,
+    })) ?? [];
 
   const navBtnClass =
     "btn btn-primary d-inline-flex align-items-center gap-1";
@@ -105,16 +114,13 @@ export async function SongDetailView({
         </div>
 
         <section className="text-center">
-          <h2 className="h5 fw-semibold text-uppercase small text-body-secondary mb-3">
-            {t("songPage.glossaryHeading")}
-          </h2>
-          {glossary ? (
-            <div className={classNames("text-body text-start mb-0", styles.glossary)}>
+          <SongLearnTabs verseLines={verseLines}>
+            {glossary ? (
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{glossary}</ReactMarkdown>
-            </div>
-          ) : (
-            <p className="text-body-secondary mb-0">{t("songPage.noGlossary")}</p>
-          )}
+            ) : (
+              <p className="text-body-secondary mb-0">{t("songPage.noGlossary")}</p>
+            )}
+          </SongLearnTabs>
         </section>
       </Container>
     </div>

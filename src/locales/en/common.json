@@ -53,7 +53,19 @@
     "watchOnYoutube": "Watch on YouTube",
     "embedUnavailable": "Video could not be embedded.",
     "notFoundTitle": "Song not found",
-    "metaDescriptionFallback": "German song with lyrics and learning notes."
+    "metaDescriptionFallback": "German song with lyrics and learning notes.",
+    "tabFlashcard": "Flashcard",
+    "flashcardsEmpty": "No lyric lines are available for flashcards yet.",
+    "flashcardProgress": "Card {{n}} of {{total}}",
+    "flashcardShuffle": "Shuffle",
+    "flashcardFlip": "Flip",
+    "flashcardFlipAria": "Flip card to show translation or original",
+    "flashcardPrevAria": "Previous card",
+    "flashcardNextAria": "Next card",
+    "flashcardOriginal": "Original",
+    "flashcardTranslation": "Translation",
+    "flashcardClickToReveal": "Click to reveal",
+    "noTranslation": "No translation for this line."
   },
   "nav": {
     "language": "Language",

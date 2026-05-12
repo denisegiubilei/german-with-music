@@ -53,7 +53,19 @@
     "watchOnYoutube": "Assistir no YouTube",
     "embedUnavailable": "Não foi possível incorporar o vídeo.",
     "notFoundTitle": "Música não encontrada",
-    "metaDescriptionFallback": "Música em alemão com letras e notas de aprendizado."
+    "metaDescriptionFallback": "Música em alemão com letras e notas de aprendizado.",
+    "tabFlashcard": "Cartão",
+    "flashcardsEmpty": "Ainda não há linhas de letra disponíveis para os cartões.",
+    "flashcardProgress": "Cartão {{n}} de {{total}}",
+    "flashcardShuffle": "Embaralhar",
+    "flashcardFlip": "Virar",
+    "flashcardFlipAria": "Virar o cartão para ver a tradução ou o original",
+    "flashcardPrevAria": "Cartão anterior",
+    "flashcardNextAria": "Próximo cartão",
+    "flashcardOriginal": "Original",
+    "flashcardTranslation": "Tradução",
+    "flashcardClickToReveal": "Clique para revelar",
+    "noTranslation": "Não há tradução para esta linha."
   },
   "nav": {
     "language": "Idioma",

@@ -28,6 +28,31 @@ export interface YoutubeReleaseDetailResponse {
   data: YoutubeRelease;
 }
 
+/** One verse line from `GET /releases/:releaseId/verses` — see docs/api.md. */
+export interface ReleaseVerseFace {
+  text: string;
+  words: string[];
+}
+
+export interface ReleaseVerseLine {
+  verseIndex: number;
+  verseIds: number[];
+  chorus?: boolean;
+  original: ReleaseVerseFace;
+  translation: ReleaseVerseFace;
+}
+
+/** Payload inside `data` for `GET /releases/:releaseId/verses`. */
+export interface ReleaseVersesPayload {
+  releaseId: string;
+  translationLang: string | null;
+  verses: ReleaseVerseLine[];
+}
+
+export interface ReleaseVersesResponse {
+  data: ReleaseVersesPayload;
+}
+
 export interface GetYoutubeReleasesQueryArgs {
   /** 1-based; omit for server default (`1`). */
   page?: number;
