@@ -132,12 +132,12 @@
     "title": "Discover German through <1>music</1>",
     "lead": "German songs with original lyrics and English translations.",
     "exploreSongs": "Explore songs",
-    "statSongsValue": "10+",
-    "statSongsLabel": "Songs",
+    "statSongsValue": "Great",
+    "statSongsLabel": "Music",
     "statTranslatedValue": "100%",
     "statTranslatedLabel": "Translated",
-    "statFreeValue": "Free",
-    "statFreeLabel": "Always"
+    "statFunValue": "Fun",
+    "statFunLabel": "Always"
   },
   "library": {
     "title": "Song library",

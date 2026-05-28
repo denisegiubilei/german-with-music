@@ -132,12 +132,12 @@
     "title": "Descubra o alemão através da <1>música</1>",
     "lead": "Músicas alemãs com letras originais e tradução em inglês.",
     "exploreSongs": "Explorar músicas",
-    "statSongsValue": "10+",
+    "statSongsValue": "Excelentes",
     "statSongsLabel": "Músicas",
     "statTranslatedValue": "100%",
     "statTranslatedLabel": "Traduzidas",
-    "statFreeValue": "Grátis",
-    "statFreeLabel": "Sempre"
+    "statFunValue": "Divertido",
+    "statFunLabel": "Sempre"
   },
   "library": {
     "title": "Biblioteca de músicas",

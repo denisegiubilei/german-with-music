@@ -82,9 +82,7 @@ export function HeroSection() {
             )}
           >
             <div className="text-center">
-              <div className="fs-3 fw-bold text-german-gold">
-                {t("hero.statSongsValue")}
-              </div>
+              <div className="fs-3 fw-bold">{t("hero.statSongsValue")}</div>
               <div
                 className={classNames(
                   "small text-body-secondary text-uppercase",
@@ -119,15 +117,17 @@ export function HeroSection() {
                 styles.divider,
               )}
             />
-            <div className="text-center">
-              <div className="fs-3 fw-bold">{t("hero.statFreeValue")}</div>
+            <div className="text-cente">
+              <div className="fs-3 fw-bold text-german-gold">
+                {t("hero.statFunValue")}
+              </div>
               <div
                 className={classNames(
                   "small text-body-secondary text-uppercase",
                   styles.statLabel,
                 )}
               >
-                {t("hero.statFreeLabel")}
+                {t("hero.statFunLabel")}
               </div>
             </div>
           </div>
