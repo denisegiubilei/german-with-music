@@ -2,9 +2,6 @@ import type { GetYoutubeReleasesQueryArgs } from "@/entities/youtube-release";
 
 export const LIBRARY_PAGE_SIZE = 10;
 
-/** TEMP: hardcoded artist filter while library UI filters are disabled. */
-export const TEMP_LIBRARY_ARTIST = "LERNIKA";
-
 export type LibrarySearchState = {
   page: number;
   artist: string;
@@ -37,7 +34,6 @@ export function librarySearchToApiArgs(
   return {
     page: state.page,
     pageSize: LIBRARY_PAGE_SIZE,
-    artist: TEMP_LIBRARY_ARTIST,
     // TEMP: filters commented out — restore when re-enabling LibraryFiltersPanel
     // ...(state.artist ? { artist: state.artist } : {}),
     // ...(state.title ? { title: state.title } : {}),
