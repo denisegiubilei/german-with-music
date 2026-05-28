@@ -6,7 +6,7 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-4 border-top">
+    <footer className="flex-shrink-0 py-4 border-top">
       <div className="container-fluid px-3 px-md-4">
         <div className="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 text-body-secondary small">
           <span>

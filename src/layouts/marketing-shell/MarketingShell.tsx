@@ -7,9 +7,9 @@ export interface MarketingShellProps {
 
 export async function MarketingShell({ children }: MarketingShellProps) {
   return (
-    <div className="min-vh-100 bg-body text-body">
+    <div className="marketing-shell min-vh-100 d-flex flex-column bg-body text-body">
       <Header />
-      <main className="marketing-shell-main">{children}</main>
+      <main className="marketing-shell-main flex-grow-1">{children}</main>
       <Footer />
     </div>
   );

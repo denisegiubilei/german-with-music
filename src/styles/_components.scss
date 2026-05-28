@@ -7,8 +7,9 @@
   --fixed-header-anchor-offset: var(--fixed-header-height);
 }
 
-// Offset page content below fixed header (see `MarketingShell`).
+// Shell: main fills viewport below fixed header and above footer; grows when content is taller.
 .marketing-shell-main {
+  flex: 1 0 auto;
   padding-top: var(--fixed-header-height);
 }
 
