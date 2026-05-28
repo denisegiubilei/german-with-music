@@ -2,8 +2,6 @@ import classNames from "classnames";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import {
   releaseFlashCardsToLines,
   type YoutubeRelease,
@@ -113,13 +111,7 @@ export async function SongDetailView({
         </div>
 
         <section className="text-center">
-          <SongLearnTabs verseLines={verseLines}>
-            {glossary ? (
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{glossary}</ReactMarkdown>
-            ) : (
-              <p className="text-body-secondary mb-0">{t("songPage.noGlossary")}</p>
-            )}
-          </SongLearnTabs>
+          <SongLearnTabs glossary={glossary} verseLines={verseLines} />
         </section>
       </Container>
     </div>

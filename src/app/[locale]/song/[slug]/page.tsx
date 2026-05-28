@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SongDetailView } from "@/features/song/song-detail/SongDetailView";
+import { SongDetailView } from "@/features/song/SongDetailView";
 import { assertLocale } from "@/i18n/assert-locale";
 import { getT } from "@/i18n/server";
 import { MarketingShell } from "@/layouts/marketing-shell/MarketingShell";
