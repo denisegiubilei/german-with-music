@@ -1,4 +1,8 @@
-export { flashCardCodeColor } from "./model/flash-card-code-colors";
+export {
+  FLASH_CARD_CODE_COLORS,
+  flashCardCodeColor,
+  flashCardWordStyle,
+} from "./model/flash-card-code-colors";
 export {
   DEFAULT_FLASH_CARD_TRANSLATION_LANG,
   releaseFlashCardsToLines,

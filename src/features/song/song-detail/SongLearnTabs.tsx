@@ -14,7 +14,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import { flashCardCodeColor } from "@/entities/youtube-release";
+import { flashCardCodeColor, flashCardWordStyle } from "@/entities/youtube-release";
 import glossaryStyles from "./SongDetailView.module.scss";
 import styles from "./SongLearnTabs.module.scss";
 
@@ -94,6 +94,7 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
   }
 
   const codeColor = flashCardCodeColor(card.code);
+  const wordHighlightStyle = flashCardWordStyle(card.code);
   const showVerseContext =
     Boolean(card.content.trim()) &&
     Boolean(card.verse.trim()) &&
@@ -140,11 +141,15 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
               {t("songPage.flashcardOriginal")}
             </span>
             <div className={styles.flashFaceMain}>
-              <p
-                className={styles.flashContent}
-                style={codeColor ? { color: codeColor } : undefined}
-              >
-                {showVerseContext ? card.content : card.verse || card.content}
+              <p className={styles.flashContent}>
+                <span
+                  className={classNames(
+                    wordHighlightStyle && styles.flashContentCoded,
+                  )}
+                  style={wordHighlightStyle}
+                >
+                  {showVerseContext ? card.content : card.verse || card.content}
+                </span>
               </p>
               <div className={styles.flashVerseContext}>
                 <div
@@ -221,17 +226,21 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
                   styles.flashContent,
                   !hasTranslation && "opacity-75",
                 )}
-                style={
-                  hasTranslation && codeColor
-                    ? { color: codeColor }
-                    : undefined
-                }
               >
-                {!hasTranslation
-                  ? t("songPage.noTranslation")
-                  : showTranslationContext
-                    ? card.translation
-                    : card.verseTranslation || card.translation}
+                {!hasTranslation ? (
+                  t("songPage.noTranslation")
+                ) : (
+                  <span
+                    className={classNames(
+                      wordHighlightStyle && styles.flashContentCoded,
+                    )}
+                    style={wordHighlightStyle}
+                  >
+                    {showTranslationContext
+                      ? card.translation
+                      : card.verseTranslation || card.translation}
+                  </span>
+                )}
               </p>
               <div className={styles.flashVerseContext}>
                 <p className={styles.flashVerseContextText}>
