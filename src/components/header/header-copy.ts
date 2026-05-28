@@ -7,4 +7,8 @@ export type HeaderCopy = {
   navStart: string;
   languageAriaLabel: string;
   themeAriaLabel: string;
+  navSignIn: string;
+  navSignUp: string;
+  navMyAccount: string;
+  navSignOut: string;
 };

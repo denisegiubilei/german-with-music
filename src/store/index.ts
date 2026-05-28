@@ -5,3 +5,4 @@ export {
   type AppStore,
   type RootState,
 } from "./store";
+export { setCredentials, clearCredentials } from "@/features/auth";

@@ -13,6 +13,10 @@ export async function Header() {
     navStart: t("nav.start"),
     languageAriaLabel: t("nav.language"),
     themeAriaLabel: t("nav.themeAriaLabel"),
+    navSignIn: t("nav.signIn"),
+    navSignUp: t("nav.signUp"),
+    navMyAccount: t("nav.myAccount"),
+    navSignOut: t("nav.signOut"),
   };
 
   return <HeaderInteractive copy={copy} />;

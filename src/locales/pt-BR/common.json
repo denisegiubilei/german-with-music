@@ -73,7 +73,53 @@
     "songs": "Músicas",
     "library": "Biblioteca",
     "howItWorks": "Como funciona",
-    "start": "Começar"
+    "start": "Começar",
+    "signIn": "Entrar",
+    "signUp": "Criar conta",
+    "myAccount": "Minha conta",
+    "signOut": "Sair"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Entrar",
+      "subtitle": "Bem-vindo de volta",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "voce@exemplo.com",
+      "passwordLabel": "Senha",
+      "passwordPlaceholder": "Sua senha",
+      "submit": "Entrar",
+      "submitting": "Entrando…",
+      "noAccount": "Não tem uma conta?",
+      "signUpLink": "Criar conta",
+      "errorInvalid": "E-mail ou senha inválidos.",
+      "errorTooMany": "Muitas tentativas. Tente novamente mais tarde.",
+      "errorGeneric": "Algo deu errado. Tente novamente."
+    },
+    "signUp": {
+      "title": "Criar conta",
+      "subtitle": "Comece a aprender alemão com música",
+      "nameLabel": "Nome",
+      "namePlaceholder": "Seu nome (opcional)",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "voce@exemplo.com",
+      "passwordLabel": "Senha",
+      "passwordPlaceholder": "Mínimo 8 caracteres",
+      "submit": "Criar conta",
+      "submitting": "Criando conta…",
+      "hasAccount": "Já tem uma conta?",
+      "signInLink": "Entrar",
+      "errorEmailTaken": "Este e-mail já está em uso.",
+      "errorTooMany": "Muitas tentativas. Tente novamente mais tarde.",
+      "errorGeneric": "Algo deu errado. Tente novamente."
+    },
+    "me": {
+      "title": "Minha conta",
+      "emailLabel": "E-mail",
+      "nameLabel": "Nome",
+      "nameFallback": "Não definido",
+      "idLabel": "ID do usuário",
+      "signOut": "Sair"
+    }
   },
   "footer": {
     "copyright": "© {{year}} {{brand}}",

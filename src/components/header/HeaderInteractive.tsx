@@ -10,12 +10,12 @@ import {
   NavbarToggle,
   Container,
   Nav,
-  Button,
 } from "react-bootstrap";
 import type { HeaderCopy } from "@/components/header/header-copy";
 import { LanguageSwitcher } from "@/components/language-switcher/LanguageSwitcher";
 import { ThemeSwitcher } from "@/components/theme-switcher/ThemeSwitcher";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
+import { UserMenu } from "@/components/auth/UserMenu";
 import { pathWithoutLocale } from "@/lib/localized-path";
 import { SECTION_IDS } from "@/lib/section-ids";
 import styles from "./Header.module.scss";
@@ -121,17 +121,14 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
                 <ThemeSwitcher ariaLabel={copy.themeAriaLabel} />
                 <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
               </div>
-              <Button
-                variant="warning"
-                size="sm"
-                className={classNames(
-                  "text-dark border-0",
-                  "w-100 w-md-auto",
-                  "py-2 py-md-1",
-                )}
-              >
-                {copy.navStart}
-              </Button>
+              <UserMenu
+                copy={{
+                  signIn: copy.navSignIn,
+                  signUp: copy.navSignUp,
+                  myAccount: copy.navMyAccount,
+                  signOut: copy.navSignOut,
+                }}
+              />
             </div>
           </NavbarCollapse>
         </Container>

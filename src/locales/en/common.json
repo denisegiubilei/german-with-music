@@ -73,7 +73,53 @@
     "songs": "Songs",
     "library": "Library",
     "howItWorks": "How it works",
-    "start": "Get started"
+    "start": "Get started",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "myAccount": "My account",
+    "signOut": "Sign out"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in",
+      "subtitle": "Welcome back",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Your password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up",
+      "errorInvalid": "Invalid email or password.",
+      "errorTooMany": "Too many attempts. Please try again later.",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
+    "signUp": {
+      "title": "Create account",
+      "subtitle": "Start learning German with music",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name (optional)",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "At least 8 characters",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "errorEmailTaken": "This email is already in use.",
+      "errorTooMany": "Too many attempts. Please try again later.",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
+    "me": {
+      "title": "My account",
+      "emailLabel": "Email",
+      "nameLabel": "Name",
+      "nameFallback": "Not set",
+      "idLabel": "User ID",
+      "signOut": "Sign out"
+    }
   },
   "footer": {
     "copyright": "© {{year}} {{brand}}",

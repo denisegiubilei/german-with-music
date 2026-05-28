@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { Geist_Mono, Inter } from "next/font/google";
+import Script from "next/script";
 import { initServerI18next } from "next-i18next/server";
 import i18nConfig from "../../i18n.config";
 import { getRequestLocale } from "@/i18n/request-locale";
@@ -33,9 +34,10 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Theme boot: server-only <script> — next/script is a client module and React 19 skips those scripts on the client. */}
-        <script
+        {/* Injected by Next.js before hydration — runs once on initial load to set the theme class without FOUC. */}
+        <Script
           id="gwm-theme-boot"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: THEME_BOOT_INLINE_SCRIPT }}
         />
       </head>
