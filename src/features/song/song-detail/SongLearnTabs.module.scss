@@ -1,3 +1,5 @@
+$flash-verse-bg: #2c2c2c;
+
 .flashRoot {
   width: 100%;
   max-width: 36rem;
@@ -81,10 +83,13 @@
 
 .flashFaceMain {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: minmax(2.75rem, auto) minmax(
+      calc(2.75rem + 0.7rem + 0.75rem + 2.5rem),
+      auto
+    );
+  align-content: center;
+  align-items: stretch;
   gap: 1.5rem;
   width: 100%;
   min-height: 0;
@@ -103,6 +108,10 @@
   text-align: center;
 }
 
+.flashSlotEmpty {
+  visibility: hidden;
+}
+
 .flashContentCoded {
   display: inline-block;
   max-width: 100%;
@@ -118,6 +127,7 @@
   align-items: center;
   gap: 0.75rem;
   width: 100%;
+  min-height: calc(2.75rem + 0.7rem + 0.75rem + 2.5rem);
 }
 
 .flashVerseOverlay {
@@ -127,6 +137,9 @@
   justify-content: center;
   width: 100%;
   min-height: 2.75rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 0.375rem;
+  background-color: $flash-verse-bg;
 }
 
 .flashVerseOverlayBlurred:hover .flashRevealVerseOverlayBtn,
@@ -147,13 +160,8 @@
   font-weight: 400;
   line-height: 1.35;
   text-align: center;
-  color: var(--bs-secondary-color);
+  color: rgba(255, 255, 255, 0.88);
   transition: filter 0.25s ease;
-}
-
-.flashRevealVerseOverlayBtn svg,
-.flashHideVerseOverlayBtn svg {
-  transform: translateY(8px);
 }
 
 .flashRevealVerseOverlayBtn,
@@ -169,8 +177,8 @@
   padding: 0;
   border: 0;
   border-radius: var(--bs-border-radius);
-  background-color: color-mix(in srgb, var(--bs-body-bg) 55%, transparent);
-  color: var(--bs-secondary-color);
+  background-color: color-mix(in srgb, $flash-verse-bg 55%, transparent);
+  color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
   opacity: 0;
   transition:
@@ -179,7 +187,7 @@
 
   &:hover,
   &:focus-visible {
-    background-color: color-mix(in srgb, var(--bs-body-bg) 72%, transparent);
+    background-color: color-mix(in srgb, $flash-verse-bg 72%, transparent);
   }
 
   &:focus-visible {
@@ -246,8 +254,12 @@
     color: rgba(255, 255, 255, 0.75);
   }
 
+  .flashVerseOverlay {
+    background-color: $flash-verse-bg;
+  }
+
   .flashVerseContextText {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.88);
   }
 
   .flashContentCoded {
@@ -277,8 +289,14 @@
   flex-shrink: 0;
   margin-top: auto;
   padding-top: 1rem;
+  min-height: calc(0.75rem * 1.2 + 1rem);
   font-size: 0.75rem;
+  line-height: 1.2;
   color: var(--bs-secondary-color);
+}
+
+.flashHintInvisible {
+  visibility: hidden;
 }
 
 .flashControls {

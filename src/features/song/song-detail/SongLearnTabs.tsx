@@ -37,6 +37,117 @@ function shuffleArray<T>(items: T[]): T[] {
   return out;
 }
 
+interface FlashCardTextSlotsProps {
+  contentText: string;
+  verseText: string;
+  contentHighlighted: boolean;
+  wordHighlightStyle?: { backgroundColor: string; color: string };
+  contentMuted?: boolean;
+  showVerseBlurControls: boolean;
+  verseRevealed: boolean;
+  onRevealVerse: () => void;
+  onHideVerse: () => void;
+  revealVerseLabel: string;
+  hideVerseLabel: string;
+}
+
+/** Shared content + verse layout so both card faces align when flipped. */
+function FlashCardTextSlots({
+  contentText,
+  verseText,
+  contentHighlighted,
+  wordHighlightStyle,
+  contentMuted,
+  showVerseBlurControls,
+  verseRevealed,
+  onRevealVerse,
+  onHideVerse,
+  revealVerseLabel,
+  hideVerseLabel,
+}: FlashCardTextSlotsProps) {
+  const contentVisible = Boolean(contentText.trim());
+  const verseVisible = Boolean(verseText.trim());
+
+  return (
+    <div className={styles.flashFaceMain}>
+      <p className={classNames(styles.flashContent, contentMuted && "opacity-75")}>
+        <span
+          className={classNames(
+            contentHighlighted &&
+              wordHighlightStyle &&
+              styles.flashContentCoded,
+            !contentVisible && styles.flashSlotEmpty,
+          )}
+          style={contentHighlighted ? wordHighlightStyle : undefined}
+        >
+          {contentVisible ? contentText : "\u00a0"}
+        </span>
+      </p>
+      <div className={styles.flashVerseContext}>
+        <div
+          className={classNames(
+            styles.flashVerseOverlay,
+            showVerseBlurControls &&
+              !verseRevealed &&
+              styles.flashVerseOverlayBlurred,
+            showVerseBlurControls &&
+              verseRevealed &&
+              styles.flashVerseOverlayRevealed,
+          )}
+        >
+          <p
+            className={classNames(
+              styles.flashVerseContextText,
+              showVerseBlurControls &&
+                !verseRevealed &&
+                styles.flashVerseContextBlurred,
+              !verseVisible && styles.flashSlotEmpty,
+            )}
+            aria-hidden={showVerseBlurControls && !verseRevealed}
+          >
+            {verseVisible ? verseText : "\u00a0"}
+          </p>
+          {showVerseBlurControls && !verseRevealed ? (
+            <button
+              type="button"
+              className={styles.flashRevealVerseOverlayBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                onRevealVerse();
+              }}
+              aria-label={revealVerseLabel}
+            >
+              <Eye size={22} strokeWidth={2} aria-hidden />
+              <span className={styles.flashVerseOverlayTooltip}>
+                {revealVerseLabel}
+              </span>
+            </button>
+          ) : null}
+          {showVerseBlurControls && verseRevealed ? (
+            <button
+              type="button"
+              className={styles.flashHideVerseOverlayBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                onHideVerse();
+              }}
+              aria-label={hideVerseLabel}
+            >
+              <EyeOff size={22} strokeWidth={2} aria-hidden />
+              <span className={styles.flashVerseOverlayTooltip}>
+                {hideVerseLabel}
+              </span>
+            </button>
+          ) : null}
+        </div>
+        <div className={styles.flashRevealBtnSlot}>
+          <span className={styles.flashRevealVerseBtn} aria-hidden />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
   const { t } = useTranslation();
   const [cards, setCards] = useState<VerseFlashcardLine[]>(() => [...lines]);
@@ -106,6 +217,19 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
   const hasTranslation =
     Boolean(card.translation.trim()) || Boolean(card.verseTranslation.trim());
 
+  const frontContentText = showVerseContext
+    ? card.content
+    : card.verse || card.content;
+  const frontVerseText = showVerseContext ? card.verse : "";
+
+  const backContentText = !hasTranslation
+    ? t("songPage.noTranslation")
+    : showTranslationContext
+      ? card.translation
+      : card.verseTranslation || card.translation;
+  const backVerseText =
+    hasTranslation && showTranslationContext ? card.verseTranslation : "";
+
   return (
     <div className={classNames(styles.flashRoot, "d-flex flex-column align-items-center gap-2")}>
       <div className={styles.flashTopRow}>
@@ -140,78 +264,18 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
             <span className={styles.flashFaceLabel}>
               {t("songPage.flashcardOriginal")}
             </span>
-            <div className={styles.flashFaceMain}>
-              <p className={styles.flashContent}>
-                <span
-                  className={classNames(
-                    wordHighlightStyle && styles.flashContentCoded,
-                  )}
-                  style={wordHighlightStyle}
-                >
-                  {showVerseContext ? card.content : card.verse || card.content}
-                </span>
-              </p>
-              <div className={styles.flashVerseContext}>
-                <div
-                  className={classNames(
-                    styles.flashVerseOverlay,
-                    showVerseContext &&
-                      !verseContextRevealed &&
-                      styles.flashVerseOverlayBlurred,
-                    showVerseContext &&
-                      verseContextRevealed &&
-                      styles.flashVerseOverlayRevealed,
-                  )}
-                >
-                  <p
-                    className={classNames(
-                      styles.flashVerseContextText,
-                      showVerseContext &&
-                        !verseContextRevealed &&
-                        styles.flashVerseContextBlurred,
-                    )}
-                    aria-hidden={showVerseContext && !verseContextRevealed}
-                  >
-                    {showVerseContext ? card.verse : "\u00a0"}
-                  </p>
-                  {showVerseContext && !verseContextRevealed ? (
-                    <button
-                      type="button"
-                      className={styles.flashRevealVerseOverlayBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setVerseContextRevealed(true);
-                      }}
-                      aria-label={t("songPage.flashcardRevealVerse")}
-                    >
-                      <Eye size={22} strokeWidth={2} aria-hidden />
-                      <span className={styles.flashVerseOverlayTooltip}>
-                        {t("songPage.flashcardRevealVerse")}
-                      </span>
-                    </button>
-                  ) : null}
-                  {showVerseContext && verseContextRevealed ? (
-                    <button
-                      type="button"
-                      className={styles.flashHideVerseOverlayBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setVerseContextRevealed(false);
-                      }}
-                      aria-label={t("songPage.flashcardHideVerse")}
-                    >
-                      <EyeOff size={22} strokeWidth={2} aria-hidden />
-                      <span className={styles.flashVerseOverlayTooltip}>
-                        {t("songPage.flashcardHideVerse")}
-                      </span>
-                    </button>
-                  ) : null}
-                </div>
-                <div className={styles.flashRevealBtnSlot}>
-                  <span className={styles.flashRevealVerseBtn} aria-hidden />
-                </div>
-              </div>
-            </div>
+            <FlashCardTextSlots
+              contentText={frontContentText}
+              verseText={frontVerseText}
+              contentHighlighted={showVerseContext}
+              wordHighlightStyle={wordHighlightStyle}
+              showVerseBlurControls={showVerseContext}
+              verseRevealed={verseContextRevealed}
+              onRevealVerse={() => setVerseContextRevealed(true)}
+              onHideVerse={() => setVerseContextRevealed(false)}
+              revealVerseLabel={t("songPage.flashcardRevealVerse")}
+              hideVerseLabel={t("songPage.flashcardHideVerse")}
+            />
             <span className={styles.flashHint}>
               {t("songPage.flashcardClickToReveal")}
             </span>
@@ -220,39 +284,25 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
             <span className={styles.flashFaceLabel}>
               {t("songPage.flashcardTranslation")}
             </span>
-            <div className={styles.flashFaceMain}>
-              <p
-                className={classNames(
-                  styles.flashContent,
-                  !hasTranslation && "opacity-75",
-                )}
-              >
-                {!hasTranslation ? (
-                  t("songPage.noTranslation")
-                ) : (
-                  <span
-                    className={classNames(
-                      wordHighlightStyle && styles.flashContentCoded,
-                    )}
-                    style={wordHighlightStyle}
-                  >
-                    {showTranslationContext
-                      ? card.translation
-                      : card.verseTranslation || card.translation}
-                  </span>
-                )}
-              </p>
-              <div className={styles.flashVerseContext}>
-                <p className={styles.flashVerseContextText}>
-                  {hasTranslation && showTranslationContext
-                    ? card.verseTranslation
-                    : "\u00a0"}
-                </p>
-                <div className={styles.flashRevealBtnSlot}>
-                  <span className={styles.flashRevealVerseBtn} aria-hidden />
-                </div>
-              </div>
-            </div>
+            <FlashCardTextSlots
+              contentText={backContentText}
+              verseText={backVerseText}
+              contentHighlighted={showTranslationContext}
+              wordHighlightStyle={wordHighlightStyle}
+              contentMuted={!hasTranslation}
+              showVerseBlurControls={false}
+              verseRevealed={false}
+              onRevealVerse={() => {}}
+              onHideVerse={() => {}}
+              revealVerseLabel={t("songPage.flashcardRevealVerse")}
+              hideVerseLabel={t("songPage.flashcardHideVerse")}
+            />
+            <span
+              className={classNames(styles.flashHint, styles.flashHintInvisible)}
+              aria-hidden
+            >
+              {t("songPage.flashcardClickToReveal")}
+            </span>
           </div>
         </div>
       </div>
