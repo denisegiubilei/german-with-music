@@ -19,18 +19,12 @@ export async function Footer() {
             >
               {t("footer.about")}
             </LocalizedLink>
-            <a
-              href="#"
+            <LocalizedLink
+              href="/contact"
               className="link-secondary link-underline-opacity-0 link-underline-opacity-100-hover"
             >
               {t("footer.contact")}
-            </a>
-            <a
-              href="#"
-              className="link-secondary link-underline-opacity-0 link-underline-opacity-100-hover"
-            >
-              {t("footer.privacy")}
-            </a>
+            </LocalizedLink>
           </div>
         </div>
       </div>

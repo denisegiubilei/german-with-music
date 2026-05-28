@@ -27,14 +27,26 @@
       ]
     },
     "about": {
-      "description": "Saiba mais sobre o Alemão com Música: como ajudamos você a aprender alemão com letras, traduções e prática de listening curada.",
-      "openGraphDescription": "Sobre o Alemão com Música — aprenda alemão com letras e traduções.",
-      "twitterDescription": "Sobre o Alemão com Música: letras, traduções e prática de listening em alemão.",
+      "description": "O Alemão com Música ajuda você a aprender alemão com letras de músicas, traduções em inglês, flashcards e uma biblioteca pesquisável—pratique vocabulário e listening em contexto.",
+      "openGraphDescription": "Saiba como o Alemão com Música usa músicas reais, letras e traduções para tornar o estudo de alemão mais envolvente.",
+      "twitterDescription": "Sobre o Alemão com Música: aprenda alemão com letras, traduções, flashcards e músicas curadas.",
       "keywords": [
         "sobre Alemão com Música",
-        "aprender alemão",
-        "letras em alemão",
-        "aprendizado de idiomas"
+        "aprender alemão com música",
+        "letras de músicas em alemão",
+        "tradução alemão inglês",
+        "aprendizado de idiomas com músicas",
+        "prática de listening em alemão"
+      ]
+    },
+    "contact": {
+      "description": "Entre em contato com o Alemão com Música — dúvidas, feedback e suporte por e-mail.",
+      "openGraphDescription": "Fale com o Alemão com Música.",
+      "twitterDescription": "Contato com o suporte do Alemão com Música.",
+      "keywords": [
+        "contato Alemão com Música",
+        "suporte",
+        "feedback"
       ]
     }
   },
@@ -121,11 +133,35 @@
       "signOut": "Sair"
     }
   },
+  "contact": {
+    "title": "Contato",
+    "intro": "Dúvidas, feedback ou suporte? Envie um e-mail e responderemos o quanto antes.",
+    "emailLabel": "E-mail"
+  },
+  "about": {
+    "title": "Sobre o Alemão com Música",
+    "breadcrumbLabel": "Navegação estrutural",
+    "breadcrumbHome": "Início",
+    "lead": "O Alemão com Música ajuda você a aprender alemão com músicas - com letras originais, traduções em inglês e ferramentas de estudo que mantêm o vocabulário em contexto.",
+    "missionTitle": "Nossa missão",
+    "missionBody": "Acreditamos que a música torna o aprendizado de idiomas memorável. Em vez de listas isoladas de palavras, você ouve o alemão como falantes nativos usam, acompanha linha a linha e reforça o significado com traduções e prática interativa.",
+    "offerTitle": "O que você pode fazer aqui",
+    "offerItems": [
+      "Explorar uma biblioteca curada de músicas em alemão",
+      "Ler letras com traduções em inglês lado a lado",
+      "Revisar vocabulário destacado e flashcards por música"
+    ],
+    "audienceTitle": "Para quem é",
+    "audienceBody": "Se você está começando o alemão ou retomando a prática de listening, o Alemão com Música é para quem gosta de estudar com música no próprio ritmo - em casa, no caminho ou entre as aulas.",
+    "exploreTitle": "Comece a explorar",
+    "exploreHome": "Início",
+    "exploreLibrary": "Biblioteca de músicas",
+    "exploreContact": "Fale conosco"
+  },
   "footer": {
     "copyright": "© {{year}} {{brand}}",
     "about": "Sobre",
-    "contact": "Contato",
-    "privacy": "Privacidade"
+    "contact": "Contato"
   },
   "hero": {
     "eyebrow": "Aprenda alemão de forma divertida",

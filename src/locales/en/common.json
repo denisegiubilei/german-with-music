@@ -27,14 +27,26 @@
       ]
     },
     "about": {
-      "description": "Learn about German with Music: how we help you learn German through song lyrics, translations, and curated listening practice.",
-      "openGraphDescription": "About German with Music — learn German with lyrics and translations.",
-      "twitterDescription": "About German with Music: lyrics, translations, and German listening practice.",
+      "description": "German with Music helps you learn German through song lyrics, English translations, flashcards, and a searchable song library—practice vocabulary and listening in context.",
+      "openGraphDescription": "Learn how German with Music uses real songs, lyrics, and translations to make German practice engaging.",
+      "twitterDescription": "About German with Music: learn German with lyrics, translations, flashcards, and curated songs.",
       "keywords": [
         "about German with Music",
-        "learn German",
-        "German lyrics",
-        "language learning"
+        "learn German with music",
+        "German song lyrics",
+        "German English translation",
+        "language learning with songs",
+        "German listening practice"
+      ]
+    },
+    "contact": {
+      "description": "Contact German with Music — questions, feedback, and support by email.",
+      "openGraphDescription": "Get in touch with German with Music.",
+      "twitterDescription": "Contact German with Music support.",
+      "keywords": [
+        "contact German with Music",
+        "support",
+        "feedback"
       ]
     }
   },
@@ -121,11 +133,35 @@
       "signOut": "Sign out"
     }
   },
+  "contact": {
+    "title": "Contact",
+    "intro": "Questions, feedback, or support? Send us an email and we'll get back to you.",
+    "emailLabel": "Email"
+  },
+  "about": {
+    "title": "About German with Music",
+    "breadcrumbLabel": "Breadcrumb",
+    "breadcrumbHome": "Home",
+    "lead": "German with Music helps you learn German through songs - with original lyrics, English translations, and study tools that keep vocabulary in context.",
+    "missionTitle": "Our mission",
+    "missionBody": "We believe music makes language learning memorable. Instead of isolated word lists, you hear German as native speakers use it, follow along line by line, and reinforce meaning with translations and interactive practice.",
+    "offerTitle": "What you can do here",
+    "offerItems": [
+      "Browse a curated library of songs in German",
+      "Read lyrics with English translations side by side",
+      "Review highlighted vocabulary and per-song flashcards"
+    ],
+    "audienceTitle": "Who it is for",
+    "audienceBody": "Whether you are new to German or refreshing your listening skills, German with Music is for learners who enjoy studying through music at their own pace - at home, on the go, or between classes.",
+    "exploreTitle": "Start exploring",
+    "exploreHome": "Home",
+    "exploreLibrary": "Song library",
+    "exploreContact": "Contact us"
+  },
   "footer": {
     "copyright": "© {{year}} {{brand}}",
     "about": "About",
-    "contact": "Contact",
-    "privacy": "Privacy"
+    "contact": "Contact"
   },
   "hero": {
     "eyebrow": "Learn German the fun way",
