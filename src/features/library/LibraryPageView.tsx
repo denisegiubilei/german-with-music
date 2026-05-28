@@ -12,7 +12,7 @@ import {
   youtubeWatchUrlToEmbedUrl,
   youtubeWatchUrlToThumbnailUrl,
 } from "@/shared/lib/youtube";
-import { LibraryFiltersPanel } from "./LibraryFiltersPanel";
+// import { LibraryFiltersPanel } from "./LibraryFiltersPanel";
 import type { LibrarySearchState } from "./library-search";
 import { serializeLibrarySearchParams } from "./library-search";
 
@@ -32,7 +32,7 @@ export async function LibraryPageView({
   payload: YoutubeReleasesListResponse | null;
 }) {
   const { t } = await getT(locale);
-  const formAction = localizedPath("/library", locale);
+  // const formAction = localizedPath("/library", locale);
   const fetchFailed = payload === null;
   const items = payload?.data ?? [];
   const meta = payload?.meta;
@@ -48,11 +48,12 @@ export async function LibraryPageView({
       <h1 className="h2 mb-2">{t("library.title")}</h1>
       <p className="text-body-secondary mb-4">{t("library.lead")}</p>
 
-      <LibraryFiltersPanel
+      {/* TEMP: filters disabled — library is hardcoded to artist LERNIKA in librarySearchToApiArgs */}
+      {/* <LibraryFiltersPanel
         formAction={formAction}
         defaultArtist={search.artist}
         defaultTitle={search.title}
-      />
+      /> */}
 
       {!fetchFailed && total > 0 ? (
         <p className="text-body-secondary small mb-3">
