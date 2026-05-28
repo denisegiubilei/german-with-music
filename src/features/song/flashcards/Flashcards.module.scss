@@ -1,3 +1,5 @@
+@use "../../../styles/breakpoints" as bp;
+
 $flash-verse-bg: #2c2c2c;
 
 .flashRoot {
@@ -79,6 +81,10 @@ $flash-verse-bg: #2c2c2c;
   letter-spacing: 0.06em;
   color: var(--bs-secondary-color);
   margin-bottom: 0.75rem;
+
+  @include bp.media-breakpoint-down(sm) {
+    visibility: hidden;
+  }
 }
 
 .flashFaceMain {
