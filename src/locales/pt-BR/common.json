@@ -159,6 +159,8 @@
     "title": "Músicas em destaque",
     "subtitle": "Explore nossa coleção de músicas alemãs com letras e traduções.",
     "exploreLibrary": "Explorar biblioteca",
+    "error": "Não foi possível carregar as músicas em destaque. Tente novamente mais tarde.",
+    "empty": "Ainda não há músicas em destaque. Volte em breve.",
     "items": [
       {
         "title": "99 Luftballons",

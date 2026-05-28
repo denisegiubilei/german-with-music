@@ -159,6 +159,8 @@
     "title": "Featured songs",
     "subtitle": "Explore our collection of German songs with lyrics and translations.",
     "exploreLibrary": "Explore library",
+    "error": "We could not load featured songs. Please try again later.",
+    "empty": "No featured songs yet. Check back soon.",
     "items": [
       {
         "title": "99 Luftballons",
