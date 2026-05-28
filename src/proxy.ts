@@ -6,7 +6,7 @@ import {
 } from "@/i18n/locale-path-resolution";
 import { getPreferredLocale } from "@/i18n/preferred-locale";
 import { defaultLocale, i18nHeaderName, isValidLocale } from "@/i18n/settings";
-import { localizedPath } from "@/lib/localized-path";
+import { localizedPath, pathWithoutLocale } from "@/lib/localized-path";
 
 const REFRESH_COOKIE = "lp_refresh";
 
@@ -16,12 +16,9 @@ const PROTECTED_SEGMENTS = ["/me"];
 /** Routes that authenticated users should be bounced away from (already have a session). */
 const AUTH_ONLY_SEGMENTS = ["/signin", "/signup"];
 
-/**
- * Strip the locale prefix from a path so route checks are locale-agnostic.
- * e.g. "/en/me" → "/me", "/pt-BR/signin" → "/signin", "/me" → "/me"
- */
+/** Locale-agnostic app path for auth checks (only strips known locale prefixes). */
 function stripLocale(pathname: string): string {
-  return pathname.replace(/^\/[a-zA-Z]{2}(-[a-zA-Z]{2,4})?(?=\/|$)/, "") || "/";
+  return pathWithoutLocale(pathname);
 }
 
 function isProtected(pathname: string): boolean {

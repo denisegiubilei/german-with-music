@@ -1,9 +1,4 @@
-import {
-  defaultLocale,
-  isValidLocale,
-  looksLikeLocaleSegment,
-  type Locale,
-} from "./settings";
+import { defaultLocale, isValidLocale, type Locale } from "./settings";
 
 export type LocalePathResolution =
   | { kind: "skip" }
@@ -13,7 +8,7 @@ export type LocalePathResolution =
 
 /**
  * Paths the locale middleware should not touch. Prefix rules must stay in sync with the
- * literal `matcher` array in `src/middleware.ts` (Next requires static matchers there).
+ * literal `matcher` array in `src/proxy.ts` (Next requires static matchers there).
  * Paths whose last segment looks like `*.ext` still match the matcher and return early here.
  */
 export function shouldSkipLocaleMiddleware(pathname: string): boolean {
@@ -52,10 +47,6 @@ export function resolveLocalePath(pathname: string): LocalePathResolution {
         segments.length === 1 ? "/" : `/${segments.slice(1).join("/")}`;
       return { kind: "redirect-default-prefix", unprefixedPath: rest };
     }
-    return { kind: "pass-through", localeSegment: first };
-  }
-
-  if (looksLikeLocaleSegment(first)) {
     return { kind: "pass-through", localeSegment: first };
   }
 

@@ -1,0 +1,40 @@
+.toggle {
+  $hit: 2.25rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: center;
+  box-sizing: border-box;
+  width: $hit;
+  height: $hit;
+  min-width: $hit;
+  min-height: $hit;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  line-height: 1;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--bs-secondary-color);
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out;
+
+  &:hover,
+  &[aria-expanded="true"] {
+    border-radius: 50%;
+    color: var(--bs-emphasis-color);
+    background-color: var(--bs-tertiary-bg);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-emphasis-color-rgb), 0.15);
+  }
+
+  &::after {
+    display: none !important;
+  }
+}

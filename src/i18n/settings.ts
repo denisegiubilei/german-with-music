@@ -20,12 +20,3 @@ export const i18nHeaderName = "x-i18next-current-language";
 export function isValidLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
-
-/**
- * True when the first path segment looks like a language tag (so we do not
- * rewrite `/xx/...` into `/en/xx/...` and can surface `notFound()` instead).
- */
-export function looksLikeLocaleSegment(segment: string): boolean {
-  if (segment.length === 2 && /^[a-zA-Z]{2}$/.test(segment)) return true;
-  return /^[a-zA-Z]{2}-[a-zA-Z0-9]+$/.test(segment);
-}

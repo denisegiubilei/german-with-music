@@ -1,12 +1,16 @@
 "use client";
 
+import classNames from "classnames";
+import { forwardRef } from "react";
 import { useRouter } from "next/navigation";
-import { Nav, Button, Spinner } from "react-bootstrap";
+import { User } from "lucide-react";
+import { Dropdown, Nav, Spinner } from "react-bootstrap";
 import { useAppSelector } from "@/store";
 import { useLogoutMutation } from "@/integrations/lyric-palette";
 import { useLocale } from "@/i18n/locale-context";
 import { localizedPath } from "@/lib/localized-path";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
+import styles from "./UserMenu.module.scss";
 
 interface UserMenuCopy {
   signIn: string;
@@ -14,6 +18,23 @@ interface UserMenuCopy {
   myAccount: string;
   signOut: string;
 }
+
+type ToggleProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const UserMenuToggle = forwardRef<HTMLButtonElement, ToggleProps>(
+  function UserMenuToggle({ children, className = "", ...rest }, ref) {
+    return (
+      <button
+        ref={ref}
+        type="button"
+        {...rest}
+        className={classNames(styles.toggle, className)}
+      >
+        {children}
+      </button>
+    );
+  },
+);
 
 export function UserMenu({ copy }: { copy: UserMenuCopy }) {
   const router = useRouter();
@@ -28,28 +49,33 @@ export function UserMenu({ copy }: { copy: UserMenuCopy }) {
 
   if (user) {
     return (
-      <div className="d-flex align-items-center gap-2">
-        <Nav.Link
-          as={LocalizedLinkClient}
-          href="/me"
-          className="text-body-secondary py-md-1 small"
+      <Dropdown align="end">
+        <Dropdown.Toggle
+          as={UserMenuToggle}
+          id="user-menu-toggle"
+          aria-label={copy.myAccount}
         >
-          {user.name ?? user.login}
-        </Nav.Link>
-        <Button
-          variant="outline-secondary"
-          size="sm"
-          onClick={handleLogout}
-          disabled={isLoggingOut}
-          className="py-1"
-        >
-          {isLoggingOut ? (
-            <Spinner size="sm" aria-label={copy.signOut} />
-          ) : (
-            copy.signOut
-          )}
-        </Button>
-      </div>
+          <User size={20} aria-hidden />
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item as={LocalizedLinkClient} href="/me">
+            {copy.myAccount}
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => void handleLogout()}
+            disabled={isLoggingOut}
+          >
+            {isLoggingOut ? (
+              <>
+                <Spinner size="sm" className="me-2" aria-hidden />
+                {copy.signOut}
+              </>
+            ) : (
+              copy.signOut
+            )}
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     );
   }
 
