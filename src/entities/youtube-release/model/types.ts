@@ -5,8 +5,10 @@ export interface YoutubeRelease {
   artist: string | null;
   title: string;
   lang: string | null;
+  wordClassification: string;
   glossary: string | null;
   featured: boolean;
+  public: boolean;
 }
 
 /** Pagination block on `GET /releases/youtube` — see docs/api.md. */
@@ -28,29 +30,30 @@ export interface YoutubeReleaseDetailResponse {
   data: YoutubeRelease;
 }
 
-/** One verse line from `GET /releases/:slug/verses` — see docs/api.md. */
-export interface ReleaseVerseFace {
-  text: string;
-  words: string[];
+/** Translation row on `GET /releases/:releaseSlug/cards` — see docs/api.md. */
+export interface ReleaseFlashCardTranslation {
+  lang: string;
+  translation: string;
+  verseTranslation: string;
 }
 
-export interface ReleaseVerseLine {
-  verseIndex: number;
-  verseIds: number[];
-  chorus?: boolean;
-  original: ReleaseVerseFace;
-  translation: ReleaseVerseFace;
+/** One flash card from `GET /releases/:releaseSlug/cards` — see docs/api.md. */
+export interface ReleaseFlashCard {
+  content: string;
+  number: number;
+  verse: string;
+  code: number;
+  translations: ReleaseFlashCardTranslation[];
 }
 
-/** Payload inside `data` for `GET /releases/:slug/verses`. */
-export interface ReleaseVersesPayload {
+/** Payload inside `data` for `GET /releases/:releaseSlug/cards`. */
+export interface ReleaseFlashCardsPayload {
   slug: string;
-  translationLang: string | null;
-  verses: ReleaseVerseLine[];
+  cards: ReleaseFlashCard[];
 }
 
-export interface ReleaseVersesResponse {
-  data: ReleaseVersesPayload;
+export interface ReleaseFlashCardsResponse {
+  data: ReleaseFlashCardsPayload;
 }
 
 export interface GetYoutubeReleasesQueryArgs {

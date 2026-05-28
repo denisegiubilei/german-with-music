@@ -1,14 +1,14 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import type {
   GetYoutubeReleasesQueryArgs,
-  ReleaseVersesPayload,
-  ReleaseVersesResponse,
+  ReleaseFlashCardsPayload,
+  ReleaseFlashCardsResponse,
   YoutubeRelease,
   YoutubeReleaseDetailResponse,
   YoutubeReleasesListResponse,
 } from "@/entities/youtube-release";
 import type { User } from "@/entities/user";
-import { getReleaseVersesRequestPath } from "../releases/release-verses-path";
+import { getReleaseFlashCardsRequestPath } from "../releases/release-flash-cards-path";
 import { getYoutubeReleaseBySlugRequestPath } from "../releases/youtube/release-by-slug-path";
 import { getYoutubeReleasesRequestPath } from "../releases/youtube/request-path";
 import { authenticatedBaseQuery } from "./base-query";
@@ -34,16 +34,16 @@ export const lyricPaletteApi = createApi({
       transformResponse: (response: YoutubeReleaseDetailResponse) =>
         response.data,
     }),
-    getReleaseVerses: build.query<ReleaseVersesPayload, string>({
-      query: (slug) => getReleaseVersesRequestPath(slug),
-      transformResponse: (response: ReleaseVersesResponse) => response.data,
+    getReleaseFlashCards: build.query<ReleaseFlashCardsPayload, string>({
+      query: (slug) => getReleaseFlashCardsRequestPath(slug),
+      transformResponse: (response: ReleaseFlashCardsResponse) => response.data,
     }),
   }),
 });
 
 export const {
   useGetMeQuery,
-  useGetReleaseVersesQuery,
+  useGetReleaseFlashCardsQuery,
   useGetYoutubeReleaseBySlugQuery,
   useGetYoutubeReleasesQuery,
 } = lyricPaletteApi;

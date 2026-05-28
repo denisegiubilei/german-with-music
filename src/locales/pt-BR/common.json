@@ -77,6 +77,8 @@
     "flashcardOriginal": "Original",
     "flashcardTranslation": "Tradução",
     "flashcardClickToReveal": "Clique para revelar",
+    "flashcardRevealVerse": "Mostrar verso",
+    "flashcardHideVerse": "Ocultar verso",
     "noTranslation": "Não há tradução para esta linha."
   },
   "nav": {

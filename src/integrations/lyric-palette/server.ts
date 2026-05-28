@@ -1,6 +1,6 @@
 import "server-only";
 
-export { fetchReleaseVerses } from "./releases/fetch-release-verses";
+export { fetchReleaseFlashCards } from "./releases/fetch-release-flash-cards";
 export { fetchYoutubeReleaseBySlug } from "./releases/youtube/fetch-release-by-slug";
 export {
   fetchYoutubeReleases,

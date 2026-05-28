@@ -4,10 +4,13 @@ import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import type { YoutubeRelease } from "@/entities/youtube-release";
+import {
+  releaseFlashCardsToLines,
+  type YoutubeRelease,
+} from "@/entities/youtube-release";
 import { getT } from "@/i18n/server";
 import type { Locale } from "@/i18n/settings";
-import { fetchReleaseVerses } from "@/integrations/lyric-palette/server";
+import { fetchReleaseFlashCards } from "@/integrations/lyric-palette/server";
 import { localizedPath } from "@/lib/localized-path";
 import { youtubeWatchUrlToEmbedUrl } from "@/shared/lib/youtube";
 import { SongLearnTabs } from "./SongLearnTabs";
@@ -44,12 +47,8 @@ export async function SongDetailView({
     ? release.glossary
     : null;
 
-  const versesPayload = await fetchReleaseVerses(release.slug);
-  const verseLines =
-    versesPayload?.verses.map((v) => ({
-      original: v.original.text,
-      translation: v.translation.text,
-    })) ?? [];
+  const flashCardsPayload = await fetchReleaseFlashCards(release.slug);
+  const verseLines = releaseFlashCardsToLines(flashCardsPayload?.cards ?? []);
 
   const navBtnClass =
     "btn btn-primary d-inline-flex align-items-center gap-1";

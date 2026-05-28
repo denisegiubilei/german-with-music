@@ -4,20 +4,26 @@ import classNames from "classnames";
 import {
   ChevronLeft,
   ChevronRight,
+  Eye,
+  EyeOff,
   RotateCw,
   Shuffle,
 } from "lucide-react";
 import type { KeyboardEvent, ReactNode } from "react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import { flashCardCodeColor } from "@/entities/youtube-release";
 import glossaryStyles from "./SongDetailView.module.scss";
 import styles from "./SongLearnTabs.module.scss";
 
 export interface VerseFlashcardLine {
-  original: string;
+  content: string;
+  verse: string;
   translation: string;
+  verseTranslation: string;
+  code: number;
 }
 
 function shuffleArray<T>(items: T[]): T[] {
@@ -36,27 +42,36 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
   const [cards, setCards] = useState<VerseFlashcardLine[]>(() => [...lines]);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const [verseContextRevealed, setVerseContextRevealed] = useState(false);
 
   const n = cards.length;
   const card = n > 0 ? cards[index] : null;
 
+  useEffect(() => {
+    setVerseContextRevealed(false);
+  }, [index, card?.content, card?.verse]);
+
   const next = useCallback(() => {
     setFlipped(false);
+    setVerseContextRevealed(false);
     setIndex((i) => (i + 1) % n);
   }, [n]);
 
   const prev = useCallback(() => {
     setFlipped(false);
+    setVerseContextRevealed(false);
     setIndex((i) => (i - 1 + n) % n);
   }, [n]);
 
   const shuffle = useCallback(() => {
     setFlipped(false);
+    setVerseContextRevealed(false);
     setCards((c) => shuffleArray(c));
     setIndex(0);
   }, []);
 
   const toggleFlip = useCallback(() => {
+    setVerseContextRevealed(false);
     setFlipped((f) => !f);
   }, []);
 
@@ -78,9 +93,17 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
     );
   }
 
-  const backText = card.translation.trim()
-    ? card.translation
-    : t("songPage.noTranslation");
+  const codeColor = flashCardCodeColor(card.code);
+  const showVerseContext =
+    Boolean(card.content.trim()) &&
+    Boolean(card.verse.trim()) &&
+    card.content.trim() !== card.verse.trim();
+  const showTranslationContext =
+    Boolean(card.translation.trim()) &&
+    Boolean(card.verseTranslation.trim()) &&
+    card.translation.trim() !== card.verseTranslation.trim();
+  const hasTranslation =
+    Boolean(card.translation.trim()) || Boolean(card.verseTranslation.trim());
 
   return (
     <div className={classNames(styles.flashRoot, "d-flex flex-column align-items-center gap-2")}>
@@ -105,11 +128,85 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
         <div
           className={classNames(styles.flashInner, flipped && styles.flashInnerFlipped)}
         >
-          <div className={styles.flashFace}>
+          <div
+            className={styles.flashFace}
+            style={
+              codeColor && !showVerseContext
+                ? { borderTop: `3px solid ${codeColor}` }
+                : undefined
+            }
+          >
             <span className={styles.flashFaceLabel}>
               {t("songPage.flashcardOriginal")}
             </span>
-            <p className={styles.flashFaceText}>{card.original}</p>
+            <div className={styles.flashFaceMain}>
+              <p
+                className={styles.flashContent}
+                style={codeColor ? { color: codeColor } : undefined}
+              >
+                {showVerseContext ? card.content : card.verse || card.content}
+              </p>
+              <div className={styles.flashVerseContext}>
+                <div
+                  className={classNames(
+                    styles.flashVerseOverlay,
+                    showVerseContext &&
+                      !verseContextRevealed &&
+                      styles.flashVerseOverlayBlurred,
+                    showVerseContext &&
+                      verseContextRevealed &&
+                      styles.flashVerseOverlayRevealed,
+                  )}
+                >
+                  <p
+                    className={classNames(
+                      styles.flashVerseContextText,
+                      showVerseContext &&
+                        !verseContextRevealed &&
+                        styles.flashVerseContextBlurred,
+                    )}
+                    aria-hidden={showVerseContext && !verseContextRevealed}
+                  >
+                    {showVerseContext ? card.verse : "\u00a0"}
+                  </p>
+                  {showVerseContext && !verseContextRevealed ? (
+                    <button
+                      type="button"
+                      className={styles.flashRevealVerseOverlayBtn}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setVerseContextRevealed(true);
+                      }}
+                      aria-label={t("songPage.flashcardRevealVerse")}
+                    >
+                      <Eye size={22} strokeWidth={2} aria-hidden />
+                      <span className={styles.flashVerseOverlayTooltip}>
+                        {t("songPage.flashcardRevealVerse")}
+                      </span>
+                    </button>
+                  ) : null}
+                  {showVerseContext && verseContextRevealed ? (
+                    <button
+                      type="button"
+                      className={styles.flashHideVerseOverlayBtn}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setVerseContextRevealed(false);
+                      }}
+                      aria-label={t("songPage.flashcardHideVerse")}
+                    >
+                      <EyeOff size={22} strokeWidth={2} aria-hidden />
+                      <span className={styles.flashVerseOverlayTooltip}>
+                        {t("songPage.flashcardHideVerse")}
+                      </span>
+                    </button>
+                  ) : null}
+                </div>
+                <div className={styles.flashRevealBtnSlot}>
+                  <span className={styles.flashRevealVerseBtn} aria-hidden />
+                </div>
+              </div>
+            </div>
             <span className={styles.flashHint}>
               {t("songPage.flashcardClickToReveal")}
             </span>
@@ -118,14 +215,35 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
             <span className={styles.flashFaceLabel}>
               {t("songPage.flashcardTranslation")}
             </span>
-            <p
-              className={classNames(
-                styles.flashFaceText,
-                !card.translation.trim() && "opacity-75",
-              )}
-            >
-              {backText}
-            </p>
+            <div className={styles.flashFaceMain}>
+              <p
+                className={classNames(
+                  styles.flashContent,
+                  !hasTranslation && "opacity-75",
+                )}
+                style={
+                  hasTranslation && codeColor
+                    ? { color: codeColor }
+                    : undefined
+                }
+              >
+                {!hasTranslation
+                  ? t("songPage.noTranslation")
+                  : showTranslationContext
+                    ? card.translation
+                    : card.verseTranslation || card.translation}
+              </p>
+              <div className={styles.flashVerseContext}>
+                <p className={styles.flashVerseContextText}>
+                  {hasTranslation && showTranslationContext
+                    ? card.verseTranslation
+                    : "\u00a0"}
+                </p>
+                <div className={styles.flashRevealBtnSlot}>
+                  <span className={styles.flashRevealVerseBtn} aria-hidden />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -177,7 +295,11 @@ export function SongLearnTabs({
   const lines = useMemo(
     () =>
       verseLines.filter(
-        (l) => l.original.trim() || l.translation.trim(),
+        (l) =>
+          l.content.trim() ||
+          l.verse.trim() ||
+          l.translation.trim() ||
+          l.verseTranslation.trim(),
       ),
     [verseLines],
   );
