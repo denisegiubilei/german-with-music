@@ -16,26 +16,26 @@ import styles from "./SongDetailView.module.scss";
 export async function SongDetailView({
   release,
   locale,
-  neighborPrevId,
-  neighborNextId,
+  neighborPrevSlug,
+  neighborNextSlug,
 }: {
   release: YoutubeRelease;
   locale: Locale;
-  neighborPrevId: string | null;
-  neighborNextId: string | null;
+  neighborPrevSlug: string | null;
+  neighborNextSlug: string | null;
 }) {
   const { t } = await getT(locale);
   const libraryHref = localizedPath("/library", locale);
-  const prevHref = neighborPrevId
-    ? localizedPath(`/song/${neighborPrevId}`, locale)
+  const prevHref = neighborPrevSlug
+    ? localizedPath(`/song/${neighborPrevSlug}`, locale)
     : libraryHref;
-  const nextHref = neighborNextId
-    ? localizedPath(`/song/${neighborNextId}`, locale)
+  const nextHref = neighborNextSlug
+    ? localizedPath(`/song/${neighborNextSlug}`, locale)
     : libraryHref;
-  const prevAria = neighborPrevId
+  const prevAria = neighborPrevSlug
     ? t("songPage.prevAria")
     : t("songPage.navToLibraryAria");
-  const nextAria = neighborNextId
+  const nextAria = neighborNextSlug
     ? t("songPage.nextAria")
     : t("songPage.navToLibraryAria");
   const embedUrl = youtubeWatchUrlToEmbedUrl(release.url);
@@ -44,7 +44,7 @@ export async function SongDetailView({
     ? release.glossary
     : null;
 
-  const versesPayload = await fetchReleaseVerses(release.id);
+  const versesPayload = await fetchReleaseVerses(release.slug);
   const verseLines =
     versesPayload?.verses.map((v) => ({
       original: v.original.text,

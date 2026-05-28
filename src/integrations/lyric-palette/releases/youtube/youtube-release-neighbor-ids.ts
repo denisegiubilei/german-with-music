@@ -42,21 +42,21 @@ const fetchAllPublicYoutubeReleasesOrdered = cache(
  * Adjacent release ids in `GET /releases/youtube` order (newest `datePublished` first).
  * Prev = newer neighbor; next = older neighbor.
  */
-export async function getYoutubeReleaseNeighborIds(
-  releaseId: string,
-): Promise<{ prevId: string | null; nextId: string | null }> {
+export async function getYoutubeReleaseNeighborSlugs(
+  slug: string,
+): Promise<{ prevSlug: string | null; nextSlug: string | null }> {
   const all = await fetchAllPublicYoutubeReleasesOrdered();
   if (!all?.length) {
-    return { prevId: null, nextId: null };
+    return { prevSlug: null, nextSlug: null };
   }
 
-  const idx = all.findIndex((r) => r.id === releaseId);
+  const idx = all.findIndex((r) => r.slug === slug);
   if (idx < 0) {
-    return { prevId: null, nextId: null };
+    return { prevSlug: null, nextSlug: null };
   }
 
   return {
-    prevId: idx > 0 ? all[idx - 1]!.id : null,
-    nextId: idx < all.length - 1 ? all[idx + 1]!.id : null,
+    prevSlug: idx > 0 ? all[idx - 1]!.slug : null,
+    nextSlug: idx < all.length - 1 ? all[idx + 1]!.slug : null,
   };
 }

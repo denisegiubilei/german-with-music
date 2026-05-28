@@ -68,7 +68,7 @@ export function FeaturedSongs({
         ) : (
           <Row className="g-3 g-md-4">
             {items.map((release, index) => (
-              <Col key={release.id} xs={12} sm={6} lg={3}>
+              <Col key={release.slug} xs={12} sm={6} lg={3}>
                 <div
                   className="animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -79,7 +79,7 @@ export function FeaturedSongs({
                     thumbnailSrc={youtubeWatchUrlToThumbnailUrl(release.url)}
                     embedUrl={youtubeWatchUrlToEmbedUrl(release.url)}
                     watchUrl={release.url}
-                    detailHref={`/song/${release.id}`}
+                    detailHref={`/song/${release.slug}`}
                   />
                 </div>
               </Col>

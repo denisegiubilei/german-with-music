@@ -71,14 +71,14 @@ export async function LibraryPageView({
         <>
           <Row className="g-3 g-md-4 mb-4">
             {items.map((release) => (
-              <Col key={release.id} xs={12} sm={6} lg={4}>
+              <Col key={release.slug} xs={12} sm={6} lg={4}>
                 <SongCard
                   title={release.title}
                   artist={release.artist}
                   thumbnailSrc={youtubeWatchUrlToThumbnailUrl(release.url)}
                   embedUrl={youtubeWatchUrlToEmbedUrl(release.url)}
                   watchUrl={release.url}
-                  detailHref={`/song/${release.id}`}
+                  detailHref={`/song/${release.slug}`}
                 />
               </Col>
             ))}

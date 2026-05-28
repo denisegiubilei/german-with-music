@@ -9,14 +9,14 @@ import { getReleaseVersesRequestPath } from "./release-verses-path";
 const RELEASE_VERSES_REVALIDATE_SECONDS = 300;
 
 async function fetchReleaseVersesUncached(
-  releaseId: string,
+  slug: string,
 ): Promise<ReleaseVersesPayload | null> {
-  const path = getReleaseVersesRequestPath(releaseId);
+  const path = getReleaseVersesRequestPath(slug);
   const body = await lyricPaletteGetJson<ReleaseVersesResponse>(path, {
     next: { revalidate: RELEASE_VERSES_REVALIDATE_SECONDS },
   });
   return body?.data ?? null;
 }
 
-/** Dedupes repeated fetches for the same `releaseId` in one RSC tree. */
+/** Dedupes repeated fetches for the same `slug` in one RSC tree. */
 export const fetchReleaseVerses = cache(fetchReleaseVersesUncached);

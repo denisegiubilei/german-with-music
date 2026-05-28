@@ -5,26 +5,26 @@ import { assertLocale } from "@/i18n/assert-locale";
 import { getT } from "@/i18n/server";
 import { MarketingShell } from "@/layouts/marketing-shell/MarketingShell";
 import { alternatesForPath } from "@/lib/page-metadata";
-import { isLikelyYoutubeReleaseId } from "@/lib/youtube-release-id";
+import { isLikelyYoutubeReleaseSlug } from "@/lib/youtube-release-slug";
 import {
-  fetchYoutubeReleaseById,
-  getYoutubeReleaseNeighborIds,
+  fetchYoutubeReleaseBySlug,
+  getYoutubeReleaseNeighborSlugs,
 } from "@/integrations/lyric-palette/server";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; id: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale: localeParam, id } = await params;
+  const { locale: localeParam, slug } = await params;
   const locale = assertLocale(localeParam);
 
-  if (!isLikelyYoutubeReleaseId(id)) {
+  if (!isLikelyYoutubeReleaseSlug(slug)) {
     const { t } = await getT(locale);
     return { title: t("songPage.notFoundTitle") };
   }
 
-  const release = await fetchYoutubeReleaseById(id);
+  const release = await fetchYoutubeReleaseBySlug(slug);
   const { t } = await getT(locale);
   const siteName = t("seo.siteName");
 
@@ -53,36 +53,36 @@ export async function generateMetadata({
       title: release.title,
       description,
     },
-    ...(alternatesForPath(`/song/${id}`, locale) ?? {}),
+    ...(alternatesForPath(`/song/${slug}`, locale) ?? {}),
   };
 }
 
-export default async function SongByIdPage({
+export default async function SongBySlugPage({
   params,
 }: {
-  params: Promise<{ locale: string; id: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale: localeParam, id } = await params;
+  const { locale: localeParam, slug } = await params;
   const locale = assertLocale(localeParam);
 
-  if (!isLikelyYoutubeReleaseId(id)) {
+  if (!isLikelyYoutubeReleaseSlug(slug)) {
     notFound();
   }
 
-  const release = await fetchYoutubeReleaseById(id);
+  const release = await fetchYoutubeReleaseBySlug(slug);
   if (!release) {
     notFound();
   }
 
-  const neighbors = await getYoutubeReleaseNeighborIds(id);
+  const neighbors = await getYoutubeReleaseNeighborSlugs(slug);
 
   return (
     <MarketingShell>
       <SongDetailView
         release={release}
         locale={locale}
-        neighborPrevId={neighbors.prevId}
-        neighborNextId={neighbors.nextId}
+        neighborPrevSlug={neighbors.prevSlug}
+        neighborNextSlug={neighbors.nextSlug}
       />
     </MarketingShell>
   );

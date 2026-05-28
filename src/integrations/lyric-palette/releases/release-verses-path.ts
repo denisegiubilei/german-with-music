@@ -1,4 +1,4 @@
-/** Path for `GET /releases/:releaseId/verses` (no leading slash). */
-export function getReleaseVersesRequestPath(releaseId: string): string {
-  return `releases/${encodeURIComponent(releaseId)}/verses`;
+/** Path for `GET /releases/:slug/verses` (no leading slash). */
+export function getReleaseVersesRequestPath(slug: string): string {
+  return `releases/${encodeURIComponent(slug)}/verses`;
 }

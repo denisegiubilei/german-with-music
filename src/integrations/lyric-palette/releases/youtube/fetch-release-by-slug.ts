@@ -4,19 +4,19 @@ import type {
   YoutubeReleaseDetailResponse,
 } from "@/entities/youtube-release";
 import { lyricPaletteGetJson } from "../../http/fetch-json";
-import { getYoutubeReleaseByIdRequestPath } from "./release-by-id-path";
+import { getYoutubeReleaseBySlugRequestPath } from "./release-by-slug-path";
 
 const YOUTUBE_RELEASE_DETAIL_REVALIDATE_SECONDS = 300;
 
-async function fetchYoutubeReleaseByIdUncached(
-  releaseId: string,
+async function fetchYoutubeReleaseBySlugUncached(
+  slug: string,
 ): Promise<YoutubeRelease | null> {
-  const path = getYoutubeReleaseByIdRequestPath(releaseId);
+  const path = getYoutubeReleaseBySlugRequestPath(slug);
   const body = await lyricPaletteGetJson<YoutubeReleaseDetailResponse>(path, {
     next: { revalidate: YOUTUBE_RELEASE_DETAIL_REVALIDATE_SECONDS },
   });
   return body?.data ?? null;
 }
 
-/** Dedupes `generateMetadata` + page for the same `releaseId` in one RSC tree. */
-export const fetchYoutubeReleaseById = cache(fetchYoutubeReleaseByIdUncached);
+/** Dedupes `generateMetadata` + page for the same `slug` in one RSC tree. */
+export const fetchYoutubeReleaseBySlug = cache(fetchYoutubeReleaseBySlugUncached);

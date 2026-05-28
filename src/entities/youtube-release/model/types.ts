@@ -1,6 +1,6 @@
 /** Row from `GET /releases/youtube` — see docs/api.md. */
 export interface YoutubeRelease {
-  id: string;
+  slug: string;
   url: string;
   artist: string | null;
   title: string;
@@ -23,12 +23,12 @@ export interface YoutubeReleasesListResponse {
   meta: YoutubeReleasesListMeta;
 }
 
-/** Success body for `GET /releases/youtube/:releaseId`. */
+/** Success body for `GET /releases/youtube/:slug`. */
 export interface YoutubeReleaseDetailResponse {
   data: YoutubeRelease;
 }
 
-/** One verse line from `GET /releases/:releaseId/verses` — see docs/api.md. */
+/** One verse line from `GET /releases/:slug/verses` — see docs/api.md. */
 export interface ReleaseVerseFace {
   text: string;
   words: string[];
@@ -42,9 +42,9 @@ export interface ReleaseVerseLine {
   translation: ReleaseVerseFace;
 }
 
-/** Payload inside `data` for `GET /releases/:releaseId/verses`. */
+/** Payload inside `data` for `GET /releases/:slug/verses`. */
 export interface ReleaseVersesPayload {
-  releaseId: string;
+  slug: string;
   translationLang: string | null;
   verses: ReleaseVerseLine[];
 }

@@ -19,7 +19,7 @@ export interface SongCardProps {
   /** Full `https://www.youtube.com/embed/…` URL, or null if the source URL could not be parsed. */
   embedUrl: string | null;
   watchUrl?: string;
-  /** App path without locale prefix, e.g. `/song/uuid`. */
+  /** App path without locale prefix, e.g. `/song/artist-title-slug`. */
   detailHref?: string;
 }
 

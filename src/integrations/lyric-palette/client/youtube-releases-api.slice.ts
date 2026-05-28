@@ -9,7 +9,7 @@ import type {
 } from "@/entities/youtube-release";
 import type { User } from "@/entities/user";
 import { getReleaseVersesRequestPath } from "../releases/release-verses-path";
-import { getYoutubeReleaseByIdRequestPath } from "../releases/youtube/release-by-id-path";
+import { getYoutubeReleaseBySlugRequestPath } from "../releases/youtube/release-by-slug-path";
 import { getYoutubeReleasesRequestPath } from "../releases/youtube/request-path";
 import { authenticatedBaseQuery } from "./base-query";
 
@@ -29,13 +29,13 @@ export const lyricPaletteApi = createApi({
       transformResponse: (response: YoutubeReleasesListResponse) =>
         response,
     }),
-    getYoutubeReleaseById: build.query<YoutubeRelease, string>({
-      query: (releaseId) => getYoutubeReleaseByIdRequestPath(releaseId),
+    getYoutubeReleaseBySlug: build.query<YoutubeRelease, string>({
+      query: (slug) => getYoutubeReleaseBySlugRequestPath(slug),
       transformResponse: (response: YoutubeReleaseDetailResponse) =>
         response.data,
     }),
     getReleaseVerses: build.query<ReleaseVersesPayload, string>({
-      query: (releaseId) => getReleaseVersesRequestPath(releaseId),
+      query: (slug) => getReleaseVersesRequestPath(slug),
       transformResponse: (response: ReleaseVersesResponse) => response.data,
     }),
   }),
@@ -44,6 +44,6 @@ export const lyricPaletteApi = createApi({
 export const {
   useGetMeQuery,
   useGetReleaseVersesQuery,
-  useGetYoutubeReleaseByIdQuery,
+  useGetYoutubeReleaseBySlugQuery,
   useGetYoutubeReleasesQuery,
 } = lyricPaletteApi;
