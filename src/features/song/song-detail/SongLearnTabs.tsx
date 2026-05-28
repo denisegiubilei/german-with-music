@@ -153,36 +153,35 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
   const [cards, setCards] = useState<VerseFlashcardLine[]>(() => [...lines]);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
-  const [verseContextRevealed, setVerseContextRevealed] = useState(false);
+  const [frontVerseRevealed, setFrontVerseRevealed] = useState(false);
 
   const n = cards.length;
   const card = n > 0 ? cards[index] : null;
 
   useEffect(() => {
-    setVerseContextRevealed(false);
+    setFrontVerseRevealed(false);
   }, [index, card?.content, card?.verse]);
 
   const next = useCallback(() => {
     setFlipped(false);
-    setVerseContextRevealed(false);
+    setFrontVerseRevealed(false);
     setIndex((i) => (i + 1) % n);
   }, [n]);
 
   const prev = useCallback(() => {
     setFlipped(false);
-    setVerseContextRevealed(false);
+    setFrontVerseRevealed(false);
     setIndex((i) => (i - 1 + n) % n);
   }, [n]);
 
   const shuffle = useCallback(() => {
     setFlipped(false);
-    setVerseContextRevealed(false);
+    setFrontVerseRevealed(false);
     setCards((c) => shuffleArray(c));
     setIndex(0);
   }, []);
 
   const toggleFlip = useCallback(() => {
-    setVerseContextRevealed(false);
     setFlipped((f) => !f);
   }, []);
 
@@ -270,9 +269,9 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
               contentHighlighted={showVerseContext}
               wordHighlightStyle={wordHighlightStyle}
               showVerseBlurControls={showVerseContext}
-              verseRevealed={verseContextRevealed}
-              onRevealVerse={() => setVerseContextRevealed(true)}
-              onHideVerse={() => setVerseContextRevealed(false)}
+              verseRevealed={frontVerseRevealed}
+              onRevealVerse={() => setFrontVerseRevealed(true)}
+              onHideVerse={() => setFrontVerseRevealed(false)}
               revealVerseLabel={t("songPage.flashcardRevealVerse")}
               hideVerseLabel={t("songPage.flashcardHideVerse")}
             />
@@ -291,7 +290,7 @@ function VerseFlashcards({ lines }: { lines: VerseFlashcardLine[] }) {
               wordHighlightStyle={wordHighlightStyle}
               contentMuted={!hasTranslation}
               showVerseBlurControls={false}
-              verseRevealed={false}
+              verseRevealed
               onRevealVerse={() => {}}
               onHideVerse={() => {}}
               revealVerseLabel={t("songPage.flashcardRevealVerse")}
