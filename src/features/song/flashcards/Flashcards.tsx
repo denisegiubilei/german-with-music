@@ -25,8 +25,6 @@ export function Flashcards({ lines }: { lines: FlashcardLine[] }) {
     n,
     index,
     flipped,
-    frontVerseRevealed,
-    setFrontVerseRevealed,
     next,
     prev,
     shuffle,
@@ -87,12 +85,6 @@ export function Flashcards({ lines }: { lines: FlashcardLine[] }) {
               verseText={faces.frontVerseText}
               contentHighlighted={faces.showVerseContext}
               wordHighlightStyle={wordHighlightStyle}
-              verseRevealMode="interactive"
-              verseRevealed={frontVerseRevealed}
-              onRevealVerse={() => setFrontVerseRevealed(true)}
-              onHideVerse={() => setFrontVerseRevealed(false)}
-              revealVerseLabel={t("songPage.flashcardRevealVerse")}
-              hideVerseLabel={t("songPage.flashcardHideVerse")}
             />
             <span className={styles.flashHint}>
               {t("songPage.flashcardClickToReveal")}
@@ -108,12 +100,6 @@ export function Flashcards({ lines }: { lines: FlashcardLine[] }) {
               contentHighlighted={faces.showTranslationContext}
               wordHighlightStyle={wordHighlightStyle}
               contentMuted={!faces.hasTranslation}
-              verseRevealMode="always-visible"
-              verseRevealed
-              onRevealVerse={() => {}}
-              onHideVerse={() => {}}
-              revealVerseLabel={t("songPage.flashcardRevealVerse")}
-              hideVerseLabel={t("songPage.flashcardHideVerse")}
             />
             <span
               className={classNames(styles.flashHint, styles.flashHintInvisible)}
