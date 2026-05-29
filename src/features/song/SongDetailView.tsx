@@ -46,6 +46,7 @@ export async function SongDetailView({
 
   const flashCardsPayload = await fetchReleaseFlashCards(release.slug);
   const verseLines = releaseFlashCardsToLines(flashCardsPayload?.cards ?? []);
+  const artist = release.artist?.trim() ?? null;
 
   const navBtnClass =
     "btn btn-primary d-inline-flex align-items-center gap-1";
@@ -53,6 +54,23 @@ export async function SongDetailView({
   return (
     <div className="py-4 py-md-5">
       <Container className="px-3 px-md-4">
+        <nav aria-label={t("about.breadcrumbLabel")}>
+          <ol className="breadcrumb mb-4">
+            <li className="breadcrumb-item">
+              <Link href={localizedPath("/", locale)}>
+                {t("about.breadcrumbHome")}
+              </Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link href={libraryHref}>{t("nav.library")}</Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              {release.title}
+            </li>
+          </ol>
+        </nav>
+
+        <article>
         <div className={classNames(styles.titleNav, "mb-4 mb-md-5")}>
           <div className={styles.titleNavSide}>
             <Link
@@ -66,9 +84,14 @@ export async function SongDetailView({
           </div>
 
           <div className={classNames(styles.titleBlock, "text-center")}>
-            <h1 className={classNames("h2 fw-bold mb-0", styles.songTitle)}>
-              {release.title}
-            </h1>
+            <header>
+              <h1 className={classNames("h2 fw-bold mb-0", styles.songTitle)}>
+                {release.title}
+              </h1>
+              {artist ? (
+                <p className="text-body-secondary mb-0 mt-2">{artist}</p>
+              ) : null}
+            </header>
           </div>
 
           <div className={styles.titleNavSide}>
@@ -106,9 +129,10 @@ export async function SongDetailView({
           )}
         </div>
 
-        <section className="text-center">
+        <section className="text-center" aria-label={t("songPage.glossaryHeading")}>
           <SongLearnTabs glossary={glossary} verseLines={verseLines} />
         </section>
+        </article>
       </Container>
     </div>
   );

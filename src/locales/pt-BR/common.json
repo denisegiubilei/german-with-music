@@ -65,7 +65,17 @@
     "watchOnYoutube": "Assistir no YouTube",
     "embedUnavailable": "Não foi possível incorporar o vídeo.",
     "notFoundTitle": "Música não encontrada",
+    "metaDescription": "{{title}}, de {{artist}} — letra em alemão com tradução em inglês, glossário e flashcards para aprender vocabulário em contexto.",
+    "metaDescriptionNoArtist": "{{title}} — letra em alemão com tradução em inglês, glossário e flashcards para aprender vocabulário em contexto.",
     "metaDescriptionFallback": "Música em alemão com letras e notas de aprendizado.",
+    "metaKeywords": [
+      "letras de músicas em alemão",
+      "aprender alemão",
+      "aprender música alemã",
+      "tradução em inglês",
+      "vocabulário alemão",
+      "aprendizado de idiomas com música"
+    ],
     "tabFlashcard": "Cartão",
     "flashcardsEmpty": "Ainda não há linhas de letra disponíveis para os cartões.",
     "flashcardProgress": "Cartão {{n}} de {{total}}",

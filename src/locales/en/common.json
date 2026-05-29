@@ -65,7 +65,17 @@
     "watchOnYoutube": "Watch on YouTube",
     "embedUnavailable": "Video could not be embedded.",
     "notFoundTitle": "Song not found",
+    "metaDescription": "{{title}} by {{artist}} — German lyrics with English translation, glossary, and flashcards to learn vocabulary in context.",
+    "metaDescriptionNoArtist": "{{title}} — German lyrics with English translation, glossary, and flashcards to learn vocabulary in context.",
     "metaDescriptionFallback": "German song with lyrics and learning notes.",
+    "metaKeywords": [
+      "German song lyrics",
+      "learn German",
+      "learn german song",
+      "English translation",
+      "German vocabulary",
+      "music language learning"
+    ],
     "tabFlashcard": "Flashcard",
     "flashcardsEmpty": "No lyric lines are available for flashcards yet.",
     "flashcardProgress": "Card {{n}} of {{total}}",
