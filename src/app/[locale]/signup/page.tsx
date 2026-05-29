@@ -12,6 +12,9 @@ export default async function SignUpPage() {
     emailPlaceholder: t("auth.signUp.emailPlaceholder"),
     passwordLabel: t("auth.signUp.passwordLabel"),
     passwordPlaceholder: t("auth.signUp.passwordPlaceholder"),
+    confirmPasswordLabel: t("auth.signUp.confirmPasswordLabel"),
+    confirmPasswordPlaceholder: t("auth.signUp.confirmPasswordPlaceholder"),
+    newsletterLabel: t("auth.signUp.newsletterLabel"),
     submit: t("auth.signUp.submit"),
     submitting: t("auth.signUp.submitting"),
     hasAccount: t("auth.signUp.hasAccount"),
@@ -19,6 +22,12 @@ export default async function SignUpPage() {
     errorEmailTaken: t("auth.signUp.errorEmailTaken"),
     errorTooMany: t("auth.signUp.errorTooMany"),
     errorGeneric: t("auth.signUp.errorGeneric"),
+    errorEmailRequired: t("auth.signUp.errorEmailRequired"),
+    errorEmailInvalid: t("auth.signUp.errorEmailInvalid"),
+    errorPasswordRequired: t("auth.signUp.errorPasswordRequired"),
+    errorPasswordMinLength: t("auth.signUp.errorPasswordMinLength"),
+    errorConfirmPasswordRequired: t("auth.signUp.errorConfirmPasswordRequired"),
+    errorPasswordMismatch: t("auth.signUp.errorPasswordMismatch"),
   };
 
   return (

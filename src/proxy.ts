@@ -11,7 +11,7 @@ import { localizedPath, pathWithoutLocale } from "@/lib/localized-path";
 const REFRESH_COOKIE = "lp_refresh";
 
 /** Routes that require a logged-in session (matched after locale prefix is stripped). */
-const PROTECTED_SEGMENTS = ["/me"];
+const PROTECTED_SEGMENTS = ["/me", "/onboarding"];
 
 /** Routes that authenticated users should be bounced away from (already have a session). */
 const AUTH_ONLY_SEGMENTS = ["/signin", "/signup"];

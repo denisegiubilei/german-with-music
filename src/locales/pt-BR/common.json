@@ -111,18 +111,27 @@
       "title": "Criar conta",
       "subtitle": "Comece a aprender alemão com música",
       "nameLabel": "Nome",
-      "namePlaceholder": "Seu nome (opcional)",
+      "namePlaceholder": "Seu nome",
       "emailLabel": "E-mail",
       "emailPlaceholder": "voce@exemplo.com",
       "passwordLabel": "Senha",
       "passwordPlaceholder": "Mínimo 8 caracteres",
+      "confirmPasswordLabel": "Confirmar senha",
+      "confirmPasswordPlaceholder": "Digite a senha novamente",
+      "newsletterLabel": "Quero receber novidades e dicas de aprendizado por e-mail",
       "submit": "Criar conta",
       "submitting": "Criando conta…",
       "hasAccount": "Já tem uma conta?",
       "signInLink": "Entrar",
       "errorEmailTaken": "Este e-mail já está em uso.",
       "errorTooMany": "Muitas tentativas. Tente novamente mais tarde.",
-      "errorGeneric": "Algo deu errado. Tente novamente."
+      "errorGeneric": "Algo deu errado. Tente novamente.",
+      "errorEmailRequired": "O e-mail é obrigatório.",
+      "errorEmailInvalid": "Digite um endereço de e-mail válido.",
+      "errorPasswordRequired": "A senha é obrigatória.",
+      "errorPasswordMinLength": "A senha deve ter pelo menos 8 caracteres.",
+      "errorConfirmPasswordRequired": "Confirme sua senha.",
+      "errorPasswordMismatch": "As senhas não coincidem."
     },
     "me": {
       "title": "Minha conta",
@@ -130,7 +139,55 @@
       "nameLabel": "Nome",
       "nameFallback": "Não definido",
       "idLabel": "ID do usuário",
-      "signOut": "Sair"
+      "signOut": "Sair",
+      "profileTitle": "Perfil",
+      "saved": "Perfil salvo.",
+      "saveError": "Não foi possível salvar o perfil. Tente novamente."
+    },
+    "onboarding": {
+      "title": "Bem-vindo!",
+      "subtitle": "Conte um pouco sobre você para personalizar sua experiência. Todos os campos são opcionais.",
+      "skip": "Pular por agora",
+      "continue": "Continuar",
+      "submitting": "Salvando…",
+      "errorGeneric": "Algo deu errado. Tente novamente."
+    },
+    "profile": {
+      "howFoundLabel": "Como você nos conheceu?",
+      "howFoundPlaceholder": "Selecione uma opção",
+      "howFound": {
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "instagram": "Instagram",
+        "other": "Outro"
+      },
+      "germanLevelLabel": "Nível de alemão",
+      "germanLevelPlaceholder": "Selecione seu nível",
+      "germanLevel": {
+        "complete_beginner": "Iniciante absoluto",
+        "a1": "A1 — Iniciante",
+        "a2": "A2 — Elementar",
+        "b1": "B1 — Intermediário",
+        "b2": "B2 — Intermediário superior",
+        "c1": "C1 — Avançado",
+        "c2": "C2 — Proficiente",
+        "not_sure": "Não tenho certeza"
+      },
+      "countryLabel": "País",
+      "countryPlaceholder": "De onde você é?",
+      "languageLabel": "Idioma preferido",
+      "languagePlaceholder": "Selecione um idioma",
+      "languageOtherLabel": "Outro idioma",
+      "languageOtherPlaceholder": "Especifique seu idioma",
+      "language": {
+        "english": "Inglês",
+        "portuguese": "Português",
+        "spanish": "Espanhol",
+        "other": "Outro"
+      },
+      "goalsLabel": "Objetivos de aprendizado",
+      "goalsPlaceholder": "O que você quer alcançar?",
+      "save": "Salvar perfil"
     }
   },
   "contact": {

@@ -3,6 +3,7 @@ export { lyricPaletteBaseQuery, authenticatedBaseQuery } from "./client/base-que
 export {
   lyricPaletteApi,
   useGetMeQuery,
+  useUpdateMeMutation,
   useGetReleaseFlashCardsQuery,
   useGetYoutubeReleaseBySlugQuery,
   useGetYoutubeReleasesQuery,

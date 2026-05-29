@@ -2,12 +2,18 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useLoginMutation } from "@/integrations/lyric-palette";
 import { useLocale } from "@/i18n/locale-context";
 import { localizedPath } from "@/lib/localized-path";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 import { isSafeReturnTo } from "@/lib/safe-redirect";
+
+interface SignInFormValues {
+  login: string;
+  password: string;
+}
 
 interface SignInFormProps {
   copy: {
@@ -29,14 +35,14 @@ interface SignInFormProps {
 export function SignInForm({ copy, returnTo }: SignInFormProps) {
   const router = useRouter();
   const locale = useLocale();
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const [loginMutation, { isLoading }] = useLoginMutation();
+  const { register, handleSubmit } = useForm<SignInFormValues>({
+    defaultValues: { login: "", password: "" },
+  });
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const onSubmit = handleSubmit(async ({ login, password }) => {
     setErrorMsg(null);
 
     try {
@@ -56,10 +62,10 @@ export function SignInForm({ copy, returnTo }: SignInFormProps) {
         setErrorMsg(copy.errorGeneric);
       }
     }
-  }
+  });
 
   return (
-    <Form onSubmit={handleSubmit} noValidate>
+    <Form onSubmit={onSubmit} noValidate>
       {errorMsg && (
         <Alert variant="danger" className="py-2">
           {errorMsg}
@@ -72,10 +78,8 @@ export function SignInForm({ copy, returnTo }: SignInFormProps) {
           type="email"
           autoComplete="email"
           placeholder={copy.emailPlaceholder}
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
-          required
           disabled={isLoading}
+          {...register("login", { required: true })}
         />
       </Form.Group>
 
@@ -85,10 +89,8 @@ export function SignInForm({ copy, returnTo }: SignInFormProps) {
           type="password"
           autoComplete="current-password"
           placeholder={copy.passwordPlaceholder}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
           disabled={isLoading}
+          {...register("password", { required: true })}
         />
       </Form.Group>
 

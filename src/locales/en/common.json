@@ -111,18 +111,27 @@
       "title": "Create account",
       "subtitle": "Start learning German with music",
       "nameLabel": "Name",
-      "namePlaceholder": "Your name (optional)",
+      "namePlaceholder": "Your name",
       "emailLabel": "Email",
       "emailPlaceholder": "you@example.com",
       "passwordLabel": "Password",
       "passwordPlaceholder": "At least 8 characters",
+      "confirmPasswordLabel": "Confirm password",
+      "confirmPasswordPlaceholder": "Re-enter your password",
+      "newsletterLabel": "Send me updates and learning tips by email",
       "submit": "Create account",
       "submitting": "Creating account…",
       "hasAccount": "Already have an account?",
       "signInLink": "Sign in",
       "errorEmailTaken": "This email is already in use.",
       "errorTooMany": "Too many attempts. Please try again later.",
-      "errorGeneric": "Something went wrong. Please try again."
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorEmailRequired": "Email is required.",
+      "errorEmailInvalid": "Enter a valid email address.",
+      "errorPasswordRequired": "Password is required.",
+      "errorPasswordMinLength": "Password must be at least 8 characters.",
+      "errorConfirmPasswordRequired": "Please confirm your password.",
+      "errorPasswordMismatch": "Passwords do not match."
     },
     "me": {
       "title": "My account",
@@ -130,7 +139,55 @@
       "nameLabel": "Name",
       "nameFallback": "Not set",
       "idLabel": "User ID",
-      "signOut": "Sign out"
+      "signOut": "Sign out",
+      "profileTitle": "Profile",
+      "saved": "Profile saved.",
+      "saveError": "Could not save profile. Please try again."
+    },
+    "onboarding": {
+      "title": "Welcome!",
+      "subtitle": "Tell us a bit about yourself to personalize your experience. All fields are optional.",
+      "skip": "Skip for now",
+      "continue": "Continue",
+      "submitting": "Saving…",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
+    "profile": {
+      "howFoundLabel": "How did you hear about us?",
+      "howFoundPlaceholder": "Select an option",
+      "howFound": {
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "instagram": "Instagram",
+        "other": "Other"
+      },
+      "germanLevelLabel": "German level",
+      "germanLevelPlaceholder": "Select your level",
+      "germanLevel": {
+        "complete_beginner": "Complete beginner",
+        "a1": "A1 — Beginner",
+        "a2": "A2 — Elementary",
+        "b1": "B1 — Intermediate",
+        "b2": "B2 — Upper intermediate",
+        "c1": "C1 — Advanced",
+        "c2": "C2 — Proficient",
+        "not_sure": "Not sure"
+      },
+      "countryLabel": "Country",
+      "countryPlaceholder": "Where are you from?",
+      "languageLabel": "Preferred language",
+      "languagePlaceholder": "Select a language",
+      "languageOtherLabel": "Other language",
+      "languageOtherPlaceholder": "Please specify your language",
+      "language": {
+        "english": "English",
+        "portuguese": "Portuguese",
+        "spanish": "Spanish",
+        "other": "Other"
+      },
+      "goalsLabel": "Learning goals",
+      "goalsPlaceholder": "What do you want to achieve?",
+      "save": "Save profile"
     }
   },
   "contact": {

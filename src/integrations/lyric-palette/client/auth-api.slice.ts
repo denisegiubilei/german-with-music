@@ -11,6 +11,7 @@ export interface RegisterRequest {
   login: string;
   password: string;
   name?: string;
+  newsletter?: boolean;
 }
 
 export interface AuthResponse {

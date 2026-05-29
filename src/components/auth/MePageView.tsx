@@ -1,21 +1,37 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Container, Card, CardBody, Button, Spinner } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  CardBody,
+  Button,
+  Spinner,
+  Alert,
+} from "react-bootstrap";
 import { User } from "lucide-react";
-import { useGetMeQuery, useLogoutMutation } from "@/integrations/lyric-palette";
+import {
+  useGetMeQuery,
+  useLogoutMutation,
+  useUpdateMeMutation,
+} from "@/integrations/lyric-palette";
 import { useLocale } from "@/i18n/locale-context";
 import { localizedPath } from "@/lib/localized-path";
 import { useTranslation } from "react-i18next";
+import { ProfileFieldsForm } from "./ProfileFieldsForm";
+import type { UpdateProfileRequest } from "@/entities/user";
 
 export function MePageView() {
   const router = useRouter();
   const locale = useLocale();
   const { t } = useTranslation("common");
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
   const { data: user, isLoading, isError } = useGetMeQuery();
   const [logout, { isLoading: isLoggingOut }] = useLogoutMutation();
+  const [updateMe, { isLoading: isSaving }] = useUpdateMeMutation();
 
   useEffect(() => {
     if (isError) {
@@ -26,6 +42,22 @@ export function MePageView() {
   async function handleLogout() {
     await logout().unwrap().catch(() => {});
     router.replace(localizedPath("/", locale));
+  }
+
+  async function handleProfileSave(patch: UpdateProfileRequest) {
+    setSaveError(null);
+    setSaveSuccess(false);
+
+    if (Object.keys(patch).length === 0) {
+      return;
+    }
+
+    try {
+      await updateMe(patch).unwrap();
+      setSaveSuccess(true);
+    } catch {
+      setSaveError(t("auth.me.saveError"));
+    }
   }
 
   if (isLoading) {
@@ -51,22 +83,9 @@ export function MePageView() {
           <h1 className="h3 fw-bold">{t("auth.me.title")}</h1>
         </div>
 
-        <Card className="border shadow-sm">
+        <Card className="border shadow-sm mb-4">
           <CardBody className="p-4">
-            <dl className="mb-4">
-              <div className="mb-3">
-                <dt className="small text-body-secondary fw-semibold text-uppercase mb-1">
-                  {t("auth.me.nameLabel")}
-                </dt>
-                <dd className="mb-0 fw-medium">
-                  {user.name ?? (
-                    <span className="text-body-secondary fst-italic">
-                      {t("auth.me.nameFallback")}
-                    </span>
-                  )}
-                </dd>
-              </div>
-
+            <dl className="mb-0">
               <div>
                 <dt className="small text-body-secondary fw-semibold text-uppercase mb-1">
                   {t("auth.me.emailLabel")}
@@ -74,24 +93,58 @@ export function MePageView() {
                 <dd className="mb-0">{user.login}</dd>
               </div>
             </dl>
-
-            <Button
-              variant="outline-danger"
-              className="w-100"
-              onClick={handleLogout}
-              disabled={isLoggingOut}
-            >
-              {isLoggingOut ? (
-                <>
-                  <Spinner size="sm" className="me-2" aria-hidden />
-                  {t("auth.me.signOut")}…
-                </>
-              ) : (
-                t("auth.me.signOut")
-              )}
-            </Button>
           </CardBody>
         </Card>
+
+        <Card className="border shadow-sm mb-4">
+          <CardBody className="p-4">
+            <h2 className="h5 fw-bold mb-3">{t("auth.me.profileTitle")}</h2>
+
+            {saveSuccess && (
+              <Alert variant="success" className="py-2">
+                {t("auth.me.saved")}
+              </Alert>
+            )}
+            {saveError && (
+              <Alert variant="danger" className="py-2">
+                {saveError}
+              </Alert>
+            )}
+
+            <ProfileFieldsForm
+              key={[
+                user.name,
+                user.howFound,
+                user.germanLevel,
+                user.country,
+                user.language,
+                user.goals,
+              ].join("|")}
+              initialValues={user}
+              includeName
+              onSubmit={handleProfileSave}
+              submitLabel={t("auth.profile.save")}
+              submittingLabel={t("auth.onboarding.submitting")}
+              isSubmitting={isSaving}
+            />
+          </CardBody>
+        </Card>
+
+        <Button
+          variant="outline-danger"
+          className="w-100"
+          onClick={handleLogout}
+          disabled={isLoggingOut || isSaving}
+        >
+          {isLoggingOut ? (
+            <>
+              <Spinner size="sm" className="me-2" aria-hidden />
+              {t("auth.me.signOut")}…
+            </>
+          ) : (
+            t("auth.me.signOut")
+          )}
+        </Button>
       </div>
     </Container>
   );

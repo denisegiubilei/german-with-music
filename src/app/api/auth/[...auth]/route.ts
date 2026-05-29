@@ -60,16 +60,28 @@ async function backendGet<T>(
   return { ok: res.ok, status: res.status, data };
 }
 
+type UserPayload = {
+  id: string;
+  login: string;
+  name: string | null;
+  howFound: string | null;
+  germanLevel: string | null;
+  country: string | null;
+  language: string | null;
+  goals: string | null;
+  newsletter?: boolean;
+};
+
 type AuthSuccessPayload = {
   data: {
-    user: { id: string; login: string; name: string | null };
+    user: UserPayload;
     accessToken: string;
     refreshToken: string;
   };
 };
 
 type MePayload = {
-  data: { id: string; login: string; name: string | null };
+  data: UserPayload;
 };
 
 type RefreshPayload = {
