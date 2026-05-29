@@ -32,10 +32,7 @@ export async function generateMetadata({
     return { title: t("songPage.notFoundTitle") };
   }
 
-  const artist = release.artist?.trim() ? release.artist : "";
-  const titleTag = artist
-    ? `${release.title} — ${artist} | ${siteName}`
-    : `${release.title} | ${siteName}`;
+  const titleTag = `${release.title} | ${siteName}`;
   const description =
     release.glossary?.trim() ?? t("songPage.metaDescriptionFallback");
 

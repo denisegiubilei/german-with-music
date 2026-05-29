@@ -51,7 +51,7 @@
     }
   },
   "songCard": {
-    "openDetailsAria": "Open song: {{title}} — {{artist}}",
+    "openDetailsAria": "Open song: {{title}}",
     "noThumbnailAria": "Thumbnail image unavailable"
   },
   "songPage": {

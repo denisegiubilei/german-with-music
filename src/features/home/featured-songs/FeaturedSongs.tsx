@@ -75,7 +75,6 @@ export function FeaturedSongs({
                 >
                   <SongCard
                     title={release.title}
-                    artist={release.artist}
                     thumbnailSrc={youtubeWatchUrlToThumbnailUrl(release.url)}
                     embedUrl={youtubeWatchUrlToEmbedUrl(release.url)}
                     watchUrl={release.url}

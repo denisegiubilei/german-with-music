@@ -32,13 +32,6 @@ h1.songTitle {
   }
 }
 
-p.artistLine {
-  @include bp.media-breakpoint-down(sm) {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-}
-
 .navBtn {
   flex-shrink: 0;
 }

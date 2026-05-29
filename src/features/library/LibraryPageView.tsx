@@ -74,7 +74,6 @@ export async function LibraryPageView({
               <Col key={release.slug} xs={12} sm={6} lg={4}>
                 <SongCard
                   title={release.title}
-                  artist={release.artist}
                   thumbnailSrc={youtubeWatchUrlToThumbnailUrl(release.url)}
                   embedUrl={youtubeWatchUrlToEmbedUrl(release.url)}
                   watchUrl={release.url}

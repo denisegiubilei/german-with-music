@@ -51,7 +51,7 @@
     }
   },
   "songCard": {
-    "openDetailsAria": "Abrir música: {{title}} — {{artist}}",
+    "openDetailsAria": "Abrir música: {{title}}",
     "noThumbnailAria": "Imagem de capa indisponível"
   },
   "songPage": {

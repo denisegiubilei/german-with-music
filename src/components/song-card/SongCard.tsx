@@ -10,7 +10,6 @@ import styles from "./SongCard.module.scss";
 
 export interface SongCardProps {
   title: string;
-  artist: string | null;
   /**
    * When set (e.g. on the library page), shows this image instead of an embed iframe.
    * Must be an allowed `next/image` remote URL (e.g. `img.youtube.com`).
@@ -25,7 +24,6 @@ export interface SongCardProps {
 
 export function SongCard({
   title,
-  artist,
   thumbnailSrc,
   embedUrl,
   watchUrl,
@@ -36,8 +34,7 @@ export function SongCard({
     null,
   );
 
-  const displayArtist = artist?.trim() ? artist : "—";
-  const thumbAlt = `${title} — ${displayArtist}`;
+  const thumbAlt = title;
   const trimmedThumb = thumbnailSrc?.trim() ?? "";
   const hasThumbnailUrl = trimmedThumb.length > 0;
   const thumbnailFailed =
@@ -98,19 +95,13 @@ export function SongCard({
 
       <div className={styles.textBlock}>
         <h3 className={styles.title}>{title}</h3>
-        <p className={classNames(styles.artist, "text-body-secondary")}>
-          {displayArtist}
-        </p>
       </div>
 
       {detailHref ? (
         <LocalizedLinkClient
           href={detailHref}
           className={styles.overlayLink}
-          aria-label={t("songCard.openDetailsAria", {
-            title,
-            artist: displayArtist,
-          })}
+          aria-label={t("songCard.openDetailsAria", { title })}
         />
       ) : null}
     </article>

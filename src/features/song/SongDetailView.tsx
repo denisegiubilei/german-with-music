@@ -40,7 +40,6 @@ export async function SongDetailView({
     ? t("songPage.nextAria")
     : t("songPage.navToLibraryAria");
   const embedUrl = youtubeWatchUrlToEmbedUrl(release.url);
-  const artist = release.artist?.trim() ? release.artist : "—";
   const glossary = release.glossary?.trim()
     ? release.glossary
     : null;
@@ -67,12 +66,9 @@ export async function SongDetailView({
           </div>
 
           <div className={classNames(styles.titleBlock, "text-center")}>
-            <h1 className={classNames("h2 fw-bold mb-1", styles.songTitle)}>
+            <h1 className={classNames("h2 fw-bold mb-0", styles.songTitle)}>
               {release.title}
             </h1>
-            <p className={classNames("lead text-body-secondary mb-0", styles.artistLine)}>
-              {artist}
-            </p>
           </div>
 
           <div className={styles.titleNavSide}>
