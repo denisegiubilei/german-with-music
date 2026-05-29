@@ -142,7 +142,29 @@
       "signOut": "Sign out",
       "profileTitle": "Profile",
       "saved": "Profile saved.",
-      "saveError": "Could not save profile. Please try again."
+      "saveError": "Could not save profile. Please try again.",
+      "changePasswordLink": "Change password"
+    },
+    "changePassword": {
+      "title": "Change password",
+      "subtitle": "Enter your current password, then choose a new one.",
+      "backToAccount": "Back to account",
+      "currentPasswordLabel": "Current password",
+      "newPasswordLabel": "New password",
+      "newPasswordPlaceholder": "At least 8 characters",
+      "confirmPasswordLabel": "Confirm new password",
+      "confirmPasswordPlaceholder": "Re-enter your new password",
+      "submit": "Update password",
+      "submitting": "Updating…",
+      "success": "Password updated. Other devices may need to sign in again.",
+      "errorCurrentPasswordRequired": "Current password is required.",
+      "errorNewPasswordRequired": "New password is required.",
+      "errorNewPasswordMinLength": "New password must be at least 8 characters.",
+      "errorConfirmPasswordRequired": "Please confirm your new password.",
+      "errorCurrentInvalid": "Current password is incorrect.",
+      "errorSamePassword": "New password must be different from your current password.",
+      "errorTooMany": "Too many attempts. Please try again later.",
+      "errorGeneric": "Could not update password. Please try again."
     },
     "onboarding": {
       "title": "Welcome!",

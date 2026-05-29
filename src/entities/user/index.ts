@@ -1,4 +1,9 @@
-export type { User, ProfileField, UpdateProfileRequest } from "./model/types";
+export type {
+  User,
+  ProfileField,
+  UpdateProfileRequest,
+  UpdatePasswordRequest,
+} from "./model/types";
 export {
   HOW_FOUND_OPTIONS,
   GERMAN_LEVEL_OPTIONS,

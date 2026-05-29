@@ -20,3 +20,8 @@ export type ProfileField =
 export type UpdateProfileRequest = Partial<
   Pick<User, ProfileField | "name">
 >;
+
+export interface UpdatePasswordRequest {
+  currentPassword: string;
+  newPassword: string;
+}

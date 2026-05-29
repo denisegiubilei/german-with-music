@@ -7,7 +7,11 @@ import type {
   YoutubeReleaseDetailResponse,
   YoutubeReleasesListResponse,
 } from "@/entities/youtube-release";
-import type { UpdateProfileRequest, User } from "@/entities/user";
+import type {
+  UpdatePasswordRequest,
+  UpdateProfileRequest,
+  User,
+} from "@/entities/user";
 import { setCredentials } from "@/features/auth";
 import type { RootState } from "@/store";
 import { getReleaseFlashCardsRequestPath } from "../releases/release-flash-cards-path";
@@ -24,6 +28,15 @@ export const lyricPaletteApi = createApi({
       query: () => "/auth/me",
       transformResponse: (response: { data: User }) => response.data,
       providesTags: ["Me"],
+    }),
+    updatePassword: build.mutation<{ success: boolean }, UpdatePasswordRequest>({
+      query: (body) => ({
+        url: "/auth/me/password",
+        method: "POST",
+        body,
+      }),
+      transformResponse: (response: { data: { success: boolean } }) =>
+        response.data,
     }),
     updateMe: build.mutation<User, UpdateProfileRequest>({
       query: (body) => ({
@@ -67,6 +80,7 @@ export const lyricPaletteApi = createApi({
 
 export const {
   useGetMeQuery,
+  useUpdatePasswordMutation,
   useUpdateMeMutation,
   useGetReleaseFlashCardsQuery,
   useGetYoutubeReleaseBySlugQuery,

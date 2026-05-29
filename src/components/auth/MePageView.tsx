@@ -10,7 +10,8 @@ import {
   Spinner,
   Alert,
 } from "react-bootstrap";
-import { User } from "lucide-react";
+import { User, ChevronRight } from "lucide-react";
+import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 import {
   useGetMeQuery,
   useLogoutMutation,
@@ -127,6 +128,20 @@ export function MePageView() {
               submittingLabel={t("auth.onboarding.submitting")}
               isSubmitting={isSaving}
             />
+          </CardBody>
+        </Card>
+
+        <Card className="border shadow-sm mb-4">
+          <CardBody className="p-0">
+            <LocalizedLinkClient
+              href="/me/password"
+              className="d-flex align-items-center justify-content-between px-4 py-3 text-decoration-none text-body"
+            >
+              <span className="fw-semibold">
+                {t("auth.me.changePasswordLink")}
+              </span>
+              <ChevronRight size={18} className="text-body-secondary" aria-hidden />
+            </LocalizedLinkClient>
           </CardBody>
         </Card>
 

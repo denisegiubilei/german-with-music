@@ -142,7 +142,29 @@
       "signOut": "Sair",
       "profileTitle": "Perfil",
       "saved": "Perfil salvo.",
-      "saveError": "Não foi possível salvar o perfil. Tente novamente."
+      "saveError": "Não foi possível salvar o perfil. Tente novamente.",
+      "changePasswordLink": "Alterar senha"
+    },
+    "changePassword": {
+      "title": "Alterar senha",
+      "subtitle": "Digite sua senha atual e escolha uma nova.",
+      "backToAccount": "Voltar para a conta",
+      "currentPasswordLabel": "Senha atual",
+      "newPasswordLabel": "Nova senha",
+      "newPasswordPlaceholder": "Mínimo de 8 caracteres",
+      "confirmPasswordLabel": "Confirmar nova senha",
+      "confirmPasswordPlaceholder": "Digite a nova senha novamente",
+      "submit": "Atualizar senha",
+      "submitting": "Atualizando…",
+      "success": "Senha atualizada. Outros dispositivos podem precisar entrar novamente.",
+      "errorCurrentPasswordRequired": "A senha atual é obrigatória.",
+      "errorNewPasswordRequired": "A nova senha é obrigatória.",
+      "errorNewPasswordMinLength": "A nova senha deve ter pelo menos 8 caracteres.",
+      "errorConfirmPasswordRequired": "Confirme sua nova senha.",
+      "errorCurrentInvalid": "A senha atual está incorreta.",
+      "errorSamePassword": "A nova senha deve ser diferente da senha atual.",
+      "errorTooMany": "Muitas tentativas. Tente novamente mais tarde.",
+      "errorGeneric": "Não foi possível atualizar a senha. Tente novamente."
     },
     "onboarding": {
       "title": "Bem-vindo!",
