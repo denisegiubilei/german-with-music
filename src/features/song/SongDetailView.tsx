@@ -10,8 +10,9 @@ import { getT } from "@/i18n/server";
 import type { Locale } from "@/i18n/settings";
 import { fetchReleaseFlashCards } from "@/integrations/lyric-palette/server";
 import { localizedPath } from "@/lib/localized-path";
-import { youtubeWatchUrlToEmbedUrl } from "@/shared/lib/youtube";
+import { extractYoutubeVideoId } from "@/shared/lib/youtube";
 import { SongLearnTabs } from "./SongLearnTabs";
+import { SongYoutubePlayer } from "./SongYoutubePlayer";
 import styles from "./SongDetailView.module.scss";
 
 export async function SongDetailView({
@@ -39,7 +40,7 @@ export async function SongDetailView({
   const nextAria = neighborNextSlug
     ? t("songPage.nextAria")
     : t("songPage.navToLibraryAria");
-  const embedUrl = youtubeWatchUrlToEmbedUrl(release.url);
+  const videoId = extractYoutubeVideoId(release.url);
   const glossary = release.glossary?.trim()
     ? release.glossary
     : null;
@@ -107,15 +108,8 @@ export async function SongDetailView({
         </div>
 
         <div className={classNames("mb-5", styles.embedWrap)}>
-          {embedUrl ? (
-            <iframe
-              className={styles.iframe}
-              src={embedUrl}
-              title={release.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
+          {videoId ? (
+            <SongYoutubePlayer videoId={videoId} title={release.title} />
           ) : (
             <div className="d-flex align-items-center justify-content-center h-100 p-4 text-center text-body-secondary small">
               {release.url ? (
