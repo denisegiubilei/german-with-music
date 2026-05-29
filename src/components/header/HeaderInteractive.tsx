@@ -27,6 +27,12 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
     "text-body-secondary py-md-1",
     styles.mobileNavLink,
   );
+  const userMenuCopy = {
+    signIn: copy.navSignIn,
+    signUp: copy.navSignUp,
+    myAccount: copy.navMyAccount,
+    signOut: copy.navSignOut,
+  };
 
   return (
     <header
@@ -58,6 +64,12 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
           </NavbarBrand>
           <NavbarToggle aria-controls="main-nav" className="border-0" />
           <NavbarCollapse id="main-nav" className={styles.collapseDesktop}>
+            <div className={classNames("d-md-none", styles.mobileAuth)}>
+              <UserMenu
+                copy={userMenuCopy}
+                toggleId="user-menu-toggle-mobile"
+              />
+            </div>
             <Nav
               className={classNames(
                 "flex-column flex-md-row mb-0",
@@ -121,14 +133,9 @@ export function HeaderInteractive({ copy }: { copy: HeaderCopy }) {
                 <ThemeSwitcher ariaLabel={copy.themeAriaLabel} />
                 <LanguageSwitcher languageAriaLabel={copy.languageAriaLabel} />
               </div>
-              <UserMenu
-                copy={{
-                  signIn: copy.navSignIn,
-                  signUp: copy.navSignUp,
-                  myAccount: copy.navMyAccount,
-                  signOut: copy.navSignOut,
-                }}
-              />
+              <div className="d-none d-md-block">
+                <UserMenu copy={userMenuCopy} />
+              </div>
             </div>
           </NavbarCollapse>
         </Container>

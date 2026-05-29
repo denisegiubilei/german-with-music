@@ -36,7 +36,15 @@ const UserMenuToggle = forwardRef<HTMLButtonElement, ToggleProps>(
   },
 );
 
-export function UserMenu({ copy }: { copy: UserMenuCopy }) {
+export function UserMenu({
+  copy,
+  toggleId = "user-menu-toggle",
+  className,
+}: {
+  copy: UserMenuCopy;
+  toggleId?: string;
+  className?: string;
+}) {
   const router = useRouter();
   const locale = useLocale();
   const user = useAppSelector((state) => state.auth.user);
@@ -49,10 +57,10 @@ export function UserMenu({ copy }: { copy: UserMenuCopy }) {
 
   if (user) {
     return (
-      <Dropdown align="end">
+      <Dropdown align="end" className={className}>
         <Dropdown.Toggle
           as={UserMenuToggle}
-          id="user-menu-toggle"
+          id={toggleId}
           aria-label={copy.myAccount}
         >
           <User size={20} aria-hidden />
@@ -80,7 +88,7 @@ export function UserMenu({ copy }: { copy: UserMenuCopy }) {
   }
 
   return (
-    <div className="d-flex align-items-center gap-2">
+    <div className={classNames("d-flex align-items-center gap-2", className)}>
       <Nav.Link
         as={LocalizedLinkClient}
         href="/signin"
