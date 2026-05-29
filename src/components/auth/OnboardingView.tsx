@@ -10,11 +10,12 @@ import {
 } from "@/integrations/lyric-palette";
 import { useLocale } from "@/i18n/locale-context";
 import { localizedPath } from "@/lib/localized-path";
+import { isSafeReturnTo } from "@/lib/safe-redirect";
 import { useTranslation } from "react-i18next";
 import { ProfileFieldsForm } from "./ProfileFieldsForm";
 import type { UpdateProfileRequest } from "@/entities/user";
 
-export function OnboardingView() {
+export function OnboardingView({ returnTo }: { returnTo?: string }) {
   const router = useRouter();
   const locale = useLocale();
   const { t } = useTranslation("common");
@@ -29,21 +30,25 @@ export function OnboardingView() {
     }
   }, [isError, router, locale]);
 
-  function goToLibrary() {
-    router.replace(localizedPath("/library", locale));
+  function goAfterOnboarding() {
+    const destination =
+      returnTo && isSafeReturnTo(returnTo)
+        ? returnTo
+        : localizedPath("/library", locale);
+    router.replace(destination);
   }
 
   async function handleSubmit(patch: UpdateProfileRequest) {
     setErrorMsg(null);
 
     if (Object.keys(patch).length === 0) {
-      goToLibrary();
+      goAfterOnboarding();
       return;
     }
 
     try {
       await updateMe(patch).unwrap();
-      goToLibrary();
+      goAfterOnboarding();
     } catch {
       setErrorMsg(t("auth.onboarding.errorGeneric"));
     }
@@ -66,7 +71,7 @@ export function OnboardingView() {
           <Button
             variant="link"
             className="position-absolute top-0 end-0 text-body-secondary p-0"
-            onClick={goToLibrary}
+            onClick={goAfterOnboarding}
             aria-label={t("auth.onboarding.skip")}
           >
             <X size={20} aria-hidden />
@@ -97,7 +102,7 @@ export function OnboardingView() {
               <Button
                 variant="link"
                 className="text-body-secondary small p-0"
-                onClick={goToLibrary}
+                onClick={goAfterOnboarding}
                 disabled={isSubmitting}
               >
                 {t("auth.onboarding.skip")}

@@ -22,22 +22,29 @@ export function pathWithoutLocale(pathname: string): string {
 
 /**
  * Build a pathname for links: default locale stays unprefixed; others use `/${locale}…`.
+ * Query strings are preserved; any existing locale prefix is stripped first.
  */
 export function localizedPath(path: string, locale: Locale): string {
+  const queryIndex = path.indexOf("?");
+  const pathnameRaw = queryIndex === -1 ? path : path.slice(0, queryIndex);
+  const search = queryIndex === -1 ? "" : path.slice(queryIndex);
+
   const normalized =
-    path === "" || path === "/"
+    pathnameRaw === "" || pathnameRaw === "/"
       ? "/"
-      : path.startsWith("/")
-        ? path
-        : `/${path}`;
+      : pathnameRaw.startsWith("/")
+        ? pathnameRaw
+        : `/${pathnameRaw}`;
+
+  const pathname = pathWithoutLocale(normalized);
 
   if (locale === defaultLocale) {
-    return normalized;
+    return pathname + search;
   }
 
-  if (normalized === "/") {
-    return `/${locale}`;
+  if (pathname === "/") {
+    return `/${locale}${search}`;
   }
 
-  return `/${locale}${normalized}`;
+  return `/${locale}${pathname}${search}`;
 }

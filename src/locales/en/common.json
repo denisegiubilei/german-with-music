@@ -87,6 +87,10 @@
     "flashcardOriginal": "Original",
     "flashcardTranslation": "Translation",
     "flashcardClickToReveal": "Click to reveal",
+    "flashcardGuestTitle": "Create a free account to see more",
+    "flashcardGuestBody": "Sign up to unlock the full flashcard deck for this song and every song in the library.",
+    "flashcardGuestSignUp": "Create free account",
+    "flashcardGuestSignIn": "Already have an account?",
     "noTranslation": "No translation for this line."
   },
   "nav": {

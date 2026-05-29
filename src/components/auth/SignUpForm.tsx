@@ -7,6 +7,7 @@ import { Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useRegisterMutation } from "@/integrations/lyric-palette";
 import { useLocale } from "@/i18n/locale-context";
 import { localizedPath } from "@/lib/localized-path";
+import { appendReturnTo } from "@/lib/safe-redirect";
 import { LocalizedLinkClient } from "@/components/localized-link/LocalizedLinkClient";
 
 interface SignUpFormValues {
@@ -42,6 +43,7 @@ interface SignUpFormProps {
     errorConfirmPasswordRequired: string;
     errorPasswordMismatch: string;
   };
+  returnTo?: string;
 }
 
 type RegisterApiError = {
@@ -52,7 +54,7 @@ type RegisterApiError = {
   };
 };
 
-export function SignUpForm({ copy }: SignUpFormProps) {
+export function SignUpForm({ copy, returnTo }: SignUpFormProps) {
   const router = useRouter();
   const locale = useLocale();
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -102,7 +104,9 @@ export function SignUpForm({ copy }: SignUpFormProps) {
         newsletter,
         ...(name.trim() ? { name: name.trim() } : {}),
       }).unwrap();
-      router.replace(localizedPath("/onboarding", locale));
+      router.replace(
+        appendReturnTo(localizedPath("/onboarding", locale), returnTo),
+      );
     } catch (err: unknown) {
       const apiErr = err as RegisterApiError;
       const status = apiErr.status;
@@ -232,7 +236,10 @@ export function SignUpForm({ copy }: SignUpFormProps) {
 
       <p className="text-center text-body-secondary small mb-0">
         {copy.hasAccount}{" "}
-        <LocalizedLinkClient href="/signin" className="text-warning">
+        <LocalizedLinkClient
+          href={appendReturnTo("/signin", returnTo)}
+          className="text-warning"
+        >
           {copy.signInLink}
         </LocalizedLinkClient>
       </p>

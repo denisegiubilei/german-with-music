@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { User } from "@/entities/user";
-import { setCredentials, clearCredentials } from "@/features/auth";
+import {
+  setCredentials,
+  clearCredentials,
+  setAuthHydrated,
+} from "@/features/auth";
 
 export interface LoginRequest {
   login: string;
@@ -35,6 +39,8 @@ export const authApi = createApi({
           dispatch(setCredentials(data));
         } catch {
           dispatch(clearCredentials());
+        } finally {
+          dispatch(setAuthHydrated());
         }
       },
     }),
@@ -51,6 +57,8 @@ export const authApi = createApi({
           dispatch(setCredentials(data));
         } catch {
           dispatch(clearCredentials());
+        } finally {
+          dispatch(setAuthHydrated());
         }
       },
     }),
@@ -66,6 +74,8 @@ export const authApi = createApi({
           dispatch(setCredentials(data));
         } catch {
           dispatch(clearCredentials());
+        } finally {
+          dispatch(setAuthHydrated());
         }
       },
     }),
@@ -80,6 +90,7 @@ export const authApi = createApi({
           await queryFulfilled;
         } finally {
           dispatch(clearCredentials());
+          dispatch(setAuthHydrated());
         }
       },
     }),

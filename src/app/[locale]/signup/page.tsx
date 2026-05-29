@@ -2,8 +2,14 @@ import { Container, Card, CardBody } from "react-bootstrap";
 import { getTForRequest } from "@/i18n/server";
 import { SignUpForm } from "@/components/auth/SignUpForm";
 
-export default async function SignUpPage() {
+interface SignUpPageProps {
+  searchParams: Promise<{ returnTo?: string | string[] }>;
+}
+
+export default async function SignUpPage({ searchParams }: SignUpPageProps) {
   const { t } = await getTForRequest();
+  const { returnTo: returnToRaw } = await searchParams;
+  const returnTo = Array.isArray(returnToRaw) ? returnToRaw[0] : returnToRaw;
 
   const copy = {
     nameLabel: t("auth.signUp.nameLabel"),
@@ -39,7 +45,7 @@ export default async function SignUpPage() {
         </div>
         <Card className="border shadow-sm">
           <CardBody className="p-4">
-            <SignUpForm copy={copy} />
+            <SignUpForm copy={copy} returnTo={returnTo} />
           </CardBody>
         </Card>
       </div>

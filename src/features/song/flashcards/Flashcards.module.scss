@@ -31,9 +31,14 @@ $flash-verse-bg: #2c2c2c;
     background-color 0.15s ease,
     color 0.15s ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--bs-secondary-bg);
     color: var(--bs-body-color);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
   }
 }
 
@@ -246,4 +251,39 @@ $flash-verse-bg: #2c2c2c;
   &:hover {
     opacity: 0.92;
   }
+}
+
+.flashUpsell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--bs-border-color);
+  background-color: var(--bs-body-bg);
+  box-shadow: var(--bs-box-shadow-sm);
+  text-align: center;
+}
+
+.flashUpsellTitle {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.flashUpsellBody {
+  font-size: 0.9375rem;
+  color: var(--bs-secondary-color);
+  margin-bottom: 1.25rem;
+  max-width: 20rem;
+}
+
+.flashUpsellSignIn {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  color: var(--bs-secondary-color);
 }

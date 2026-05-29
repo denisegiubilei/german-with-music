@@ -1,2 +1,7 @@
-export { authSlice, setCredentials, clearCredentials } from "./model/authSlice";
+export {
+  authSlice,
+  setCredentials,
+  clearCredentials,
+  setAuthHydrated,
+} from "./model/authSlice";
 export { default as authReducer } from "./model/authSlice";

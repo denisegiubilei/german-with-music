@@ -7,6 +7,7 @@ import {
 import { getPreferredLocale } from "@/i18n/preferred-locale";
 import { defaultLocale, i18nHeaderName, isValidLocale } from "@/i18n/settings";
 import { localizedPath, pathWithoutLocale } from "@/lib/localized-path";
+import { isSafeReturnTo } from "@/lib/safe-redirect";
 
 const REFRESH_COOKIE = "lp_refresh";
 
@@ -68,6 +69,10 @@ export function proxy(request: NextRequest) {
 
   // Redirect authenticated users away from auth-only routes.
   if (isAuthOnly(pathname) && hasSession) {
+    const returnTo = request.nextUrl.searchParams.get("returnTo");
+    if (returnTo && isSafeReturnTo(returnTo)) {
+      return NextResponse.redirect(new URL(returnTo, request.url));
+    }
     const homePath = localizedPath("/", activeLocale);
     return NextResponse.redirect(new URL(homePath, request.url));
   }

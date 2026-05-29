@@ -4,11 +4,13 @@ import type { User } from "@/entities/user";
 interface AuthState {
   user: User | null;
   accessToken: string | null;
+  hydrated: boolean;
 }
 
 const initialState: AuthState = {
   user: null,
   accessToken: null,
+  hydrated: false,
 };
 
 export const authSlice = createSlice({
@@ -26,8 +28,12 @@ export const authSlice = createSlice({
       state.user = null;
       state.accessToken = null;
     },
+    setAuthHydrated(state) {
+      state.hydrated = true;
+    },
   },
 });
 
-export const { setCredentials, clearCredentials } = authSlice.actions;
+export const { setCredentials, clearCredentials, setAuthHydrated } =
+  authSlice.actions;
 export default authSlice.reducer;

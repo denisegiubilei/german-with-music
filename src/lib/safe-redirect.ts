@@ -6,3 +6,11 @@
 export function isSafeReturnTo(value: string): boolean {
   return value.startsWith("/") && !value.startsWith("//");
 }
+
+export function appendReturnTo(path: string, returnTo?: string): string {
+  if (!returnTo || !isSafeReturnTo(returnTo)) {
+    return path;
+  }
+  const separator = path.includes("?") ? "&" : "?";
+  return `${path}${separator}returnTo=${encodeURIComponent(returnTo)}`;
+}

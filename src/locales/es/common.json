@@ -87,6 +87,10 @@
     "flashcardOriginal": "Original",
     "flashcardTranslation": "Traducción",
     "flashcardClickToReveal": "Haz clic para revelar",
+    "flashcardGuestTitle": "Crea una cuenta gratis para ver más",
+    "flashcardGuestBody": "Regístrate para desbloquear el mazo completo de tarjetas de esta canción y de todas las canciones de la biblioteca.",
+    "flashcardGuestSignUp": "Crear cuenta gratis",
+    "flashcardGuestSignIn": "¿Ya tienes cuenta?",
     "noTranslation": "No hay traducción para esta línea."
   },
   "nav": {
