@@ -1,0 +1,324 @@
+{
+  "brand": "Alemán con Música",
+  "seo": {
+    "siteName": "Alemán con Música",
+    "titleTagline": "Aprende alemán con letras de canciones",
+    "description": "Aprende alemán a través de la música: canciones alemanas seleccionadas con letras originales y traducción al inglés. Amplía vocabulario y comprensión auditiva en contexto — gratis para explorar.",
+    "keywords": [
+      "aprender alemán",
+      "canciones alemanas",
+      "letras en alemán",
+      "traducción al inglés",
+      "aprendizaje de idiomas",
+      "música e idioma"
+    ],
+    "openGraphDescription": "Canciones alemanas con letras y traducción al inglés lado a lado. Practica vocabulario y comprensión auditiva con música real.",
+    "twitterDescription": "Canciones alemanas con letras y traducción al inglés. Aprende vocabulario en contexto.",
+    "library": {
+      "description": "Explora todos los lanzamientos de YouTube de Alemán con Música. Filtra por artista o título de la canción y abre cualquier pista para letras y traducciones.",
+      "openGraphDescription": "Explora la biblioteca de canciones: filtra por artista o título y aprende alemán con letras y traducciones.",
+      "twitterDescription": "Explora canciones en alemán en la biblioteca — filtra por artista o título.",
+      "keywords": [
+        "biblioteca de canciones alemanas",
+        "explorar música alemana",
+        "aprender alemán",
+        "letras",
+        "traducciones"
+      ]
+    },
+    "about": {
+      "description": "Alemán con Música te ayuda a aprender alemán con letras de canciones, traducciones al inglés, tarjetas de memoria y una biblioteca con búsqueda — practica vocabulario y comprensión auditiva en contexto.",
+      "openGraphDescription": "Descubre cómo Alemán con Música usa canciones reales, letras y traducciones para hacer el estudio del alemán más atractivo.",
+      "twitterDescription": "Sobre Alemán con Música: aprende alemán con letras, traducciones, tarjetas de memoria y canciones seleccionadas.",
+      "keywords": [
+        "sobre Alemán con Música",
+        "aprender alemán con música",
+        "letras de canciones en alemán",
+        "traducción alemán inglés",
+        "aprendizaje de idiomas con canciones",
+        "práctica de comprensión auditiva en alemán"
+      ]
+    },
+    "contact": {
+      "description": "Contacta con Alemán con Música — preguntas, comentarios y soporte por correo electrónico.",
+      "openGraphDescription": "Ponte en contacto con Alemán con Música.",
+      "twitterDescription": "Contacto con el soporte de Alemán con Música.",
+      "keywords": [
+        "contacto Alemán con Música",
+        "soporte",
+        "comentarios"
+      ]
+    }
+  },
+  "songCard": {
+    "openDetailsAria": "Abrir canción: {{title}}",
+    "noThumbnailAria": "Imagen de portada no disponible"
+  },
+  "songPage": {
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "prevAria": "Canción anterior en el catálogo",
+    "nextAria": "Siguiente canción en el catálogo",
+    "navToLibraryAria": "Abrir la biblioteca de canciones",
+    "glossaryHeading": "Glosario",
+    "noGlossary": "Aún no hay glosario para esta canción.",
+    "watchOnYoutube": "Ver en YouTube",
+    "embedUnavailable": "No se pudo insertar el vídeo.",
+    "notFoundTitle": "Canción no encontrada",
+    "metaDescriptionFallback": "Canción en alemán con letras y notas de aprendizaje.",
+    "tabFlashcard": "Tarjeta",
+    "flashcardsEmpty": "Aún no hay líneas de letra disponibles para las tarjetas.",
+    "flashcardProgress": "Tarjeta {{n}} de {{total}}",
+    "flashcardShuffle": "Barajar",
+    "flashcardFlip": "Voltear",
+    "flashcardFlipAria": "Voltear la tarjeta para ver la traducción o el original",
+    "flashcardPrevAria": "Tarjeta anterior",
+    "flashcardNextAria": "Siguiente tarjeta",
+    "flashcardOriginal": "Original",
+    "flashcardTranslation": "Traducción",
+    "flashcardClickToReveal": "Haz clic para revelar",
+    "noTranslation": "No hay traducción para esta línea."
+  },
+  "nav": {
+    "language": "Idioma",
+    "themeAriaLabel": "Tema de color",
+    "songs": "Canciones",
+    "library": "Biblioteca",
+    "howItWorks": "Cómo funciona",
+    "start": "Empezar",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "myAccount": "Mi cuenta",
+    "signOut": "Cerrar sesión"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Iniciar sesión",
+      "subtitle": "Bienvenido de nuevo",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Tu contraseña",
+      "submit": "Iniciar sesión",
+      "submitting": "Iniciando sesión…",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUpLink": "Registrarse",
+      "errorInvalid": "Correo electrónico o contraseña no válidos.",
+      "errorTooMany": "Demasiados intentos. Inténtalo de nuevo más tarde.",
+      "errorGeneric": "Algo salió mal. Inténtalo de nuevo."
+    },
+    "signUp": {
+      "title": "Crear cuenta",
+      "subtitle": "Empieza a aprender alemán con música",
+      "nameLabel": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Al menos 8 caracteres",
+      "confirmPasswordLabel": "Confirmar contraseña",
+      "confirmPasswordPlaceholder": "Vuelve a escribir tu contraseña",
+      "newsletterLabel": "Envíame novedades y consejos de aprendizaje por correo",
+      "submit": "Crear cuenta",
+      "submitting": "Creando cuenta…",
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "signInLink": "Iniciar sesión",
+      "errorEmailTaken": "Este correo electrónico ya está en uso.",
+      "errorTooMany": "Demasiados intentos. Inténtalo de nuevo más tarde.",
+      "errorGeneric": "Algo salió mal. Inténtalo de nuevo.",
+      "errorEmailRequired": "El correo electrónico es obligatorio.",
+      "errorEmailInvalid": "Introduce una dirección de correo válida.",
+      "errorPasswordRequired": "La contraseña es obligatoria.",
+      "errorPasswordMinLength": "La contraseña debe tener al menos 8 caracteres.",
+      "errorConfirmPasswordRequired": "Confirma tu contraseña.",
+      "errorPasswordMismatch": "Las contraseñas no coinciden."
+    },
+    "me": {
+      "title": "Mi cuenta",
+      "emailLabel": "Correo electrónico",
+      "nameLabel": "Nombre",
+      "nameFallback": "Sin definir",
+      "idLabel": "ID de usuario",
+      "signOut": "Cerrar sesión",
+      "profileTitle": "Perfil",
+      "saved": "Perfil guardado.",
+      "saveError": "No se pudo guardar el perfil. Inténtalo de nuevo.",
+      "changePasswordLink": "Cambiar contraseña"
+    },
+    "changePassword": {
+      "title": "Cambiar contraseña",
+      "subtitle": "Introduce tu contraseña actual y elige una nueva.",
+      "backToAccount": "Volver a la cuenta",
+      "currentPasswordLabel": "Contraseña actual",
+      "newPasswordLabel": "Nueva contraseña",
+      "newPasswordPlaceholder": "Al menos 8 caracteres",
+      "confirmPasswordLabel": "Confirmar nueva contraseña",
+      "confirmPasswordPlaceholder": "Vuelve a escribir tu nueva contraseña",
+      "submit": "Actualizar contraseña",
+      "submitting": "Actualizando…",
+      "success": "Contraseña actualizada. Es posible que otros dispositivos deban iniciar sesión de nuevo.",
+      "errorCurrentPasswordRequired": "La contraseña actual es obligatoria.",
+      "errorNewPasswordRequired": "La nueva contraseña es obligatoria.",
+      "errorNewPasswordMinLength": "La nueva contraseña debe tener al menos 8 caracteres.",
+      "errorConfirmPasswordRequired": "Confirma tu nueva contraseña.",
+      "errorCurrentInvalid": "La contraseña actual es incorrecta.",
+      "errorSamePassword": "La nueva contraseña debe ser distinta de la actual.",
+      "errorTooMany": "Demasiados intentos. Inténtalo de nuevo más tarde.",
+      "errorGeneric": "No se pudo actualizar la contraseña. Inténtalo de nuevo."
+    },
+    "onboarding": {
+      "title": "¡Bienvenido!",
+      "subtitle": "Cuéntanos un poco sobre ti para personalizar tu experiencia. Todos los campos son opcionales.",
+      "skip": "Omitir por ahora",
+      "continue": "Continuar",
+      "submitting": "Guardando…",
+      "errorGeneric": "Algo salió mal. Inténtalo de nuevo."
+    },
+    "profile": {
+      "howFoundLabel": "¿Cómo nos conociste?",
+      "howFoundPlaceholder": "Selecciona una opción",
+      "howFound": {
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "instagram": "Instagram",
+        "other": "Otro"
+      },
+      "germanLevelLabel": "Nivel de alemán",
+      "germanLevelPlaceholder": "Selecciona tu nivel",
+      "germanLevel": {
+        "complete_beginner": "Principiante absoluto",
+        "a1": "A1 — Principiante",
+        "a2": "A2 — Elemental",
+        "b1": "B1 — Intermedio",
+        "b2": "B2 — Intermedio alto",
+        "c1": "C1 — Avanzado",
+        "c2": "C2 — Competente",
+        "not_sure": "No estoy seguro"
+      },
+      "countryLabel": "País",
+      "countryPlaceholder": "¿De dónde eres?",
+      "languageLabel": "Idioma preferido",
+      "languagePlaceholder": "Selecciona un idioma",
+      "languageOtherLabel": "Otro idioma",
+      "languageOtherPlaceholder": "Especifica tu idioma",
+      "language": {
+        "english": "Inglés",
+        "portuguese": "Portugués",
+        "spanish": "Español",
+        "other": "Otro"
+      },
+      "goalsLabel": "Objetivos de aprendizaje",
+      "goalsPlaceholder": "¿Qué quieres lograr?",
+      "save": "Guardar perfil"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "intro": "¿Preguntas, comentarios o soporte? Envíanos un correo y te responderemos lo antes posible.",
+    "emailLabel": "Correo electrónico"
+  },
+  "about": {
+    "title": "Sobre Alemán con Música",
+    "breadcrumbLabel": "Migas de pan",
+    "breadcrumbHome": "Inicio",
+    "lead": "Alemán con Música te ayuda a aprender alemán con canciones — con letras originales, traducciones al inglés y herramientas de estudio que mantienen el vocabulario en contexto.",
+    "missionTitle": "Nuestra misión",
+    "missionBody": "Creemos que la música hace memorable el aprendizaje de idiomas. En lugar de listas aisladas de palabras, escuchas el alemán como lo usan hablantes nativos, sigues línea a línea y refuerzas el significado con traducciones y práctica interactiva.",
+    "offerTitle": "Qué puedes hacer aquí",
+    "offerItems": [
+      "Explorar una biblioteca seleccionada de canciones en alemán",
+      "Leer letras con traducciones al inglés lado a lado",
+      "Repasar vocabulario destacado y tarjetas de memoria por canción"
+    ],
+    "audienceTitle": "Para quién es",
+    "audienceBody": "Tanto si empiezas con el alemán como si retomas la comprensión auditiva, Alemán con Música es para quienes disfrutan estudiar con música a su propio ritmo — en casa, de camino o entre clases.",
+    "exploreTitle": "Empieza a explorar",
+    "exploreHome": "Inicio",
+    "exploreLibrary": "Biblioteca de canciones",
+    "exploreContact": "Contáctanos"
+  },
+  "footer": {
+    "copyright": "© {{year}} {{brand}}",
+    "about": "Sobre nosotros",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "eyebrow": "Aprende alemán de forma divertida",
+    "title": "Descubre el alemán a través de la <1>música</1>",
+    "lead": "Canciones alemanas con letras originales y traducción al inglés.",
+    "exploreSongs": "Explorar canciones",
+    "statSongsValue": "Excelentes",
+    "statSongsLabel": "Canciones",
+    "statTranslatedValue": "100%",
+    "statTranslatedLabel": "Traducidas",
+    "statFunValue": "Divertido",
+    "statFunLabel": "Siempre"
+  },
+  "library": {
+    "title": "Biblioteca de canciones",
+    "lead": "Explora canciones en alemán, filtra y abre una canción para letras completas y notas de aprendizaje.",
+    "toggleFilters": "Filtros",
+    "filterArtist": "Artista",
+    "filterTitle": "Título de la canción",
+    "applyFilters": "Aplicar filtros",
+    "clearFilters": "Limpiar",
+    "empty": "Ninguna canción coincide con estos filtros.",
+    "error": "No pudimos cargar la biblioteca. Inténtalo de nuevo más tarde.",
+    "paginationSummary": "{{from}}–{{to}} de {{total}}",
+    "paginationNav": "Páginas de la biblioteca",
+    "pagePrevAria": "Página anterior",
+    "pageNextAria": "Página siguiente",
+    "pageStatus": "Página {{page}} de {{totalPages}}"
+  },
+  "featuredSongs": {
+    "title": "Canciones destacadas",
+    "subtitle": "Explora nuestra colección de canciones alemanas con letras y traducciones.",
+    "exploreLibrary": "Explorar biblioteca",
+    "error": "No pudimos cargar las canciones destacadas. Inténtalo de nuevo más tarde.",
+    "empty": "Aún no hay canciones destacadas. Vuelve pronto.",
+    "items": [
+      {
+        "title": "99 Luftballons",
+        "artist": "Nena",
+        "imageUrl": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80"
+      },
+      {
+        "title": "Du Hast",
+        "artist": "Rammstein",
+        "imageUrl": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=400&q=80"
+      },
+      {
+        "title": "Major Tom",
+        "artist": "Peter Schilling",
+        "imageUrl": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&q=80"
+      },
+      {
+        "title": "Atemlos",
+        "artist": "Helene Fischer",
+        "imageUrl": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&q=80"
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Cuatro pasos sencillos para aprender alemán.",
+    "steps": {
+      "choose": {
+        "title": "Elige una canción",
+        "description": "Explora nuestra biblioteca de canciones alemanas."
+      },
+      "read": {
+        "title": "Lee las letras",
+        "description": "Sigue la letra original mientras escuchas."
+      },
+      "compare": {
+        "title": "Compara",
+        "description": "Compara la traducción y las palabras destacadas con el original."
+      },
+      "learn": {
+        "title": "Aprende",
+        "description": "Absorbe vocabulario de forma natural."
+      }
+    }
+  }
+}

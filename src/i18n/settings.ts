@@ -1,5 +1,5 @@
 /** URL + i18next language codes (BCP 47). */
-export const locales = ["en", "pt-BR"] as const;
+export const locales = ["en", "pt-BR", "es"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -9,6 +9,7 @@ export const defaultLocale: Locale = "en";
 export const localeDisplayNames: Record<Locale, string> = {
   en: "English",
   "pt-BR": "Português",
+  es: "Español",
 };
 
 /** Align with next-i18next / i18next cookie default naming. */

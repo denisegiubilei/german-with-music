@@ -13,6 +13,7 @@ const resourceLoaders: Record<
 > = {
   en: () => import("./src/locales/en/common.json").then((m) => m.default),
   "pt-BR": () => import("./src/locales/pt-BR/common.json").then((m) => m.default),
+  es: () => import("./src/locales/es/common.json").then((m) => m.default),
 };
 
 const i18nConfig: I18nConfig = {

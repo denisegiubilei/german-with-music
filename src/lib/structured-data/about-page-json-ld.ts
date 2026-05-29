@@ -22,7 +22,7 @@ export function buildAboutPageJsonLd({
   const homeUrl = canonicalForLocale("/", locale);
   if (!siteUrl || !aboutUrl || !homeUrl) return null;
 
-  const inLanguage = locale === "pt-BR" ? "pt-BR" : "en";
+  const inLanguage = locale;
 
   return {
     "@context": "https://schema.org",
